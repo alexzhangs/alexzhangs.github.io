@@ -1,3 +1,8 @@
 home:
   heading: 天下皆知美之为美
   subheading: 我昔来时烁烁铎，我今去时靡靡波，金戈铁马春秋始，四载烽烟已战国
+  banner:
+    image: /assets/images/banners/haituo-peak.png
+post:
+  banner:
+    image: /assets/images/banners/lighting-window.png
