@@ -1,7 +1,7 @@
 ---
 layout: about
 title: About
-banner: /assets/images/banners/mbp.png
+banner: /assets/images/banners/camping-night.png
 ---
 
 ## Welcome to 0xBeta
