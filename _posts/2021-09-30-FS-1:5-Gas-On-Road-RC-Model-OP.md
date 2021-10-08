@@ -51,10 +51,10 @@ TODO：CNC 4 mm 碳纤维底板。
 
 转向舵机位按标准大舵机尺寸做了修改，固定螺丝孔纤毫不差。
 ![CNC 碳纤维二楼板](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor.png)
-CNC 碳纤维二楼板
+图：CNC 碳纤维二楼板
 
 ![铝合金二楼板立柱](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-2nd-Floor-Pole.png)
-铝合金二楼板立柱
+图：铝合金二楼板立柱
 
 ### 防滚架 | Roll Cage
 
@@ -78,11 +78,103 @@ M5 以上的螺丝更换为钛合金材料减轻重量：齿轮座-引擎、车�
 
 ### 上下 A 臂 | Arm
 
+DIY 锁紧下 A 臂无法更换的尼龙球头。
+
 上、下 A 臂和轮轴座没有金属化，保留这部分韧性结构作为战损中的缓冲。
 
 ### 避震器 | Shock Absorber
 
-更换负压避震，更换高浓度避震油，DIY 锁紧下 A 臂无法更换的尼龙球头。
+> ❓ PROBLEM： 原避震器尼龙下叉拆卸比较麻烦，避震杆没有扳手着力点。
+
+> ✅ SOLUTION：拆下避震器上盖，取出弹簧，盖回上盖防止漏油，然后使用高摩擦系数的硅胶垫缠绕在避震杆上，用鱼口钳的圆孔夹住硅胶垫，施加合适的压力，用手拧下尼龙下叉。
+
+#### 升级避震器金属下叉 - 2019-04
+
+![避震器金属下叉](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Shock-Absorber-fork.png)
+
+图：避震器金属下叉
+
+> ⚠️ 全金属件之间的连接阻尼一般比较小，长期震动容易旋松，金属下叉和避震杆之间必须要使用低强度螺丝胶安装。
+
+#### 升级负压避震帽 - 2019-05
+
+![负压避震帽](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber.png)
+
+图：负压避震帽
+
+第三方生产的 FS 平跑负压避震帽，铝合金材质，安装前要注意清洗残渣。
+
+![负压避震器](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber-2.png)
+
+图：负压避震器
+
+拆下原避震器的顶盖，装上负压避震帽，加注避震油即可。
+
+![负压避震器零件](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber-3.png)
+
+图：负压避震器零件
+
+> ❓ PROBLEM：负压避震帽和避震桶结合处，避震帽内部使用1个黑色橡胶平垫，漏油严重。
+
+> ✅ SOLUTION：拆出负压避震帽内的橡胶平垫，放入一个 20 mm * 2.5 mm O型圈，涂抹专用密封绿油，手力拧紧，密封问题解决。
+
+![避震杆密封](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Shock-Absorber-Seal.png)
+
+图：避震杆密封
+
+> ❓ PROBLEM：测试中避震杆处有轻微渗油。
+
+> ✅ SOLUTION：拧下避震杆密封端杆，里面有3个硅胶垫，用 2 个塑料平垫分隔，将所有密封垫抹专用密封绿油，最外侧的密封垫被螺丝压变形，将其和中间的密封垫调换，手力拧紧，密封问题解决。
+
+负压避震器安装技巧：
+
+1. 海绵活塞预先推到负压腔底部。
+2. 将避震桶注满油除气泡后，拧入避震帽；再将负压腔注满避震油，拧入避震帽；然后在排气螺丝中注入剩余避震油，排气过程较长，气体完全排尽再进行避震杆的调节。
+3. 整个避震排尽空气后，拧下排气螺丝，使排气口朝上，使避震杆缩入一半，同时使排气口满油，拧入排气螺丝，使避震杆在两个极限位都不发生回弹。
+
+#### 选择避震油 - 2019-05-07
+
+![ArrowMax 10k CST 差速油](/assets/images/posts/ARROWMAX-10000CST.png)
+
+图：ArrowMax 10k CST 差速油
+
+
+
+> ❓ PROBLEM：避震器的肺片有3个大孔，选用阻尼最高的 ArrowMax 900 CST 避震油，避震器全程阻尼不明显，几乎都被弹簧抵消了。
+
+> ✅ SOLUTION：选用阻尼更高的 ArrowMax 10k CST 差速油，避震器阻尼明显。
+
+选用 ArrowMax 10k CST 差速油，前后避震号数相同。
+
+#### 升级避震器金属底托 - 2019-05-07
+
+有一套闲置全铝合金避震器，底托和飞神通用，将其安装到飞神避震器上。
+
+#### 更换负压避震帽球头 - 2019-05-07
+
+负压避震帽的球头压圈锁死后，球头还是有些虚位，将其更换为飞神球头，压圈锁死后不再有虚位。
+
+不同的球头长度不同，会影响避震器上球头穿杆螺丝间隙的填充。
+
+规格：
+
+- 飞神原车避震帽球头
+  - 直径：9mm
+  - 长度：
+- 负压避震帽原装银色球头
+  - 直径：9.8mm
+  - 长度
+- 负压避震帽更换黑色球头（FS）
+  - 直径：10mm
+  - 长度：
+
+#### 避震安装 - 2019-05-10
+
+避震上、下球头穿杆螺丝使用铜箔缠绕一圈，厚度约0.2mm，减小虚位。
+
+避震弹簧下压2.4mm。
+
+安装好后，前后车高一致，约 28 mm。
 
 ### 倾角 / 束角 /卡斯特角 | Camber / Toe / Caster
 
@@ -141,13 +233,13 @@ TODO：更换中央差速器
 
 ### 车轮 | Wheels
 
-#### 轮毂 | Wheel Hub
+![半热熔轮胎](/assets/images/posts/KLBM-1:5-Gas-On-Road-RC-Model-Wheels-Painted.png)
+
+图：半热熔轮胎
+
+更换四条半热熔轮胎，来自嘉利模型库存平跑。
 
 喷田宫云母红。
-
-#### 轮胎 | Tires
-
-更换四条半热熔轮胎。
 
 ## 制动系统 | Brake System
 
@@ -190,3 +282,5 @@ TODO：更换中央差速器
 更换 HiTEC HS-805MG 25kg 双转向舵机，SAVOX 0236 舵机固定夹，HR Super Baja Rey CNC 铝合金转向舵机臂。
 
 ![左视图](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Overview-L.png)
+
+图：左视图
