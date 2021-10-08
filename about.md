@@ -43,6 +43,6 @@ My first language is Chinese. I write this blog in both Chinese and English
 (to improve my language skill), sometimes they are mixed, so please forgive
 me if that makes you uncomfortable for whatever it brings.
 
-I am a lover of Python, Django, Shell, and AWS. You can find me at [Github](https://github.com/{{site.github_username}}) and [Stackoverflow](https://stackoverflow.com/users/{{stackoverflow_username}}).
+I am a lover of Python, Django, Shell, and AWS. You can find me at [Github](https://github.com/{{site.github_username}}) and [Stackoverflow](https://stackoverflow.com/users/{{site.stackoverflow_username}}).
 
 Alex
