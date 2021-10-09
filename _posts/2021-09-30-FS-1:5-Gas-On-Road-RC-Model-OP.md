@@ -17,7 +17,7 @@ revised: 2021-10-09 12:47:00 +0800
 
 > 📖 INFO：OP，来自于单词 `OPTION（选择）`，或者 `OPTIONAL（可选择的）`，这里表意 `选件`、`升级件`，动词化使用后表意 `升级` 、`强化` 动作。
 
-我的 RC 入门也是从 1/5 车模开始的，从入门到这部车的 OP 过程 ，都有模友给予了热心的帮助，[此处占位链接]() 保留给这位模友，日后补充。
+我的 RC 入门也是从 1/5 车模开始的，从入门到这部车的 OP 过程 ，都有模友给予了热心的帮助，特别感谢 [猪油](https://app.rcfans.com/mag/wap/v1/wap/waphome/userhome?userid=387510)，不但非常热心，还是个 RC 界的小百科全书，这是 [他在 RCFans 的主页](https://app.rcfans.com/mag/wap/v1/wap/waphome/userhome?userid=387510)，感兴趣的可以去关注。
 
 本文按车身功能结构来组织内容，以个人理解进行划分，如有不当，欢迎指正。
 
@@ -137,8 +137,6 @@ DIY 锁紧下 A 臂无法更换的尼龙球头。
 ![ArrowMax 10k CST 差速油](/assets/images/posts/ARROWMAX-10000CST.png)
 
 图：ArrowMax 10k CST 差速油
-
-
 
 > ❓ PROBLEM：避震器的肺片有3个大孔，选用阻尼最高的 ArrowMax 900 CST 避震油，避震器全程阻尼不明显，几乎都被弹簧抵消了。
 
