@@ -174,10 +174,82 @@ DIY 锁紧下 A 臂无法更换的尼龙球头。
 
 安装好后，前后车高一致，约 28 mm。
 
-### 倾角 / 束角 /卡斯特角 | Camber / Toe / Caster
+### 四轮定位 | Wheel Alignment
 
-调整倾角、束角、卡斯特角。
+四轮定位包含车轮倾角、束角和卡斯特角的调整。[这个视频](https://www.youtube.com/watch?v=7d2K_mKgsZ0) 形象的解释了这几个概念。
 
+#### 倾角 | Camber
+
+![倾角](/assets/images/posts/Car-Camber.png)
+
+图：倾角
+
+[倾角](https://en.wikipedia.org/wiki/Camber_angle) 也称为外倾角，在前后轮都可以应用，倾角外倾为正，内倾为负。
+
+负的倾角可以增加外侧轮胎在弯道的接地面积，有助于改善弯道性能；正的倾角很少见。
+
+##### 2019-06-26 设置
+
+|      | 整备车高时倾角（单位：度） | 最大车高时倾角（单位：度） |
+| ---- | -------------------------- | -------------------------- |
+| 前轮 | -1                         | 0                          |
+| 后轮 | -1                         | 0                          |
+
+#### 束角 | Toe
+
+![束角](/assets/images/posts/Car-Toe.png)
+
+图：束角
+
+[束角](https://en.wikipedia.org/wiki/Toe_(automotive)) 一般只应用于前转向轮，但也可以应用于后轮，内八（Toe-in）为正，外八（Toe-out）为负，通常设置值都小于 1 度。
+
+Toe-in 牺牲转向性能而改善直线稳定性，通常见于消费级汽车；Toe-out 牺牲直线稳定性而改善转向性能，通常见于竞技赛车。
+
+##### 2019-06-26 设置
+
+|      | 束角（单位：度） |
+| ---- | ---------------- |
+| 前轮 | +0.5             |
+| 后轮 | +0.5             |
+
+#### 卡斯特角 | Caster
+
+![卡斯特角](/assets/images/posts/Car-Caster.png)
+
+图：卡斯特角
+
+[卡斯特角](https://zh.wikipedia.org/zh-cn/後傾角) 也叫后倾角，顾名思义，哈雷摩托夸张后倾的前轮是对它最形象的展示。
+
+卡斯特角与转向轴相关，所以只应用于前转向轮，后倾为正，前倾为负。
+
+正的卡斯特角帮助转向轮自动回中。
+
+![前轮卡斯特角](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Front-Caster.png)
+
+图：前轮卡斯特角
+
+这里有两种方法调整卡斯特角，可以单独使用也可以组合使用：
+
+* 将上 A 臂翻面安装。
+* 调整环垫的位置。
+
+##### 2019-06-26 设置
+
+|      | 卡斯特角（单位：度） |
+| ---- | -------------------- |
+| 前轮 | +13.5                |
+| 后轮 | 0                    |
+
+#### Reference
+
+* [四轮定位原理](https://www.youtube.com/watch?v=7d2K_mKgsZ0)
+* [Wheel Alignment Angles](https://www.supertracker.com/wheel-alignment/wheel-alignment-angles)
+* [Tyre Camber explained](https://www.youtube.com/watch?v=VC9E1PWokcY)
+* [Alignment 101 - Camber, Toe, and Caster](https://www.youtube.com/watch?v=-TYKvsuwbF8)
+* [How does the Steering Wheel automatically returns to its center?](https://www.youtube.com/watch?v=wLbs8kBXgrw)
+* [Wiki 倾角](https://en.wikipedia.org/wiki/Camber_angle)
+* [Wiki 束角](https://en.wikipedia.org/wiki/Toe_(automotive))
+* [Wiki 卡斯特角](https://zh.wikipedia.org/zh-cn/後傾角)
 
 ## 转向系统 | Steering System
 
