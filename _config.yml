@@ -209,6 +209,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-spaceship
+  - searchyll
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -229,3 +230,18 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+elasticsearch:
+  index_name: 0xbeta
+  ignore:
+    - /
+    - /assets/*
+    - /webpack/*
+    - /404.html
+    - /archives.html
+    - /categories.html
+    - /feed.xml
+    - /index.html
+    - /robots.txt
+    - /sitemap.xml
+    - /tags.html
