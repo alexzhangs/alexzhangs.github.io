@@ -20,6 +20,7 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-paginate"
   gem "jekyll-spaceship"
+  gem "searchyll", git: "https://github.com/alexforks/searchyll", ref: "fix-update-alias-404"
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem

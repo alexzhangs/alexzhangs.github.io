@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/alexforks/searchyll
+  revision: 2e750d9499c9d227eac1b36b95c3c8d67887e7a6
+  ref: fix-update-alias-404
+  specs:
+    searchyll (0.10.2)
+      jekyll (>= 3.0)
+      nokogiri
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -22,7 +31,7 @@ GEM
     em-websocket (0.5.2)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
-    ethon (0.14.0)
+    ethon (0.15.0)
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
     execjs (2.8.1)
@@ -48,7 +57,7 @@ GEM
     ffi (1.15.4)
     forwardable-extended (2.6.0)
     gemoji (3.0.1)
-    github-pages (220)
+    github-pages (221)
       github-pages-health-check (= 1.17.9)
       jekyll (= 3.9.0)
       jekyll-avatar (= 0.7.0)
@@ -89,7 +98,7 @@ GEM
       liquid (= 4.0.3)
       mercenary (~> 0.3)
       minima (= 2.5.1)
-      nokogiri (>= 1.10.4, < 2.0)
+      nokogiri (>= 1.12.5, < 2.0)
       rouge (= 3.26.0)
       terminal-table (~> 1.4)
     github-pages-health-check (1.17.9)
@@ -161,7 +170,7 @@ GEM
       jekyll (>= 3.8, < 5.0)
     jekyll-sitemap (1.4.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-spaceship (0.10.0)
+    jekyll-spaceship (0.10.1)
       gemoji (~> 3.0)
       jekyll (>= 3.6, < 5.0)
       nokogiri (~> 1.6)
@@ -283,6 +292,7 @@ DEPENDENCIES
   jekyll-seo-tag (~> 2.1)
   jekyll-sitemap
   jekyll-spaceship
+  searchyll!
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)
