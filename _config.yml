@@ -27,7 +27,7 @@
 title: 0xBeta - Everything is Fun
 email: alexzhangs@gmail.com
 author: Alex Zhang
-favicon: /assets/images/logo/0xBeta-black-white.png
+favicon: /assets/images/logo/Moon.png
 
 # Copyright setting
 # You can use any html code, currently below placeholders are available:
@@ -67,7 +67,7 @@ yat:
 # content_width: "920px"
 
 # Google analytics
-# google_analytics: [Tracking ID]
+google_analytics: G-7KRNMGRZ09
 
 # If you want to generate website sitemap, you can set true
 # sitemap: false
@@ -209,6 +209,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-spaceship
+  - searchyll
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -217,15 +218,31 @@ plugins:
 #
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .idea
+
+elasticsearch:
+  index_name: 0xbeta
+  ignore:
+    - /
+    - /assets/*
+    - /webpack/*
+    - /404.html
+    - /archives.html
+    - /categories.html
+    - /feed.xml
+    - /index.html
+    - /robots.txt
+    - /sitemap.xml
+    - /tags.html
