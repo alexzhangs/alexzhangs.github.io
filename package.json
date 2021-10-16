@@ -1,0 +1,32 @@
+{
+  "name": "alexzhangs.github.io",
+  "version": "1.0.0",
+  "description": "Alex's Personal Blog",
+  "main": "search.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/alexzhangs/alexzhangs.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexzhangs/alexzhangs.github.io/issues"
+  },
+  "homepage": "https://github.com/alexzhangs/alexzhangs.github.io#readme",
+  "dependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "dotenv-webpack": "^7.0.3",
+    "react": "^17.0.2",
+    "react-addons-update": "^15.6.3",
+    "react-dom": "^17.0.2",
+    "searchkit": "^2.4.4",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0"
+  }
+}
