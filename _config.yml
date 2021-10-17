@@ -231,13 +231,13 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - .idea
+  - webpack
 
 elasticsearch:
   index_name: 0xbeta
   ignore:
     - /
     - /assets/*
-    - /webpack/*
     - /404.html
     - /archives.html
     - /categories.html
