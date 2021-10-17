@@ -52,7 +52,9 @@
               </span>
             {%- endif -%}
 
-            {%- include views/search-loader.html -%}
+            {%- if search -%}
+              {%- include views/search-loader.html -%}
+            {%- endif -%}
           </div>
         </nav>
       {%- endif -%}
