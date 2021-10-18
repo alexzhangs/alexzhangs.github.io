@@ -88,8 +88,8 @@ const SearchUI = () => {
           Powered by
           &nbsp;<a href="https://searchkit.co" target="_blank">Searchkit</a>&nbsp;,
           &nbsp;<a href="https://app.bonsai.io/" target="_blank">Bonsai</a>&nbsp;,
-          &nbsp;<a href="https://www.elastic.co/" target="_blank">Elasticesearch</a>&nbsp;,
-          &nbsp;<a href="https://github.com/omc/searchyll" target="_blank">and Searchyll</a>.
+          &nbsp;<a href="https://www.elastic.co/" target="_blank">Elasticesearch</a>&nbsp;,&nbsp;&
+          &nbsp;<a href="https://github.com/omc/searchyll" target="_blank">Searchyll</a>.
         </div>
       </div>
     </SearchkitProvider>
