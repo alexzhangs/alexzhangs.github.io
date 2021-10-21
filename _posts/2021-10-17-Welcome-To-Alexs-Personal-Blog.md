@@ -6,6 +6,7 @@ author: Alex Zhang
 categories: software
 banner: /assets/images/banners/thinkpad.png
 tags: blog, github-pages, jekyll, elasticsearch
+revised: 2021-10-21 21:08:00
 ---
 
 ## Welcome to Alex's Personal Blog
@@ -107,7 +108,7 @@ $ npm --version
 
 ## Jekyll Plugins that Github Pages doesn't Support?
 
-There are a lot of Jekyll plugins out there giving you the features that Jekyll and your theme don't have.
+There are a lot of [Jekyll plugins](https://github.com/topics/jekyll-plugin) out there giving you the features that Jekyll and your theme don't have.
 But the truth is most of them won't work with Github Pages.
 
 Github Pages has [this dependency list](https://pages.github.com/versions/).
