@@ -20,6 +20,8 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-paginate"
   gem "jekyll-spaceship"
+  gem "jekyll-hooks", git: "https://github.com/alexzhangs/jekyll-hooks"
+  gem "jekyll_picture_tag", "~> 1.10.2"
   gem "searchyll", git: "https://github.com/alexforks/searchyll", ref: "fix-update-alias-404"
 end
 

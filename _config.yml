@@ -64,7 +64,7 @@ yat:
 # header_transparent: true
 
 # If you want to change the content width, you can set to another value
-# content_width: "920px"
+content_width: "1280px"
 
 # Google analytics
 google_analytics: UA-209916979-1
@@ -209,6 +209,8 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-spaceship
+  - jekyll-hooks
+  - jekyll_picture_tag
   - searchyll
 
 elasticsearch:
@@ -225,3 +227,26 @@ elasticsearch:
     - /robots.txt
     - /sitemap.xml
     - /tags.html
+
+# jekyll_picture_tag
+picture:
+  source: assets/images
+  output: assets/images/resized
+  ignore_missing_images: development
+  suppress_warnings: false
+  disabled: false
+
+# jekyll-hooks
+hooks:
+  actions:
+    - type: posts
+      exts: [md]
+      find: !ruby/regexp '(!\[.*\])\(/assets/images/(.*)\)'
+      replace: '\1(\2)'
+      disabled: true
+    - type: posts
+      exts: [md]
+      find: !ruby/regexp '!\[(.*)\]\(([^\)]+)\)(?:{:([^}]+)})*'
+      replace: !ruby/regexp '{% picture \2 --alt \1 %}'
+      disabled: true
+  disabled: false
