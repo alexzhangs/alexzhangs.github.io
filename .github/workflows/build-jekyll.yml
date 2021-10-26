@@ -20,10 +20,10 @@ jobs:
             ${{ runner.os }}-gems-
 
       - name: apt update
-        run: apt update
+        run: sudo apt update
 
       - name: Install libvips
-        run: apt install -y libvips
+        run: sudo apt install -y libvips
 
       # Use GitHub Deploy Action to build and deploy to Github
       - uses: jeffreytse/jekyll-deploy-action@v0.3.1
