@@ -20,7 +20,7 @@ jobs:
             ${{ runner.os }}-gems-
 
       - name: apt update
-        run: sudo apt --update  
+        run: sudo apt update
 
       - name: Install libvips
         run: sudo apt install libvips
