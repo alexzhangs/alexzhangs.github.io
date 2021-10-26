@@ -54,7 +54,7 @@ tags: 齿轮
 
 ## 齿轮匹配应用
 
-![求解缺席齿轮参数](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Gear-Base-2.png)
+![求解缺席齿轮参数](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Gear-Base-2.png)
 
 图 2：求解缺席齿轮参数
 
@@ -84,7 +84,7 @@ tags: 齿轮
 
 #### 同轴连接齿比
 
-![同轴连接齿轮](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Gear-Base.png)
+![同轴连接齿轮](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Gear-Base.png)
 
 图 3：同轴连接齿轮
 
@@ -92,13 +92,13 @@ tags: 齿轮
 
 #### 差速器行星齿轮齿比
 
-![差速器](/assets/images/posts/FS-1:5-RC-Model-Differential-2.png)
+![差速器](/assets/images/posts/FS-1-5-RC-Model-Differential-2.png)
 
 图 4：差速器
 
 差速器行星齿轮由于其特殊的结构，它们之间的齿比不能使用标准的齿比公式计算。
 
-![差速器行星齿轮](/assets/images/posts/FS-1:5-RC-Model-Differential-Opened.png)
+![差速器行星齿轮](/assets/images/posts/FS-1-5-RC-Model-Differential-Opened.png)
 
 图 5：差速器行星齿轮
 
