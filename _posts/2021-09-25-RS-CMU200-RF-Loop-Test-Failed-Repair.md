@@ -4,7 +4,7 @@ layout: post
 summary: R&S CMU200 RF Frontend 模块的 RF 3 末端放大器失效，导致 1->4/3->2 RF Loop Test 自检失败，本文描述了故障调查以及修复的过程
 author: Alex Zhang
 categories: electronics
-banner: /assets/images/posts/RS-CMU200.png
+banner: /assets/images/banners/icom-radio.png
 tags: CMU200 RF Frontend SBW-5089 MMIC Amplifier BW5
 ---
 

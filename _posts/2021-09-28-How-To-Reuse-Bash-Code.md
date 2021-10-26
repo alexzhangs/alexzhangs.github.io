@@ -36,7 +36,7 @@ tags: xsh Bash Shell Library
 
 为了解决上述问题，我们需要一个标准化的 Package/Library Manager，就像 Linux 世界的 yum，apt，portage，或者 Python 世界的 pip。在我产生的这个想法的数年间，多次在网上搜索相关的解决方案，但没有一个满足我的预期，多数是按某个特定方式组织已实现好的代码库（Library）本身，而不是一个管理器，这非常令我意外。最后我决定自己编写一个 Shell 世界的 Library Manager，将其命名为 [XSH](https://github.com/alexzhangs/xsh) ，2021年5月27日发布 [0.4.7](https://github.com/alexzhangs/xsh/releases/tag/0.4.6)，目前仅支持 BASH。
 
-![xsh doc snapshot](/assets/images/posts/xsh-doc-snapshot-1.png)
+![xsh usage](/assets/images/posts/xsh-usage.png)
 
 图1: xsh doc snapshot
 

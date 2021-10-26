@@ -23,7 +23,7 @@ revised: 2021-10-08 11:35:00 +0800
 
 ## 概览 | General
 
-![产品海报](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-Poster.png)
+![产品海报](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-Poster.png)
 
 图：产品海报
 
@@ -74,11 +74,11 @@ revised: 2021-10-08 11:35:00 +0800
 
 ### OP 升级选件
 
-![升级选件 - 全车](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-Option.png)
+![升级选件 - 全车](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-Option.png)
 
 图：升级选件 - 全车
 
-![升级选件 - 齿轮](/assets/images/posts/FS-1:5-Gas-RC-Model-Option-Gear.png)
+![升级选件 - 齿轮](/assets/images/posts/FS-1-5-Gas-RC-Model-Option-Gear.png)
 
 图：升级选件 - 齿轮
 
@@ -86,7 +86,7 @@ revised: 2021-10-08 11:35:00 +0800
 
 ### 底盘 | Chasis
 
-![车底板](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-Floor.png)
+![车底板](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-Floor.png)
 
 图：车底板
 
@@ -103,7 +103,7 @@ revised: 2021-10-08 11:35:00 +0800
 
 ### 二楼板 | 2nd Floor
 
-![二楼板](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-2nd-Floor.png)
+![二楼板](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-2nd-Floor.png)
 
 图：二楼板
 
@@ -130,7 +130,7 @@ revised: 2021-10-08 11:35:00 +0800
 
 ### 车壳
 
-![车壳](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-Shell.png)
+![车壳](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-Shell.png)
 
 图：车壳
 
@@ -253,13 +253,13 @@ revised: 2021-10-08 11:35:00 +0800
 
 #### 112146 齿比 7.68
 
-![齿轮组 112146 齿比 7.68](/assets/images/posts/FS-1:5-RC-Model-Gear-Group-112146-7.68.png)
+![齿轮组 112146 齿比 7.68](/assets/images/posts/FS-1-5-RC-Model-Gear-Group-112146-7.68.png)
 
 图：齿轮组 112416 齿比 7.68
 
 #### 118030 齿比 11.35
 
-![齿轮组 118030 齿比 11.35](/assets/images/posts/FS-1:5-RC-Model-Gear-Group-118030-11.35.png)
+![齿轮组 118030 齿比 11.35](/assets/images/posts/FS-1-5-RC-Model-Gear-Group-118030-11.35.png)
 
 图：齿轮组 118030 齿比 11.35
 
@@ -290,7 +290,7 @@ revised: 2021-10-08 11:35:00 +0800
 
 ### 分动器
 
-![分动器](/assets/images/posts/FS-1:5-RC-Model-Transfercase.png)
+![分动器](/assets/images/posts/FS-1-5-RC-Model-Transfercase.png)
 
 图：分动器
 
@@ -317,7 +317,7 @@ revised: 2021-10-08 11:35:00 +0800
 
 #### 差速器
 
-![差速器 - 拆解](/assets/images/posts/FS-1:5-RC-Model-Differential-Disassembled.png)
+![差速器 - 拆解](/assets/images/posts/FS-1-5-RC-Model-Differential-Disassembled.png)
 
 图：差速器 - 拆解
 
@@ -331,7 +331,7 @@ revised: 2021-10-08 11:35:00 +0800
 
 #### 前万向传动轴组 CVD
 
-![前万向传动轴组 CVD](/assets/images/posts/FS-1:5-RC-Model-Front-CVD.png)
+![前万向传动轴组 CVD](/assets/images/posts/FS-1-5-RC-Model-Front-CVD.png)
 
 图：前万向传动轴组 CVD
 
@@ -345,7 +345,7 @@ revised: 2021-10-08 11:35:00 +0800
 
 该 CVD 的内侧轴承结合段，比后桥半轴相同位置短约6mm，如果使用此 CVD 升级后桥狗骨结构传动轴，轮胎结合器会无法锁紧轮轴。
 
-![前后半轴内侧轴承结合段长度比较](/assets/images/posts/FS-1:5-RC-Model-Front-CVD-Compare.png)
+![前后半轴内侧轴承结合段长度比较](/assets/images/posts/FS-1-5-RC-Model-Front-CVD-Compare.png)
 
 图：前后半轴内侧轴承结合段长度比较
 
@@ -358,10 +358,6 @@ revised: 2021-10-08 11:35:00 +0800
 |                | 内侧轴承结合段长（mm） |       |
 
 ### 车轮
-
-![车轮](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-Wheel.png)
-
-图：车轮
 
 | 项目 | Key                           | Value          |
 | ---- | ----------------------------- | -------------- |
@@ -397,7 +393,7 @@ revised: 2021-10-08 11:35:00 +0800
 
 前后桥包含 `主动小伞齿 DRP` 和 `差速器` 两个部分，差速器包含 `DIR`、`DIP`、`DIS` 三组齿轮。
 
-![前后桥 和 差速器](/assets/images/posts/FS-1:5-RC-Model-Differential.png)
+![前后桥 和 差速器](/assets/images/posts/FS-1-5-RC-Model-Differential.png)
 
 图：前后桥 和 差速器
 
@@ -468,7 +464,7 @@ revised: 2021-10-08 11:35:00 +0800
 
 #### 转向舵机 | Steering Servo
 
-![转向舵机](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-Turn-Serve.png)
+![转向舵机](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-Turn-Serve.png)
 
 图：转向舵机
 

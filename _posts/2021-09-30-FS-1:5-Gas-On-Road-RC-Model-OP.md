@@ -35,7 +35,7 @@ revised: 2021-10-09 12:47:00 +0800
 
 OP 的基础是一部四驱版本的平路跑车，整车基本都是出厂部件，难得还随带了未下地的车壳。
 
-![OP 基线](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Baseline.png)
+![OP 基线](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Baseline.png)
 图：OP 基线
 
 ## 车身系统 | Body System
@@ -48,7 +48,7 @@ TODO：CNC 4 mm 碳纤维底板。
 
 #### 升级 CNC 碳纤维二楼板
 
-![CNC 碳纤维二楼板 Version 0.3](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.3.png)
+![CNC 碳纤维二楼板 Version 0.3](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.3.png)
 图：CNC 碳纤维二楼板 Version 0.3
 
 原车尼龙二楼板在转向舵机工作时，因力矩较大会发生形变，转向舵机位因尺寸特殊，也无法完美安装流行的大扭矩转向舵机。
@@ -57,7 +57,7 @@ TODO：CNC 4 mm 碳纤维底板。
 
 目前装车采用 Version 0.3，为最新版本，如有需要可以闲鱼联系。
 
-![CNC 碳纤维二楼板 Version 0.3 和 铝合金二楼板立柱 Version 0.3 装车图](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.3-Assemble.png)
+![CNC 碳纤维二楼板 Version 0.3 和 铝合金二楼板立柱 Version 0.3 装车图](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.3-Assemble.png)
 
 图：CNC 碳纤维二楼板 Version 0.3 和 铝合金二楼板立柱 Version 0.3 装车图
 
@@ -65,7 +65,7 @@ TODO：CNC 4 mm 碳纤维底板。
 
 ###### Version 0.1
 
-![CNC 碳纤维二楼板 Version 0.1](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.1.png)
+![CNC 碳纤维二楼板 Version 0.1](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.1.png)
 图：CNC 碳纤维二楼板 Version 0.1
 
 | 初版                         | 解决问题 |
@@ -76,7 +76,7 @@ TODO：CNC 4 mm 碳纤维底板。
 
 ###### Version 0.2
 
-![CNC 碳纤维二楼板 Version 0.2](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.2.png)
+![CNC 碳纤维二楼板 Version 0.2](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.2.png)
 图：CNC 碳纤维二楼板 Version 0.2
 
 | 变更                        | 解决问题                                                     |
@@ -109,7 +109,7 @@ Version 0.3 为最新版本，目前没有变更计划。
 
 #### 升级 铝合金二楼板立柱
 
-![铝合金二楼板立柱 Version 0.3](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-2nd-Floor-Pole-v0.3.png)
+![铝合金二楼板立柱 Version 0.3](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-2nd-Floor-Pole-v0.3.png)
 图：铝合金二楼板立柱 Version 0.3
 
 更换二楼板后，需要立柱，找不到适合的成品，选择定制加工，出了 2 个版本，结构和工艺都不完美，最后采购成品进行改装，定版 0.3。
@@ -124,7 +124,7 @@ Version 0.3 为最新版本，目前没有变更计划。
 
 ###### Version 0.1
 
-![铝合金二楼板立柱 Version 0.1](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-2nd-Floor-Pole-v0.1.png)
+![铝合金二楼板立柱 Version 0.1](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-2nd-Floor-Pole-v0.1.png)
 图：铝合金二楼板立柱 Version 0.1
 
 | 初版                              | 解决问题 |
@@ -137,7 +137,7 @@ Version 0.3 为最新版本，目前没有变更计划。
 
 ###### Version 0.2
 
-![铝合金二楼板立柱 Version 0.2](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-2nd-Floor-Pole-v0.2.png)
+![铝合金二楼板立柱 Version 0.2](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-2nd-Floor-Pole-v0.2.png)
 
 图：铝合金二楼板立柱 Version 0.2
 
@@ -147,10 +147,6 @@ Version 0.3 为最新版本，目前没有变更计划。
 | 内外倒角工艺            |                                                              |
 
 做 1 米管材，出24根，8 根红色，16 根香槟色。
-
-![铝合金二楼板立柱 Version 0.2 组装图](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-2nd-Floor-Pole-v0.2-Assemble.png)
-
-图：铝合金二楼板立柱 Version 0.2 组装图
 
 ###### Version 0.3
 
@@ -195,7 +191,7 @@ DIY 锁紧下 A 臂无法更换的尼龙球头。
 
 #### 升级避震器金属下叉 - 2019-04
 
-![避震器金属下叉](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Shock-Absorber-fork.png)
+![避震器金属下叉](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Shock-Absorber-fork.png)
 
 图：避震器金属下叉
 
@@ -203,19 +199,19 @@ DIY 锁紧下 A 臂无法更换的尼龙球头。
 
 #### 升级负压避震帽 - 2019-05
 
-![负压避震帽](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber.png)
+![负压避震帽](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber.png)
 
 图：负压避震帽
 
 第三方生产的 FS 平跑负压避震帽，铝合金材质，安装前要注意清洗残渣。
 
-![负压避震器](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber-2.png)
+![负压避震器](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber-2.png)
 
 图：负压避震器
 
 拆下原避震器的顶盖，装上负压避震帽，加注避震油即可。
 
-![负压避震器拆解](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber-3.png)
+![负压避震器拆解](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber-3.png)
 
 图：负压避震器拆解
 
@@ -223,7 +219,7 @@ DIY 锁紧下 A 臂无法更换的尼龙球头。
 
 > ✅ SOLUTION：拆出负压避震帽内的橡胶平垫，放入一个 20 mm * 2.5 mm O型圈，涂抹专用密封绿油，手力拧紧，密封问题解决。
 
-![避震杆密封](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Shock-Absorber-Seal.png)
+![避震杆密封](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Shock-Absorber-Seal.png)
 
 图：避震杆密封
 
@@ -231,7 +227,7 @@ DIY 锁紧下 A 臂无法更换的尼龙球头。
 
 > ✅ SOLUTION：拧下避震杆密封端杆，里面有3个硅胶垫，用 2 个塑料平垫分隔，将所有密封垫抹专用密封绿油，最外侧的密封垫被螺丝压变形，将其和中间的密封垫调换，手力拧紧，密封问题解决。
 
-![负压避震帽球头](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber-Ball-Joint.png)
+![负压避震帽球头](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber-Ball-Joint.png)
 
 图：负压避震帽球头
 
@@ -327,7 +323,7 @@ Toe-in 牺牲转向性能而改善直线稳定性，通常见于消费级汽车�
 
 正的卡斯特角帮助转向轮自动回中。
 
-![前轮卡斯特角](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Front-Caster.png)
+![前轮卡斯特角](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Front-Caster.png)
 
 图：前轮卡斯特角
 
@@ -446,7 +442,7 @@ Toe-in 牺牲转向性能而改善直线稳定性，通常见于消费级汽车�
 
 ##### 开模定制硅胶齿轮罩密封垫 - 2018-12
 
-![齿轮罩密封垫](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Gear-Box-Seal.png)
+![齿轮罩密封垫](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Gear-Box-Seal.png)
 
 图：齿轮罩密封垫
 
@@ -454,7 +450,7 @@ Toe-in 牺牲转向性能而改善直线稳定性，通常见于消费级汽车�
 
 手工测量密封罩和齿轮架实物，画出 CAD 图纸，第三方开模加工，材料选用硅胶垫，耐油耐高温，厚度 2 mm，红色。如有需要可以闲鱼联系。
 
-![齿轮罩密封垫装车](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Gear-Box-Seal-2.png)
+![齿轮罩密封垫装车](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Gear-Box-Seal-2.png)
 
 图：齿轮罩密封垫装车
 
@@ -466,7 +462,7 @@ Toe-in 牺牲转向性能而改善直线稳定性，通常见于消费级汽车�
 
 ##### 齿轮罩加装注油嘴 - 2019-05-29
 
-![齿轮罩注油嘴](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Gear-Box-Grease-Nipple.png)
+![齿轮罩注油嘴](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Gear-Box-Grease-Nipple.png)
 
 图：齿轮罩注油嘴
 
@@ -500,7 +496,7 @@ TODO：更换中央差速器
 
 ### 车轮 | Wheels
 
-![半热熔轮胎](/assets/images/posts/KLBM-1:5-Gas-On-Road-RC-Model-Wheels-Painted.png)
+![半热熔轮胎](/assets/images/posts/KLBM-1-5-Gas-On-Road-RC-Model-Wheels-Painted.png)
 
 图：半热熔轮胎
 
@@ -556,6 +552,6 @@ DIY 电池组转接延长线，可用于电池组免拆出充电。
 
 更换 HiTEC HS-805MG 25kg 双转向舵机，SAVOX 0236 舵机固定夹，HR Super Baja Rey CNC 铝合金转向舵机臂。
 
-![左视图](/assets/images/posts/FS-1:5-Gas-On-Road-RC-Model-OP-Overview-L.png)
+![左视图](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Overview-L.png)
 
 图：左视图
