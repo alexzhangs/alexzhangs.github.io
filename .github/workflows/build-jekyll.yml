@@ -19,6 +19,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      - name: apt update
+        run: apt update
+
+      - name: Install libvips
+        run: apt install -y libvips
+
       # Use GitHub Deploy Action to build and deploy to Github
       - uses: jeffreytse/jekyll-deploy-action@v0.3.1
         with:
@@ -32,5 +38,4 @@ jobs:
           bundler_ver: '>=0'         # Default is latest bundler version
           cname: '0xbeta.com'        # Default is to not use a cname
           actor: ''                  # Default is the GITHUB_ACTOR
-          pre_build_commands: |
-            apk --update add vips vips-tools
+          pre_build_commands: ''     # Installing additional dependencies (Arch Linux)
