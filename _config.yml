@@ -243,10 +243,10 @@ hooks:
       exts: [md]
       find: !ruby/regexp '(!\[.*\])\(/assets/images/(.*)\)'
       replace: '\1(\2)'
-      disabled: true
+      disabled: false
     - type: posts
       exts: [md]
       find: !ruby/regexp '!\[(.*)\]\(([^\)]+)\)(?:{:([^}]+)})*'
       replace: !ruby/regexp '{% picture \2 --alt \1 %}'
-      disabled: true
+      disabled: false
   disabled: false
