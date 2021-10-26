@@ -19,6 +19,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      - name: Install libvips
+        run: sudo apt install libvips
+
+      - name: Install ImageMagick
+        run: sudo apt install imagemagick
+
       # Use GitHub Deploy Action to build and deploy to Github
       - uses: jeffreytse/jekyll-deploy-action@v0.3.1
         with:
