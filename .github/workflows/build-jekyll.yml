@@ -22,8 +22,11 @@ jobs:
       - name: apt update
         run: sudo apt update
 
-      - name: Install libvips
-        run: sudo apt install -y libvips
+      - name: Install imagemagick
+        run: sudo apt install -y imagemagick
+
+      - name: Test imagemagick
+      - run: convert --version
 
       # Use GitHub Deploy Action to build and deploy to Github
       - uses: jeffreytse/jekyll-deploy-action@v0.3.1
