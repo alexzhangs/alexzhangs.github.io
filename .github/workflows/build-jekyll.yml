@@ -19,15 +19,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
-      - name: apt update
-        run: sudo apt update
-
-      - name: Install imagemagick
-        run: sudo apt install -y imagemagick
-
-      - name: Test imagemagick
-        run: convert --version
-
       # Use GitHub Deploy Action to build and deploy to Github
       - uses: jeffreytse/jekyll-deploy-action@v0.3.1
         with:
@@ -41,4 +32,7 @@ jobs:
           bundler_ver: '>=0'         # Default is latest bundler version
           cname: '0xbeta.com'        # Default is to not use a cname
           actor: ''                  # Default is the GITHUB_ACTOR
-          pre_build_commands: ''     # Installing additional dependencies (Arch Linux)
+          pre_build_commands: |     # Installing additional dependencies (Arch Linux)
+            pacman -S --noconfirm imagemagick
+            identify --version
+            convert --version
