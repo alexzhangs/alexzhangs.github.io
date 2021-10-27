@@ -33,6 +33,5 @@ jobs:
           cname: '0xbeta.com'        # Default is to not use a cname
           actor: ''                  # Default is the GITHUB_ACTOR
           pre_build_commands: |     # Installing additional dependencies (Arch Linux)
-            pacman -S --noconfirm imagemagick
+            pacman -S --noconfirm imagemagick webp
             identify --version
-            convert --version
