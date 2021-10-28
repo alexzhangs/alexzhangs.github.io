@@ -36,7 +36,6 @@ revised: 2021-10-09 12:47:00 +0800
 OP 的基础是一部四驱版本的平路跑车，整车基本都是出厂部件，难得还随带了未下地的车壳。
 
 ![OP 基线](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Baseline.png)
-图：OP 基线
 
 ## 车身系统 | Body System
 
@@ -49,7 +48,6 @@ TODO：CNC 4 mm 碳纤维底板。
 #### 升级 CNC 碳纤维二楼板
 
 ![CNC 碳纤维二楼板 Version 0.3](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.3.png)
-图：CNC 碳纤维二楼板 Version 0.3
 
 原车尼龙二楼板在转向舵机工作时，因力矩较大会发生形变，转向舵机位因尺寸特殊，也无法完美安装流行的大扭矩转向舵机。
 
@@ -59,14 +57,11 @@ TODO：CNC 4 mm 碳纤维底板。
 
 ![CNC 碳纤维二楼板 Version 0.3 和 铝合金二楼板立柱 Version 0.3 装车图](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.3-Assemble.png)
 
-图：CNC 碳纤维二楼板 Version 0.3 和 铝合金二楼板立柱 Version 0.3 装车图
-
 ##### 版本历史
 
 ###### Version 0.1
 
 ![CNC 碳纤维二楼板 Version 0.1](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.1.png)
-图：CNC 碳纤维二楼板 Version 0.1
 
 | 初版                         | 解决问题 |
 | ---------------------------- | -------- |
@@ -77,7 +72,6 @@ TODO：CNC 4 mm 碳纤维底板。
 ###### Version 0.2
 
 ![CNC 碳纤维二楼板 Version 0.2](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Carbon-2nd-Floor-v0.2.png)
-图：CNC 碳纤维二楼板 Version 0.2
 
 | 变更                        | 解决问题                                                     |
 | --------------------------- | ------------------------------------------------------------ |
@@ -110,7 +104,6 @@ Version 0.3 为最新版本，目前没有变更计划。
 #### 升级 铝合金二楼板立柱
 
 ![铝合金二楼板立柱 Version 0.3](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-2nd-Floor-Pole-v0.3.png)
-图：铝合金二楼板立柱 Version 0.3
 
 更换二楼板后，需要立柱，找不到适合的成品，选择定制加工，出了 2 个版本，结构和工艺都不完美，最后采购成品进行改装，定版 0.3。
 
@@ -125,7 +118,6 @@ Version 0.3 为最新版本，目前没有变更计划。
 ###### Version 0.1
 
 ![铝合金二楼板立柱 Version 0.1](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-2nd-Floor-Pole-v0.1.png)
-图：铝合金二楼板立柱 Version 0.1
 
 | 初版                              | 解决问题 |
 | --------------------------------- | -------- |
@@ -138,8 +130,6 @@ Version 0.3 为最新版本，目前没有变更计划。
 ###### Version 0.2
 
 ![铝合金二楼板立柱 Version 0.2](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-2nd-Floor-Pole-v0.2.png)
-
-图：铝合金二楼板立柱 Version 0.2
 
 | 变更                    | 解决问题                                                     |
 | ----------------------- | ------------------------------------------------------------ |
@@ -193,27 +183,19 @@ DIY 锁紧下 A 臂无法更换的尼龙球头。
 
 ![避震器金属下叉](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Shock-Absorber-fork.png)
 
-图：避震器金属下叉
-
 > ⚠️ 全金属件之间的连接阻尼一般比较小，长期震动容易旋松，金属下叉和避震杆之间必须要使用低强度螺丝胶安装。
 
 #### 升级负压避震帽 - 2019-05
 
 ![负压避震帽](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber.png)
 
-图：负压避震帽
-
 第三方生产的 FS 平跑负压避震帽，铝合金材质，安装前要注意清洗残渣。
 
 ![负压避震器](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber-2.png)
 
-图：负压避震器
-
 拆下原避震器的顶盖，装上负压避震帽，加注避震油即可。
 
 ![负压避震器拆解](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber-3.png)
-
-图：负压避震器拆解
 
 > ❓ PROBLEM：负压避震帽和避震桶结合处，避震帽内部使用1个黑色橡胶平垫，漏油严重。
 
@@ -221,15 +203,11 @@ DIY 锁紧下 A 臂无法更换的尼龙球头。
 
 ![避震杆密封](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Shock-Absorber-Seal.png)
 
-图：避震杆密封
-
 > ❓ PROBLEM：测试中避震杆处有轻微渗油。
 
 > ✅ SOLUTION：拧下避震杆密封端杆，里面有3个硅胶垫，用 2 个塑料平垫分隔，将所有密封垫抹专用密封绿油，最外侧的密封垫被螺丝压变形，将其和中间的密封垫调换，手力拧紧，密封问题解决。
 
 ![负压避震帽球头](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Negative-Pressure-Shock-Absorber-Ball-Joint.png)
-
-图：负压避震帽球头
 
 > ❓ PROBLEM：负压避震帽的球头压圈锁死后，球头还是有些虚位。
 
@@ -255,8 +233,6 @@ DIY 锁紧下 A 臂无法更换的尼龙球头。
 
 ![ArrowMax 10k CST 差速油](/assets/images/posts/ARROWMAX-10000CST.png)
 
-图：ArrowMax 10k CST 差速油
-
 > ❓ PROBLEM：避震器的肺片有3个大孔，选用阻尼最高的 ArrowMax 900 CST 避震油，避震器全程阻尼不明显，几乎都被弹簧抵消了。
 
 > ✅ SOLUTION：选用阻尼更高的 ArrowMax 10k CST 差速油，避震器阻尼感强烈。装车后，车身下压和抬起都具有明显的阻尼。
@@ -281,8 +257,6 @@ DIY 锁紧下 A 臂无法更换的尼龙球头。
 
 ![倾角](/assets/images/posts/Car-Camber.png)
 
-图：倾角
-
 [倾角](https://en.wikipedia.org/wiki/Camber_angle) 也称为外倾角，在前后轮都可以应用，倾角外倾为正，内倾为负。
 
 负的倾角可以增加外侧轮胎在弯道的接地面积，有助于改善弯道性能；正的倾角很少见。
@@ -297,8 +271,6 @@ DIY 锁紧下 A 臂无法更换的尼龙球头。
 #### 束角 | Toe
 
 ![束角](/assets/images/posts/Car-Toe.png)
-
-图：束角
 
 [束角](https://en.wikipedia.org/wiki/Toe_(automotive)) 一般只应用于前转向轮，但也可以应用于后轮，内八（Toe-in）为正，外八（Toe-out）为负，通常设置值都小于 1 度。
 
@@ -315,8 +287,6 @@ Toe-in 牺牲转向性能而改善直线稳定性，通常见于消费级汽车�
 
 ![卡斯特角](/assets/images/posts/Car-Caster.png)
 
-图：卡斯特角
-
 [卡斯特角](https://zh.wikipedia.org/zh-cn/後傾角) 也叫后倾角，顾名思义，哈雷摩托夸张后倾的前轮是对它最形象的展示。
 
 卡斯特角与转向轴相关，所以只应用于前转向轮，后倾为正，前倾为负。
@@ -324,8 +294,6 @@ Toe-in 牺牲转向性能而改善直线稳定性，通常见于消费级汽车�
 正的卡斯特角帮助转向轮自动回中。
 
 ![前轮卡斯特角](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Front-Caster.png)
-
-图：前轮卡斯特角
 
 这里有两种方法调整卡斯特角，可以单独使用也可以组合使用：
 
@@ -444,15 +412,11 @@ Toe-in 牺牲转向性能而改善直线稳定性，通常见于消费级汽车�
 
 ![齿轮罩密封垫](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Gear-Box-Seal.png)
 
-图：齿轮罩密封垫
-
 原车齿轮罩密封垫是海绵的，易变形，材质软，不容易与齿轮罩对齐，二次安装效果差。
 
 手工测量密封罩和齿轮架实物，画出 CAD 图纸，第三方开模加工，材料选用硅胶垫，耐油耐高温，厚度 2 mm，红色。如有需要可以闲鱼联系。
 
 ![齿轮罩密封垫装车](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Gear-Box-Seal-2.png)
-
-图：齿轮罩密封垫装车
 
 ##### CNC 碳纤维齿轮罩压板 - TODO
 
@@ -463,8 +427,6 @@ Toe-in 牺牲转向性能而改善直线稳定性，通常见于消费级汽车�
 ##### 齿轮罩加装注油嘴 - 2019-05-29
 
 ![齿轮罩注油嘴](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Gear-Box-Grease-Nipple.png)
-
-图：齿轮罩注油嘴
 
 为实现免拆卸齿轮着注油，对齿轮罩加装注油嘴。
 
@@ -497,8 +459,6 @@ TODO：更换中央差速器
 ### 车轮 | Wheels
 
 ![半热熔轮胎](/assets/images/posts/KLBM-1-5-Gas-On-Road-RC-Model-Wheels-Painted.png)
-
-图：半热熔轮胎
 
 更换四条半热熔轮胎，来自嘉利模型库存平跑。
 
@@ -553,5 +513,3 @@ DIY 电池组转接延长线，可用于电池组免拆出充电。
 更换 HiTEC HS-805MG 25kg 双转向舵机，SAVOX 0236 舵机固定夹，HR Super Baja Rey CNC 铝合金转向舵机臂。
 
 ![左视图](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Overview-L.png)
-
-图：左视图

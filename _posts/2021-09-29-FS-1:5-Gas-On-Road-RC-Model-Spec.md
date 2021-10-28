@@ -25,8 +25,6 @@ revised: 2021-10-08 11:35:00 +0800
 
 ![产品海报](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-Poster.png)
 
-图：产品海报
-
 ### 整体参数
 
 | 属性         | Property            | 值                        | Value                |
@@ -76,19 +74,13 @@ revised: 2021-10-08 11:35:00 +0800
 
 ![升级选件 - 全车](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-Option.png)
 
-图：升级选件 - 全车
-
 ![升级选件 - 齿轮](/assets/images/posts/FS-1-5-Gas-RC-Model-Option-Gear.png)
-
-图：升级选件 - 齿轮
 
 ## 车身系统 | Body System
 
 ### 底盘 | Chasis
 
 ![车底板](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-Floor.png)
-
-图：车底板
 
 | 项目   | Key            | Value  |
 | ------ | -------------- | ------ |
@@ -104,8 +96,6 @@ revised: 2021-10-08 11:35:00 +0800
 ### 二楼板 | 2nd Floor
 
 ![二楼板](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-2nd-Floor.png)
-
-图：二楼板
 
 | 项目             | Key | Value |
 | ---------------- | -------- | -------- |
@@ -132,16 +122,12 @@ revised: 2021-10-08 11:35:00 +0800
 
 ![车壳](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-Shell.png)
 
-图：车壳
-
 | 项目 | Key            | Value |
 | ---- | -------------- | ----- |
 | 车壳 | 车裙宽（mm）   | 40    |
 |      | 车门处宽（mm） | 38    |
 
 ![原型车 Nissan XANAVI NISMO Z (SUPER GT) 2006 TEST CAR](/assets/images/posts/NISSAN_XANAVI_NISMO_Z_SUPER_GT_06.png)
-
-图：原型车 Nissan XANAVI NISMO Z (SUPER GT) 2006 TEST CAR
 
 原型车静态模型：[Nissan 350Z SuperGT 500 2006 Test Car Xanavi #23 1/43 Scale Diecast Model - EBBRO 43792](https://www.amazon.com/Nissan-SuperGT-Xanavi-Scale-Diecast/dp/B000FZ278I)
 
@@ -255,13 +241,9 @@ revised: 2021-10-08 11:35:00 +0800
 
 ![齿轮组 112146 齿比 7.68](/assets/images/posts/FS-1-5-RC-Model-Gear-Group-112146-7.68.png)
 
-图：齿轮组 112416 齿比 7.68
-
 #### 118030 齿比 11.35
 
 ![齿轮组 118030 齿比 11.35](/assets/images/posts/FS-1-5-RC-Model-Gear-Group-118030-11.35.png)
-
-图：齿轮组 118030 齿比 11.35
 
 下表是该齿轮组的测量数据，`齿数` 和 `齿顶圆直径` 由测量得出， `模数` 和 `齿距` 通过公式计算得出，因为测量的误差，计算结果稍有波动。但 `1.5` 是一个标准模数，由此可以推测，该模型齿轮组的模数为 `1.5`，齿距为 `4.71mm`。
 
@@ -292,8 +274,6 @@ revised: 2021-10-08 11:35:00 +0800
 
 ![分动器](/assets/images/posts/FS-1-5-RC-Model-Transfercase.png)
 
-图：分动器
-
 | 项目           | Key               | Value |
 | -------------- | ----------------- | ----- |
 | 主动小伞齿     | 直径（mm）        |       |
@@ -319,8 +299,6 @@ revised: 2021-10-08 11:35:00 +0800
 
 ![差速器 - 拆解](/assets/images/posts/FS-1-5-RC-Model-Differential-Disassembled.png)
 
-图：差速器 - 拆解
-
 | 项目   | Key                          | Value |
 | ------ | ---------------------------- | ----- |
 | 差速器 | 被动大环齿直径（mm）         | 55    |
@@ -333,8 +311,6 @@ revised: 2021-10-08 11:35:00 +0800
 
 ![前万向传动轴组 CVD](/assets/images/posts/FS-1-5-RC-Model-Front-CVD.png)
 
-图：前万向传动轴组 CVD
-
 | 项目               | Key                    | Value |
 | ------------------ | ---------------------- | ----- |
 | 前万向传动轴组 CVD | 总长（mm）             | 175   |
@@ -346,8 +322,6 @@ revised: 2021-10-08 11:35:00 +0800
 该 CVD 的内侧轴承结合段，比后桥半轴相同位置短约6mm，如果使用此 CVD 升级后桥狗骨结构传动轴，轮胎结合器会无法锁紧轮轴。
 
 ![前后半轴内侧轴承结合段长度比较](/assets/images/posts/FS-1-5-RC-Model-Front-CVD-Compare.png)
-
-图：前后半轴内侧轴承结合段长度比较
 
 #### 后狗骨传动轴组
 
@@ -394,8 +368,6 @@ revised: 2021-10-08 11:35:00 +0800
 前后桥包含 `主动小伞齿 DRP` 和 `差速器` 两个部分，差速器包含 `DIR`、`DIP`、`DIS` 三组齿轮。
 
 ![前后桥 和 差速器](/assets/images/posts/FS-1-5-RC-Model-Differential.png)
-
-图：前后桥 和 差速器
 
 #### 传动关系
 
@@ -465,8 +437,6 @@ revised: 2021-10-08 11:35:00 +0800
 #### 转向舵机 | Steering Servo
 
 ![转向舵机](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-Turn-Serve.png)
-
-图：转向舵机
 
 | 项目     | Key                     | Value     |
 | -------- | ----------------------- | --------- |

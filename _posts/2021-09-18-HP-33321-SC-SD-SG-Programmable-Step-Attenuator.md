@@ -8,7 +8,6 @@ tags: HP 33321 衰减器 Attenuator
 ---
 
 ![HP 33321SC and HP 33321SD](/assets/images/posts/HP-33321-SC-and-SD-1.png)
-图1： HP 33321SC and HP 33321SD
 
 市面上可以购买到一些拆机的程控步进衰减器模块，品牌为HP，是Agilent的前
 身。我手上的3个模块为33321系列，后缀分别为：SC/SD/SG，网上能找到的
@@ -33,7 +32,6 @@ tags: HP 33321 衰减器 Attenuator
 ## 工作原理
 
 ![HP 33321 原理图 - 单个衰减单元](/assets/images/posts/HP-33321-principle.png)
-图 2：HP 33321 原理图 - 单个衰减单元
 
 上图是衰减器的内部原理图，显示了其中的一个衰减单元。
 
@@ -48,7 +46,6 @@ tags: HP 33321 衰减器 Attenuator
 ## 引脚定义
 
 ![HP 33321SC and HP 33321SD](/assets/images/posts/HP-33321-SC-and-SD-2.png)
-图 3：HP 33321SC and HP 33321SD
 
 三个型号的引脚定义并没有参考文档，需要测试获得。
 
@@ -112,7 +109,6 @@ tags: HP 33321 衰减器 Attenuator
 ### 2. TTL 电平控制电路
 
 ![HP 33321 控制电路 - 单个衰减单元](/assets/images/posts/HP-33321-control-circuit.png)
-图 4：HP 33321 控制电路 - 单个衰减单元
 
 上图为官方指导控制电路图，仅描述了一个衰减单元，实际使用中按实际需要的衰减单元数量扩展。
 

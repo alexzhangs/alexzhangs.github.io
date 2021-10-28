@@ -10,9 +10,7 @@ tags: 齿轮
 
 ## 齿轮基本术语
 
-![齿轮基本术语](https://khkchina.com/images/basic-gear-terminology-calculation/Fig.-2.6-Working-Gear-Nomenclature.jpeg)
-
-图 1：齿轮基本术语（来源：[https://khkchina.com](https://khkchina.com)）
+![齿轮基本术语 来源 https://khkchina.com](https://khkchina.com/images/basic-gear-terminology-calculation/Fig.-2.6-Working-Gear-Nomenclature.jpeg)
 
 一图胜千言，参照上图理解下面的术语和公式会轻松很多。
 
@@ -54,9 +52,7 @@ tags: 齿轮
 
 ## 齿轮匹配应用
 
-![求解缺席齿轮参数](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Gear-Base-2.png)
-
-图 2：求解缺席齿轮参数
+![FS 齿轮组](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Gear-Base-2.png "求解缺席齿轮参数")
 
 出一个实际应用题，给出两个齿轮轴的间距，并给出其中一个齿轮的齿数和齿距，求解另一个缺席齿轮的参数。
 
@@ -86,21 +82,15 @@ tags: 齿轮
 
 ![同轴连接齿轮](/assets/images/posts/FS-1-5-Gas-On-Road-RC-Model-OP-Gear-Base.png)
 
-图 3：同轴连接齿轮
-
 两个齿轮之间如果是同轴连接，而非啮合连接，那么两个齿轮的角速度相同，不能再用齿数计算齿比，他们之间的齿比 $i$​​ 恒等于 `1`。
 
 #### 差速器行星齿轮齿比
 
 ![差速器](/assets/images/posts/FS-1-5-RC-Model-Differential-2.png)
 
-图 4：差速器
-
 差速器行星齿轮由于其特殊的结构，它们之间的齿比不能使用标准的齿比公式计算。
 
 ![差速器行星齿轮](/assets/images/posts/FS-1-5-RC-Model-Differential-Opened.png)
-
-图 5：差速器行星齿轮
 
 对于上图的简单行星差速器来说，不考虑外部啮合关系，并且两侧半轴输出角速度相同的情况下，差速器自身的齿比为 `1`。
 

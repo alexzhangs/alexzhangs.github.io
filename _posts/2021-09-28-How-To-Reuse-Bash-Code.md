@@ -36,9 +36,7 @@ tags: xsh Bash Shell Library
 
 为了解决上述问题，我们需要一个标准化的 Package/Library Manager，就像 Linux 世界的 yum，apt，portage，或者 Python 世界的 pip。在我产生的这个想法的数年间，多次在网上搜索相关的解决方案，但没有一个满足我的预期，多数是按某个特定方式组织已实现好的代码库（Library）本身，而不是一个管理器，这非常令我意外。最后我决定自己编写一个 Shell 世界的 Library Manager，将其命名为 [XSH](https://github.com/alexzhangs/xsh) ，2021年5月27日发布 [0.4.7](https://github.com/alexzhangs/xsh/releases/tag/0.4.6)，目前仅支持 BASH。
 
-![xsh usage](/assets/images/posts/xsh-usage.png)
-
-图1: xsh doc snapshot
+![XSH Usage](/assets/images/posts/xsh-usage.png)
 
 下面将描述如何利用 XSH 管理 BASH 代码，实现重用。
 
@@ -271,13 +269,9 @@ XSH 从注释代码中提取并生成帮助信息，你需要严格遵循示范�
 
 ![Diff view of functions/string/lower.sh](/assets/images/posts/xsh-file-diff-1.png)
 
-图2：Diff view of functions/string/lower.sh
-
 对于以脚本方式调用的 Library，规则少了很多，只需要注意注释格式即可。
 
 ![Diff view of scripts/tcp/stat.sh](/assets/images/posts/xsh-file-diff-2.png)
-
-图3：Diff view of scripts/tcp/stat.sh
 
 你可能注意到了，改写后，文件名中的一些命名语义被转换成了目录结构，事实上，除了 `functions` 和 `scripts` 这两个目录必要保留以外，其它并不是必须的，但可以为你后续的代码组织留出空间。
 
