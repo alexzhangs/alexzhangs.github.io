@@ -5,8 +5,8 @@ summary: A note about how to set a blog up like this one.
 author: Alex Zhang
 categories: software
 banner: /assets/images/banners/thinkpad.png
-tags: blog, github-pages, jekyll, elasticsearch
-revised: 2021-10-21 21:08:00
+tags: blog, github-pages, jekyll, elasticsearch, responsive-images
+revised: 2021-10-28 14:02:00
 ---
 
 ## Welcome to Alex's Blog
@@ -193,7 +193,7 @@ To overcome this, I need a transformer to translate markdown image tags, like:
 to the responsive image liquid tags, like:
  
 ```
-{​% picture /assets/images/banners/thinkpad.png --alt Thinkpad %}
+{​% picture banners/thinkpad.png --alt Thinkpad %}
 ```
 
 I wrote this universal hook plugin [jekyll-hooks](https://github.com/alexzhangs/jekyll-hooks), which does the job.
@@ -245,6 +245,7 @@ group :jekyll_plugins do
 end
 ```
 
+{% raw %}
 ```yaml
 # _config.yml
 
@@ -262,17 +263,24 @@ hooks:
   actions:
     - type: posts
       exts: [markdown,mkdown,mkdn,mkd,md]
-      find: !ruby/regexp '(!\[.*\])\(/assets/images/(.*)\)'
-      replace: '\1(\2)'
+      find: >
+        (!\[[^\]]*\]\()/assets/images/(.+)
+      replace: >
+        \1\2
       disabled: false
     - type: posts
       exts: [markdown,mkdown,mkdn,mkd,md]
-      find: !ruby/regexp '!\[(.*)\]\(((?!http[s]?://).+)\)(?:{:([^}]+)})*'
-      replace: !ruby/regexp '{​% picture \2 --alt \1 %}'
+      # !​[alt](/path/to/image "title"){:.class}
+      find: >
+        !\[([^\]]*)\]\(((?!http[s]?://)[^"'\n]+)(?:\s['"]([^'"]*)['"])?\)(?:\{:\.([^{]+)\})?
+      # both present and non-present quotes matter
+      replace: >
+        {% picture \2 --alt \1 --img class="\4" title="\3" %}
       case-insensitive: true
       disabled: false
   disabled: false
 ```
+{% endraw %}
 
 Of course, we need `jekyll-deploy-action`.
 The last three lines are important, to get ImageMagick and its dependency installed on the docker.
