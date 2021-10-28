@@ -5,7 +5,7 @@ summary: A note about how to set a blog up like this one.
 author: Alex Zhang
 categories: software
 banner: /assets/images/banners/thinkpad.png
-tags: blog, github-pages, jekyll, elasticsearch, responsive-images
+tags: blog github-pages jekyll jekyll-themes jekyll-plugins elasticsearch responsive-images
 revised: 2021-10-28 14:02:00
 ---
 
