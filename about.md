@@ -2,6 +2,8 @@
 layout: about
 title: About
 banner: /assets/images/banners/camping-night.png
+date: 2021-10-08
+revised: 2021-10-28
 ---
 
 ## Welcome to 0xBeta
@@ -37,12 +39,18 @@ content I write to be stored in markdown rather than in a database,
 and it's easy to turn the markdown to a website with some helpful
 tools like Github Pages and Jekyll.
 
+Please refer to [this post](/software/2021/10/17/Welcome-To-Alexs-Personal-Blog.html)
+if you are interested in how to build one like this.
+
+
 ## More about me
 
 My first language is Chinese. I write this blog in both Chinese and English
 (to improve my language skill), sometimes they are mixed, so please forgive
 me if that makes you uncomfortable for whatever it brings.
 
-I am a lover of Python, Django, Shell, and AWS. You can find me at [Github](https://github.com/{{site.github_username}}) and [Stackoverflow](https://stackoverflow.com/users/{{site.stackoverflow_username}}).
+I am a lover of Python, Django, Shell, and AWS. You can find me at
+[Github](https://github.com/{{site.github_username}}) and
+[Stackoverflow](https://stackoverflow.com/users/{{site.stackoverflow_username}}).
 
 Alex
