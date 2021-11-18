@@ -239,6 +239,7 @@ picture:
 # jekyll-hooks
 hooks:
   actions:
+    # trim the leading string`/assets/images/` from image path
     - type: posts
       exts: [markdown,mkdown,mkdn,mkd,md]
       find: >
@@ -246,14 +247,33 @@ hooks:
       replace: >
         \1\2
       disabled: false
+    # responsive image tags
+    # transform:
+    #   ![ALT](/PATH/TO/IMAGE "TITLE"){:.CLASS}
+    # to:
+    #   {% picture /PATH/TO/IMAGE --alt ALT --img class="CLASS" title="TITLE" %}
     - type: posts
       exts: [markdown,mkdown,mkdn,mkd,md]
-      # ![alt](/path/to/image "title"){:.class}
       find: >
         !\[([^\]]*)\]\(((?!http[s]?://)[^"'\n]+)(?:\s['"]([^'"]*)['"])?\)(?:\{:\.([^{]+)\})?
       # both present and non-present quotes matter
       replace: >
         {% picture \2 --alt \1 --img class="\4" title="\3" %}
       case-insensitive: true
+      disabled: false
+    # embedded xmind map
+    # transform:
+    #   <iframe title="TITLE"></iframe>
+    # to:
+    #   <iframe title="TITLE"></iframe>
+    #   <figcaption>Figure: TITLE</figcaption>
+    - type: posts
+      exts: [markdown,mkdown,mkdn,mkd,md]
+      find: >
+        (<iframe .*title=(?:"|'))([^"']*)((?:"|').*></iframe>)
+      replace: >
+        \1\2\3
+        <figcaption>Figure: \2</figcaption>
+      case-insensitive: trues
       disabled: false
   disabled: false
