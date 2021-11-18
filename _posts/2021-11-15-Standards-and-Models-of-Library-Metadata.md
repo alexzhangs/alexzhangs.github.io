@@ -5,8 +5,8 @@ summary: A knowledge map of the standards and models of the library metadata, in
 author: Alex Zhang
 categories: software
 banner: /assets/images/banners/thinkpad.png
-tags: library metadata DCMI DC JSC AACR RDA IFLA ISBD FRBR FRAD FRSAD ANL MODS MARC CIDOC FRBRoo ISSN PRESSoo 
-revised: 2021-11-15 10:15:00
+tags: library metadata DCMI DC JSC AACR RDA IFLA ISBD FRBR FRAD FRSAD ANL MODS MARC CIDOC FRBRoo ISSN PRESSoo MindMap
+revised: 2021-11-18 17:15:00
 ---
 
 ## 写在前面
@@ -25,14 +25,14 @@ revised: 2021-11-15 10:15:00
 
 以下图片为矢量图形，尺寸较大，加载时间可能较长，请耐心等待。
 
-![The exported .SVG image (with some topics collapsed) of the .xmind file of the knowledge map](https://raw.githubusercontent.com/alexzhangs/library-metadata/main/Standards%20and%20Models%20of%20Library%20Metadata%20Collapsed.svg)
+![The exported .SVG image (with some topics collapsed) of the .xmind file of the knowledge map](https://github.com/alexzhangs/library-metadata/raw/main/Standards%20and%20Models%20of%20Library%20Metadata%20Collapsed.svg)
 
 ### Download Links
 
 * [XMind file](https://github.com/alexzhangs/library-metadata/raw/main/Standards%20and%20Models%20of%20Library%20Metadata.xmind)
 * [Markdown file](https://github.com/alexzhangs/library-metadata/blob/main/Standards%20and%20Models%20of%20Library%20Metadata.md)
 * [PDF file](https://github.com/alexzhangs/library-metadata/raw/main/Standards%20and%20Models%20of%20Library%20Metadata.pdf)
-* [SVG image file](https://raw.githubusercontent.com/alexzhangs/library-metadata/main/Standards%20and%20Models%20of%20Library%20Metadata%20Collapsed.svg)
+* [SVG image file](https://github.com/alexzhangs/library-metadata/raw/main/Standards%20and%20Models%20of%20Library%20Metadata.svg)
 
 ## DC to RDA Mapping
 
