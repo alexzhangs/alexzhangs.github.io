@@ -8,20 +8,14 @@ banner: /assets/images/banners/lighting-window.png
 tags: 英国 不列颠 英格兰 苏格兰 爱尔兰 British Britain UK England Scotland Ireland English Scottish Iresh MindMap
 ---
 
-## 写在前面
+英国（UK）、英格兰、苏格兰、爱尔兰、北爱尔兰、不列颠群岛，这些符号在国家、地理、历史、语言、人类族群等层面的含义有多复杂，在这尝试用一张图来说明一下。
 
-原始内容使用 [XMind](https://www.xmind.net/) 创建，提供导出的矢量图片、PDF 和 markdown 格式。
-导出的格式存在不同程度的信息损失，如需所有原始信息，请查看 XMind 文件。
+<iframe title="The Mind Map of the British Isles history" src="https://www.xmind.net/embed/uMrpvL" style="width: 100%; height: 90vh" frameborder="0" scrolling="no" allowtransparency="true" allowfullscreen="true"></iframe>
 
-## British Isles
+对人和地区，应使用其对应的正确称谓。在不了解具体属性的情况下，使用通用的称谓 British 和 Britain，一般不会构成冒犯。
+但混用具体的称谓则容易构成冒犯，尤其注意不要使用 English 来指代 Scottish 和 Irish，或者用 England 来指代 Britain 或 UK。
 
-英国（UK）、英格兰、苏格兰、爱尔兰、北爱尔兰、不列颠群岛，这些符号在国家、地理、历史、人类族群层面的含义有多复杂，在这尝试用一张图来说明一下。
+## Download Links
 
-![The exported .SVG image of the .xmind file of the knowledge map](https://github.com/alexzhangs/british-isles/raw/main/British%20Isles.svg)
-
-### Download Links
-
-* [XMind file](https://github.com/alexzhangs/library-metadata/raw/main/Standards%20and%20Models%20of%20Library%20Metadata.xmind)
+* [XMind file](https://github.com/alexzhangs/british-isles/raw/main/British%20Isles.xmind)
 * [Markdown file](https://github.com/alexzhangs/british-isles/blob/main/British%20Isles.md)
-* [PDF file](https://github.com/alexzhangs/british-isles/raw/main/British%20Isles.pdf)
-* [SVG image file](https://github.com/alexzhangs/british-isles/raw/main/British%20Isles.svg)
