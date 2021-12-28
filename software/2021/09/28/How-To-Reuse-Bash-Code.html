@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>如何重用你的 BASH 代码 | 0xBeta - Everything is Fun</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="如何重用你的 BASH 代码">
+<meta name="author" content="Alex Zhang">
+<meta property="og:locale" content="zh">
+<meta name="description" content="如何重用已有代码，和如何写出可重用的代码，是两个完全不同的主题，本文讲述前者，后者是一个很大的话题，这里并不展开讨论。">
+<meta property="og:description" content="如何重用已有代码，和如何写出可重用的代码，是两个完全不同的主题，本文讲述前者，后者是一个很大的话题，这里并不展开讨论。">
+<link rel="canonical" href="https://0xbeta.com/software/2021/09/28/How-To-Reuse-Bash-Code.html">
+<meta property="og:url" content="https://0xbeta.com/software/2021/09/28/How-To-Reuse-Bash-Code.html">
+<meta property="og:site_name" content="0xBeta - Everything is Fun">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-09-28T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="如何重用你的 BASH 代码">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Alex Zhang"},"headline":"如何重用你的 BASH 代码","dateModified":"2021-09-28T00:00:00+00:00","datePublished":"2021-09-28T00:00:00+00:00","description":"如何重用已有代码，和如何写出可重用的代码，是两个完全不同的主题，本文讲述前者，后者是一个很大的话题，这里并不展开讨论。","mainEntityOfPage":{"@type":"WebPage","@id":"https://0xbeta.com/software/2021/09/28/How-To-Reuse-Bash-Code.html"},"@type":"BlogPosting","url":"https://0xbeta.com/software/2021/09/28/How-To-Reuse-Bash-Code.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="/assets/images/logo/Moon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/searchkit/2.0.0/theme.css">
+    <link rel="stylesheet" href="/assets/css/search.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://0xbeta.com/feed.xml" title="0xBeta - Everything is Fun">
+<script>
+  function initGoogleAnalytics() {
+    var doNotTrack = (window.doNotTrack === "1" || navigator.doNotTrack === "1" ||
+      navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1");
+    var enableDNT = "true" == "true";
+
+    if (!enableDNT || !doNotTrack) {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-209916979-1', 'auto');
+      ga('send', 'pageview');
+    }
+  }
+  window.addEventListener("load", initGoogleAnalytics);
+</script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script defer charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="0xBeta - Everything is Fun" src="/assets/images/logo/Moon.png" onerror="this.style.display='none'">
+  0xBeta - Everything is Fun
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'zh',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" defer src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span><span id="search-loader"></span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+
+  function initTrigger () {
+    function uncheckNavTrigger() {
+      document.querySelector("#nav-trigger").checked = false;
+    }
+    document.addEventListener('click', uncheckNavTrigger);
+
+    var timer;
+    document.querySelector(".trigger").addEventListener('mouseleave', () => {
+      timer = setTimeout(uncheckNavTrigger, 1000);
+    });
+
+    document.querySelector(".trigger").addEventListener('mouseenter', () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    });
+
+    document.querySelector(".trigger").addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    document.querySelector(".site-nav").addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initTrigger);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(/assets/images/posts/Gnu-bash-logo.svg)"></div>
+        <img class="img-placeholder" src="/assets/images/posts/Gnu-bash-logo.svg">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">如何重用你的 BASH 代码</h1>
+  <h2 class="post-subtitle"></h2>
+<div class="post-meta">
+<time class="dt-published" datetime="2021-09-28T00:00:00+00:00" itemprop="datePublished">
+    <i class="fa fa-calendar"></i> Sep 28, 2021
+  </time>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 17 mins</span>
+
+  
+</div>
+<div class="post-tags">
+<a class="post-tag" href="/tags.html#xsh">#xsh</a><a class="post-tag" href="/tags.html#Bash">#Bash</a><a class="post-tag" href="/tags.html#Shell">#Shell</a><a class="post-tag" href="/tags.html#Library">#Library</a>
+</div></header>
+</div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p>如何重用已有代码，和如何写出可重用的代码，是两个完全不同的主题，本文讲述前者，后者是一个很大的话题，这里并不展开讨论。</p>
+
+<h2 id="背景">背景</h2>
+
+<p>开始之前，先介绍一下历史背景，为了准确表述，采用了很多原始英文词汇，并附加了 WIKI 传送门，虽然读起来会有一些奇怪，但可以避免翻译可能带来的误解或是信息传递不畅。</p>
+
+<p><a href="https://zh.wikipedia.org/wiki/Bash">BASH</a> 是 UNIX Shell 的一种，由 <a href="https://zh.wikipedia.org/wiki/%E7%90%86%E6%9F%A5%E5%BE%B7%C2%B7%E6%96%AF%E6%89%98%E6%9B%BC">Richard Stallman</a> 创建的 <a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%94%B1%E8%BD%AF%E4%BB%B6%E5%9F%BA%E9%87%91%E4%BC%9A">自由软件基金会 FSF</a> 发布，遵守 <a href="https://zh.wikipedia.org/wiki/GNU%E9%80%9A%E7%94%A8%E5%85%AC%E5%85%B1%E8%AE%B8%E5%8F%AF%E8%AF%81">GPL</a> 开源协议。其最初是为 GNU <a href="https://zh.wikipedia.org/zh-hans/GNU_Hurd">HURD KERNEL</a> 所编写，但 <a href="https://zh.wikipedia.org/wiki/Linux%E5%86%85%E6%A0%B8">LINUX KERNEL</a> 更早发布出来，并采用了很多 <a href="https://zh.wikipedia.org/zh-hans/GNU%E8%A8%88%E5%8A%83">GNU Project</a> 的开源 Components，比如 BASH 和 GCC。因此，BASH 是现今几乎所有 <a href="https://zh.wikipedia.org/wiki/Linux">LINUX OS</a> Distribution 的默认 Shell，一些其它 UNIX Like OS（包括商用 OS）也会预装 BASH，有的还将其作为默认 Shell。如果对于各种 Shell 之间的区别感兴趣，请移步<a href="https://en.wikipedia.org/wiki/Comparison_of_command_shells">这里</a>。</p>
+
+<h2 id="重用之难">重用之难</h2>
+
+<p>将 Shell 命令组合起来，完成某些特定的功能，就形成了 <a href="https://en.wikipedia.org/wiki/Shell_script">Shell 脚本</a>，通常将其保存在文件中，准备在特定的环境进行调用。</p>
+
+<p>有时，一段 Shell 脚本完成的功能具有通用性，不仅可以在它们的 <code class="language-plaintext highlighter-rouge">编写环境</code> 被用到，还可以在 <code class="language-plaintext highlighter-rouge">其它环境</code> 被需要。但经常的，<code class="language-plaintext highlighter-rouge">编写环境</code> 和 <code class="language-plaintext highlighter-rouge">其它环境</code> 不在同一个用户空间，甚至不在同一个主机，甚至这种需求跨越了时间，你在编写时根本无法预知。这种时空差异，使得在需要重用已有 Shell 脚本的时候，不能方便的获取它们，再获取的成本甚至高于重写一遍的成本。</p>
+
+<p>另外，由于对 Shell 脚本需求的非计划性，通常导致难以划分合适的功能边界和定义良好的接口，同时缺乏有效代码组织管理。而前述的代码重用障碍进一步加剧了此问题，这产生了一个负循环，大量各式各样的 Shell 代码分布在各处，写法各异，功能交并，难以管理。</p>
+
+<p>笔者有近15年的 Shell 编程历史，深知重用 Shell 代码从来不是一件简单的事情。即使是组织良好的可重用代码，在重用时，由于空间的差异，也避免不了产生一份新的代码拷贝，很显然不具备一次修改，多处生效的能力。</p>
+
+<h2 id="the-solution---xsh">The Solution - XSH</h2>
+
+<p>为了解决上述问题，我们需要一个标准化的 Package/Library Manager，就像 Linux 世界的 yum，apt，portage，或者 Python 世界的 pip。在我产生的这个想法的数年间，多次在网上搜索相关的解决方案，但没有一个满足我的预期，多数是按某个特定方式组织已实现好的代码库（Library）本身，而不是一个管理器，这非常令我意外。最后我决定自己编写一个 Shell 世界的 Library Manager，将其命名为 <a href="https://github.com/alexzhangs/xsh">XSH</a> ，2021年5月27日发布 <a href="https://github.com/alexzhangs/xsh/releases/tag/0.4.6">0.4.7</a>，目前仅支持 BASH。</p>
+
+<picture><source srcset="/assets/images/resized/posts/xsh-usage-640-857cf7.webp 640w, /assets/images/resized/posts/xsh-usage-800-857cf7.webp 800w, /assets/images/resized/posts/xsh-usage-1024-857cf7.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/xsh-usage-640-857cf7.png 640w, /assets/images/resized/posts/xsh-usage-800-857cf7.png 800w, /assets/images/resized/posts/xsh-usage-1024-857cf7.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/xsh-usage-800-857cf7.png" alt="XSH Usage"></picture>
+
+<p>下面将描述如何利用 XSH 管理 BASH 代码，实现重用。</p>
+
+<h2 id="quick-start-guide-of-xsh">Quick Start Guide of XSH</h2>
+
+<h3 id="1-软件环境要求">1. 软件环境要求</h3>
+
+<p>XSH 支持 LINUX 和 UNIX Like OS + BASH Shell，在以下环境测试通过：</p>
+
+<ul>
+  <li>
+    <p>Linux Ubuntu Bionic 18.04 - bash 4.4.20</p>
+  </li>
+  <li>
+    <p>macOS 10.15.7 - bash 3.2.57</p>
+  </li>
+</ul>
+
+<p>在安装之前，请确保你运行的是 BASH Shell，而不是 KSH、ZSH，或是其它。同时确保你的本地已安装 <a href="https://zh.wikipedia.org/wiki/Git">GIT</a> 命令行工具。</p>
+
+<h3 id="2-xsh-bootstrapinstallation">2. XSH Bootstrap/Installation</h3>
+
+<p>单行命令安装（需要 curl）：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-s</span> https://raw.githubusercontent.com/alexzhangs/xsh/master/boot | bash <span class="o">&amp;&amp;</span> <span class="nb">.</span> ~/.xshrc
+</code></pre></div></div>
+
+<p>以下安装方法和上面的方法结果等同（选择之一即可）：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://github.com/alexzhangs/xsh
+<span class="nv">$ </span>bash xsh/install.sh
+<span class="nv">$ </span><span class="nb">.</span> ~/.xshrc
+</code></pre></div></div>
+
+<p>注意：XSH 安装在用户空间，而非系统空间。</p>
+
+<p>查看已安装的 XSH 版本：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>xsh version
+0.4.7
+</code></pre></div></div>
+
+<h3 id="3-convert-existing-code-to-an-xsh-library">3. Convert Existing Code to an XSH Library</h3>
+
+<p>为了创建你自己的 <a href="https://github.com/alexzhangs/xsh#5-development">XSH Library</a>，你需要一个可以访问的 GIT 服务，并具有创建 Repository的权限。无论是公共的 Github 服务，还是私有的 Gitlab 服务，亦或是其它 GIT 兼容服务均可以，但此服务的可用范围，决定了你将要创建的 Library 的可用范围。本示范中使用 Github 服务。</p>
+
+<h4 id="31-创建-library-代码库">3.1. 创建 Library 代码库</h4>
+
+<p>首先创建用于容纳示范 Library 的代码库，命名为 <code class="language-plaintext highlighter-rouge">johndoe/xsh-lib-sample</code>，<code class="language-plaintext highlighter-rouge">johndoe</code> 是 Github 用户名，根据需要进行修改。</p>
+
+<p>将代码库 Clone 到本地开发环境后，在根目录中创建如下文件：</p>
+
+<p>xsh.lib</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">name</span><span class="p">=</span><span class="s">smpl</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">xsh.lib</code> 是 XSH 的配置文件，<code class="language-plaintext highlighter-rouge">name=&lt;lib_name&gt;</code> 用于命名 Library。</p>
+
+<h4 id="32-原始代码">3.2. 原始代码</h4>
+
+<p>以下面两段代码为例，示范如何将其转化为 XSH Library。</p>
+
+<h5 id="代码一">代码一</h5>
+
+<p>function.sh</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>string_lower <span class="o">()</span> <span class="o">{</span>
+    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> | <span class="nb">tr</span> <span class="o">[</span>A-Z] <span class="o">[</span>a-z]
+<span class="o">}</span>
+
+string_upper <span class="o">()</span> <span class="o">{</span>
+    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> | <span class="nb">tr</span> <span class="o">[</span>a-z] <span class="o">[</span>A-Z]
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h5 id="代码二">代码二</h5>
+
+<p>tcp-stat.sh</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+usage <span class="o">()</span> <span class="o">{</span>
+    <span class="nb">printf</span> <span class="s2">"Make a statistics of TCP connections number among states.</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="nb">printf</span> <span class="s2">"Should work on both Linux and macOS.</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="nb">printf</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="nb">printf</span> <span class="s2">"Usage:</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="nb">printf</span> <span class="s2">"</span><span class="se">\t</span><span class="nv">$0</span><span class="s2"> [-h]</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="nb">printf</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="nb">printf</span> <span class="s2">"Option:</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="nb">printf</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">-h: This help</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="nb">printf</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+<span class="o">}</span>
+
+<span class="k">while </span><span class="nb">getopts </span>h opt<span class="p">;</span> <span class="k">do
+    case</span> <span class="nv">$opt</span> <span class="k">in
+        </span>h<span class="p">)</span>
+            usage
+            <span class="nb">exit</span>
+            <span class="p">;;</span>
+        <span class="k">*</span><span class="p">)</span>
+            usage
+            <span class="nb">exit </span>255
+            <span class="p">;;</span>
+    <span class="k">esac</span>
+<span class="k">done
+
+if </span>netstat <span class="nt">-p</span> tcp <span class="o">&gt;</span>/dev/null 2&gt;&amp;1<span class="p">;</span> <span class="k">then</span>  <span class="c"># macOS</span>
+    <span class="nv">output</span><span class="o">=</span><span class="si">$(</span>netstat <span class="nt">-anp</span> tcp<span class="si">)</span>
+<span class="k">else</span>  <span class="c"># Linux</span>
+    <span class="nv">output</span><span class="o">=</span><span class="si">$(</span>netstat <span class="nt">-tan</span><span class="si">)</span>
+<span class="k">fi
+
+</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$output</span><span class="s2">"</span> <span class="se">\</span>
+    | <span class="nb">awk</span> <span class="s1">'/^tcp/ {++state[$NF]} END {for(key in state) printf "%s %s\n", state[key], key}'</span> <span class="se">\</span>
+    | <span class="nb">sort</span> <span class="nt">-rnk1</span>
+
+<span class="nb">exit</span>
+</code></pre></div></div>
+
+<h4 id="33-转换后的代码">3.3. 转换后的代码</h4>
+
+<p>先直接给转换后的结果，然后再解释规则。</p>
+
+<h5 id="代码一-1">代码一</h5>
+
+<p>functions/string/lower.sh</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#? Usage:</span>
+<span class="c">#?   @lower STRING ...</span>
+<span class="c">#?</span>
+<span class="c">#? Output:</span>
+<span class="c">#?   Lowercase presentation of STRING.</span>
+<span class="c">#?</span>
+<span class="c">#? Example:</span>
+<span class="c">#?   @lower Foo</span>
+<span class="c">#?   # foo</span>
+<span class="c">#?</span>
+<span class="k">function </span>lower <span class="o">()</span> <span class="o">{</span>
+    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> | <span class="nb">tr</span> <span class="o">[</span>A-Z] <span class="o">[</span>a-z]
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>functions/string/upper.sh</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#? Usage:</span>
+<span class="c">#?   @upper STRING ...</span>
+<span class="c">#?</span>
+<span class="c">#? Output:</span>
+<span class="c">#?   Uppercase presentation of STRING.</span>
+<span class="c">#?</span>
+<span class="c">#? Example:</span>
+<span class="c">#?   @upper Foo</span>
+<span class="c">#?   # FOO</span>
+<span class="c">#?</span>
+<span class="k">function </span>upper <span class="o">()</span> <span class="o">{</span>
+    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> | <span class="nb">tr</span> <span class="o">[</span>a-z] <span class="o">[</span>A-Z]
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h5 id="代码二-1">代码二</h5>
+
+<p>scripts/tcp/stat.sh</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="c">#? Description:</span>
+<span class="c">#?   Make a statistics of TCP connections number among states.</span>
+<span class="c">#?   Should work on both Linux and macOS.</span>
+<span class="c">#?</span>
+<span class="c">#? Usage:</span>
+<span class="c">#?   @stat [-h]</span>
+<span class="c">#?</span>
+<span class="c">#? Options:</span>
+<span class="c">#?   -h: This help</span>
+<span class="c">#?</span>
+
+<span class="k">while </span><span class="nb">getopts </span>h opt<span class="p">;</span> <span class="k">do
+    case</span> <span class="nv">$opt</span> <span class="k">in
+        </span>h<span class="p">)</span>
+            usage
+            <span class="nb">exit</span>
+            <span class="p">;;</span>
+        <span class="k">*</span><span class="p">)</span>
+            usage
+            <span class="nb">exit </span>255
+            <span class="p">;;</span>
+    <span class="k">esac</span>
+<span class="k">done
+
+if </span>netstat <span class="nt">-p</span> tcp <span class="o">&gt;</span>/dev/null 2&gt;&amp;1<span class="p">;</span> <span class="k">then</span>  <span class="c"># macOS</span>
+    <span class="nv">output</span><span class="o">=</span><span class="si">$(</span>netstat <span class="nt">-anp</span> tcp<span class="si">)</span>
+<span class="k">else</span>  <span class="c"># Linux</span>
+    <span class="nv">output</span><span class="o">=</span><span class="si">$(</span>netstat <span class="nt">-tan</span><span class="si">)</span>
+<span class="k">fi
+
+</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$output</span><span class="s2">"</span> <span class="se">\</span>
+    | <span class="nb">awk</span> <span class="s1">'/^tcp/ {++state[$NF]} END {for(key in state) printf "%s %s\n", state[key], key}'</span> <span class="se">\</span>
+    | <span class="nb">sort</span> <span class="nt">-rnk1</span>
+
+<span class="nb">exit</span>
+</code></pre></div></div>
+
+<h4 id="34-文件对比">3.4. 文件对比</h4>
+
+<p>Side by Side 对比一下改写前后的文件。</p>
+
+<p>对于以函数方式调用的 Library，XSH 要求每个函数独立为一个文件，保持函数名和文件名相同，并且函数头的定义要严格遵循这个格式：<code class="language-plaintext highlighter-rouge">function &lt;name&gt; ()</code>，好消息是你再也不必为遵循哪种写法而纠结了。</p>
+
+<p>XSH 从注释代码中提取并生成帮助信息，你需要严格遵循示范中注释的格式才能获得这个功能，好消息是你再也不用在代码中写那些难看的 <code class="language-plaintext highlighter-rouge">printf</code> 或者添加使用 <code class="language-plaintext highlighter-rouge">heredoc</code> 的 <code class="language-plaintext highlighter-rouge">usage</code> 函数了。</p>
+
+<picture><source srcset="/assets/images/resized/posts/xsh-file-diff-1-640-73f7ab.webp 640w, /assets/images/resized/posts/xsh-file-diff-1-800-73f7ab.webp 800w, /assets/images/resized/posts/xsh-file-diff-1-1024-73f7ab.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/xsh-file-diff-1-640-73f7ab.png 640w, /assets/images/resized/posts/xsh-file-diff-1-800-73f7ab.png 800w, /assets/images/resized/posts/xsh-file-diff-1-1024-73f7ab.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/xsh-file-diff-1-800-73f7ab.png" alt="Diff view of functions/string/lower.sh"></picture>
+
+<p>对于以脚本方式调用的 Library，规则少了很多，只需要注意注释格式即可。</p>
+
+<picture><source srcset="/assets/images/resized/posts/xsh-file-diff-2-640-ea0a71.webp 640w, /assets/images/resized/posts/xsh-file-diff-2-800-ea0a71.webp 800w, /assets/images/resized/posts/xsh-file-diff-2-1024-ea0a71.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/xsh-file-diff-2-640-ea0a71.png 640w, /assets/images/resized/posts/xsh-file-diff-2-800-ea0a71.png 800w, /assets/images/resized/posts/xsh-file-diff-2-1024-ea0a71.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/xsh-file-diff-2-800-ea0a71.png" alt="Diff view of scripts/tcp/stat.sh"></picture>
+
+<p>你可能注意到了，改写后，文件名中的一些命名语义被转换成了目录结构，事实上，除了 <code class="language-plaintext highlighter-rouge">functions</code> 和 <code class="language-plaintext highlighter-rouge">scripts</code> 这两个目录必要保留以外，其它并不是必须的，但可以为你后续的代码组织留出空间。</p>
+
+<h4 id="35-文件列表">3.5. 文件列表</h4>
+
+<p>将改写完成的文件放入前面创建的代码库，整个文件列表如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xsh-lib-sample/
+├── functions
+│   └── string
+│       └── lower.sh
+│       └── upper.sh
+├── scripts
+│   └── tcp
+│       └── stat.sh
+└── xsh.lib
+</code></pre></div></div>
+
+<p>你并不需要为每一个 <code class="language-plaintext highlighter-rouge">.sh</code> 文件添加执行权限，这个操作将由 XSH 帮你完成，事实上，为了安全起见，推荐的 <code class="language-plaintext highlighter-rouge">.sh</code> 文件 chmod 是 <code class="language-plaintext highlighter-rouge">644</code>。</p>
+
+<p>现在你已经可以把这些变更提交并推送到代码库了，本示范中，你已将代码提交到了 <code class="language-plaintext highlighter-rouge">master</code> 分支。</p>
+
+<h3 id="4-发布你的-xsh-library">4. 发布你的 XSH Library</h3>
+
+<p>为了让 XSH 知道你的 Library 已经 ready，你需要为版本库添加至少一个 tag，并推送到 remote：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git tag <span class="nt">-a</span> <span class="nt">-m</span> <span class="s1">'v1.0.0'</span> 1.0.0
+<span class="nv">$ </span>git push origin 1.0.0
+</code></pre></div></div>
+
+<p>恭喜，你的第一个 XSH Library 已经发布成功了！</p>
+
+<p>现在你可以在任何可以访问到 Github 的 XSH 环境，调用它们。</p>
+
+<p>安装你的 Library：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>xsh load johndoe/xsh-lib-sample
+</code></pre></div></div>
+
+<p>查看已安装的 Library：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>xsh list
+smpl <span class="o">(</span>1.0.0<span class="o">)</span> <span class="o">=&gt;</span> johndoe/xsh-lib-sample
+</code></pre></div></div>
+
+<p>查看 Library 内有哪些 Utility：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>xsh list smpl
+<span class="o">[</span>scripts] smpl/tcp/stat
+<span class="o">[</span>functions] smpl/string/lower
+<span class="o">[</span>functions] smpl/string/upper
+</code></pre></div></div>
+
+<p>查看 Utility 的帮助信息：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>xsh <span class="nb">help </span>smpl/tcp/stat
+</code></pre></div></div>
+
+<p>调用 Utility：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>xsh smpl/string/lower
+<span class="nv">$ </span>xsh smpl/string/upper
+<span class="nv">$ </span>xsh smpl/tcp/stat
+</code></pre></div></div>
+
+<h2 id="whats-next-">What’s Next ?</h2>
+
+<p>为简洁起见，本快速指南只呈现了主题所必需的内容，如果你感兴趣，可以到 <a href="https://github.com/alexzhangs/xsh">XSH 项目主页</a> 获取更多信息。</p>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/rc-model/2021/09/28/Gear-Basic.html" title="齿轮基础">齿轮基础</a><a class="next" href="/rc-model/2021/09/29/FS-1-5-Gas-On-Road-RC-Model-Spec.html" title="FS 飞神 1/5 Gas On-Road RC Model Specification">FS 飞神 1/5 Gas On-Road RC...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/electronics/2021/09/18/HP-33321-SC-SD-SG-Programmable-Step-Attenuator.html" title="FS 飞神 1/5 Gas On-Road RC Model Specification">HP 33321 SC/SD/SG 程控步进衰减器</a></li>
+<li><a class="post-link" href="/software/2021/11/15/Standards-and-Models-of-Library-Metadata.html" title="FS 飞神 1/5 Gas On-Road RC Model Specification">Standards and Models of Library Metadata</a></li>
+<li><a class="post-link" href="/rc-model/2021/09/30/FS-1-5-Gas-On-Road-RC-Model-OP.html" title="FS 飞神 1/5 Gas On-Road RC Model Specification">FS 飞神 1/5 Gas On-Road RC Model OP</a></li>
+<li><a class="post-link" href="/software/2021/10/17/Welcome-To-Alexs-Personal-Blog.html" title="FS 飞神 1/5 Gas On-Road RC Model Specification">Welcome to Alex's Personal Blog</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div> © 2021 Alex Zhang</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+<script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+<script>addBackToTop({
+  diameter: 56,
+  backgroundColor: 'rgb(255, 82, 82)',
+  textColor: '#fff'
+})</script><div id="search"></div>
+<script>
+  const PROTECTD_ELASTICSEARCH_URL = "https://cnhtkau6q6:5mycjw3c54@0xbeta-7000378480.eu-central-1.bonsaisearch.net:443";
+</script>
+<script type="text/javascript" src="/assets/js/search.js"></script>
+<style>
+  article img {
+    border-radius: 5px;
+  }
+  figcaption {
+    padding: 5px;
+    text-align: center;
+    font-style: italic;
+    opacity: 0.718;
+  }
+</style>
+<script>
+  var nodes = document.querySelector("article");
+  if (nodes) {
+    nodes.querySelectorAll("img").forEach (
+      function (img) {
+        var text = img.title || img.alt;
+        if (text) {
+          var caption = document.createElement("figcaption");
+          caption.append("Figure: " + text);
+          img.parentNode.append(caption);
+        }
+      }
+    )
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Welcome to Alex’s Personal Blog | 0xBeta - Everything is Fun</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="Welcome to Alex’s Personal Blog">
+<meta name="author" content="Alex Zhang">
+<meta property="og:locale" content="zh">
+<meta name="description" content="Welcome to Alex’s Blog">
+<meta property="og:description" content="Welcome to Alex’s Blog">
+<link rel="canonical" href="https://0xbeta.com/software/2021/10/17/Welcome-To-Alexs-Personal-Blog.html">
+<meta property="og:url" content="https://0xbeta.com/software/2021/10/17/Welcome-To-Alexs-Personal-Blog.html">
+<meta property="og:site_name" content="0xBeta - Everything is Fun">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-10-17T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Welcome to Alex’s Personal Blog">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Alex Zhang"},"headline":"Welcome to Alex’s Personal Blog","dateModified":"2021-10-17T00:00:00+00:00","datePublished":"2021-10-17T00:00:00+00:00","description":"Welcome to Alex’s Blog","mainEntityOfPage":{"@type":"WebPage","@id":"https://0xbeta.com/software/2021/10/17/Welcome-To-Alexs-Personal-Blog.html"},"@type":"BlogPosting","url":"https://0xbeta.com/software/2021/10/17/Welcome-To-Alexs-Personal-Blog.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="/assets/images/logo/Moon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/searchkit/2.0.0/theme.css">
+    <link rel="stylesheet" href="/assets/css/search.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://0xbeta.com/feed.xml" title="0xBeta - Everything is Fun">
+<script>
+  function initGoogleAnalytics() {
+    var doNotTrack = (window.doNotTrack === "1" || navigator.doNotTrack === "1" ||
+      navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1");
+    var enableDNT = "true" == "true";
+
+    if (!enableDNT || !doNotTrack) {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-209916979-1', 'auto');
+      ga('send', 'pageview');
+    }
+  }
+  window.addEventListener("load", initGoogleAnalytics);
+</script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script defer charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="0xBeta - Everything is Fun" src="/assets/images/logo/Moon.png" onerror="this.style.display='none'">
+  0xBeta - Everything is Fun
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'zh',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" defer src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span><span id="search-loader"></span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+
+  function initTrigger () {
+    function uncheckNavTrigger() {
+      document.querySelector("#nav-trigger").checked = false;
+    }
+    document.addEventListener('click', uncheckNavTrigger);
+
+    var timer;
+    document.querySelector(".trigger").addEventListener('mouseleave', () => {
+      timer = setTimeout(uncheckNavTrigger, 1000);
+    });
+
+    document.querySelector(".trigger").addEventListener('mouseenter', () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    });
+
+    document.querySelector(".trigger").addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    document.querySelector(".site-nav").addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initTrigger);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(/assets/images/banners/thinkpad.png)"></div>
+        <img class="img-placeholder" src="/assets/images/banners/thinkpad.png">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Welcome to Alex's Personal Blog</h1>
+  <h2 class="post-subtitle"></h2>
+<div class="post-meta">
+<time class="dt-published" datetime="2021-10-17T00:00:00+00:00" itemprop="datePublished">
+    <i class="fa fa-calendar"></i> Oct 17, 2021
+  </time>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 29 mins</span>
+
+  
+  <time class="dt-revised left-vsplit" datetime="2021-10-28T14:02:00+00:00" itemprop="dateRevised">
+    <i class="fa fa-pencil"></i> Revised on Oct 28, 2021
+  </time>
+  
+</div>
+<div class="post-tags">
+<a class="post-tag" href="/tags.html#blog">#blog</a><a class="post-tag" href="/tags.html#github-pages">#github-pages</a><a class="post-tag" href="/tags.html#jekyll">#jekyll</a><a class="post-tag" href="/tags.html#jekyll-themes">#jekyll-themes</a><a class="post-tag" href="/tags.html#jekyll-plugins">#jekyll-plugins</a><a class="post-tag" href="/tags.html#elasticsearch">#elasticsearch</a><a class="post-tag" href="/tags.html#responsive-images">#responsive-images</a>
+</div></header>
+</div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="welcome-to-alexs-blog">Welcome to Alex’s Blog</h2>
+
+<p>This blog is powered by <a href="http://jekyllrb.com/">Jekyll</a>,
+themed by <a href="https://github.com/jeffreytse/jekyll-theme-yat">jekyll-theme-yat</a> and hosted on
+<a href="https://pages.github.com">Github Pages</a>.</p>
+
+<p>To avoid info fragmentation, this page is being continuously updated as this blog evolves.</p>
+
+<h3 id="links">Links</h3>
+
+<ul>
+  <li><a href="http://jekyllrb.com/">http://jekyllrb.com/</a></li>
+  <li><a href="https://github.com/jeffreytse/jekyll-theme-yat">https://github.com/jeffreytse/jekyll-theme-yat</a></li>
+</ul>
+
+<h2 id="search-box">Search Box</h2>
+
+<p>Server-side site search (<a href="https://www.elastic.co/">Elasticsearch</a>) is added by the guidance
+in <a href="https://blog.omc.io/elasticsearch-for-jekyll-part-1-ab456ac7c093">this blog post</a>,
+but I have to rebuild the <a href="https://searchkit.co/">Searchkit</a> client parts since the tech world has been moving forward.</p>
+
+<p>As a temporary solution, the code is integrated into my fork of jekyll-theme-yat:
+<a href="https://github.com/alexforks/jekyll-theme-yat">https://github.com/alexforks/jekyll-theme-yat</a>.
+The demo is available on the current site and the config can be found
+<a href="https://github.com/alexzhangs/alexzhangs.github.io">here</a>.</p>
+
+<h3 id="indexing">Indexing</h3>
+
+<p><a href="https://github.com/omc/searchyll">Searchyll</a> is used to index the site.</p>
+
+<p>Searchyll seems to be out of maintenance, the master branch is not merged and released for years.</p>
+
+<p>You will be happy to refer to the below repo to get the recent fixes,
+at least until they are merged and released to official Gem.</p>
+
+<p>This repo is based on <code class="language-plaintext highlighter-rouge">omc/Searchyll</code> master plus my <a href="https://github.com/omc/searchyll/pull/53">fix</a>
+to overcome the annoying updating alias error when running into multiple indices.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _config.yml</span>
+<span class="s">group :jekyll_plugins do</span>
+  <span class="s">gem "searchyll", git</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://github.com/alexforks/searchyll"</span><span class="err">,</span> <span class="na">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">fix-update-alias-404"</span>
+<span class="s">end</span>
+</code></pre></div></div>
+
+<h3 id="search-ui">Search UI</h3>
+
+<p><a href="https://searchkit.co/">Searchkit</a> is used to search the Elasticsearch server to build the search result.</p>
+
+<p>I built a new search UI component with <code class="language-plaintext highlighter-rouge">Searchkit v2</code>.
+The layout and style are sticky with Searchkit as much as possible,
+but being overridden to suit well with <code class="language-plaintext highlighter-rouge">jekyll-them-yat</code>.</p>
+
+<p>I’m not a React guy, just knowing enough to get it to work.
+Hope this <a href="https://github.com/jeffreytse/jekyll-theme-yat/issues/32#issuecomment-945449981">universal solution</a>
+is coming soon.</p>
+
+<h3 id="credential">Credential</h3>
+
+<p>There are two places where the Elasticsearch URL and credential will be needed.</p>
+
+<ol>
+  <li>
+    <p>Searchyll</p>
+
+    <p>An URL with a credential with <code class="language-plaintext highlighter-rouge">write</code> permission is necessary.
+ Don’t put the credential within <code class="language-plaintext highlighter-rouge">_config.yml</code>, use environment variable to test locally, like below:</p>
+
+    <div class="language-shell highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>bundle update <span class="o">&amp;&amp;</span> <span class="nv">ELASTICSEARCH_URL</span><span class="o">=</span><span class="s2">"https://yourusername:yourpassword@yourserver.com"</span> bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div>    </div>
+
+    <p>And configure the same URL and credential as environment variables in the
+ <code class="language-plaintext highlighter-rouge">yourname.github.io -&gt; Github Environments -&gt; github-pages</code> for the server-side.</p>
+  </li>
+  <li>
+    <p>Searchkit</p>
+
+    <p>An URL and a credential with read-only permission are enough.</p>
+
+    <div class="language-yaml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c1"># _config.yml</span>
+ <span class="na">elasticsearch</span><span class="pi">:</span>
+   <span class="na">readonly_url</span><span class="pi">:</span> <span class="s">https://yourusername:yourpassword@yourserver.com</span>
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p>⚠️ WARNING: The <code class="language-plaintext highlighter-rouge">readonly_url</code>:</p>
+      <ul>
+        <li>will be exposed to the Internet in site source.</li>
+        <li>should only have the read-only permission to the Elasticsearch server.</li>
+      </ul>
+    </blockquote>
+  </li>
+</ol>
+
+<h3 id="elasticsearch-service">Elasticsearch Service</h3>
+
+<p>Where to get an Elasticsearch service?
+To minimize the maintenance needs, mine is powered by <a href="https://app.bonsai.io/">Bonsai</a> for free.</p>
+
+<p>Use <a href="https://app.bonsai.io/r/A1ZgIcepiGs4Q56DnmBl">my referral link to sign up</a>, the free plan is enough.
+But when you start using a paid plan, you and I will both get $50 credit.</p>
+
+<h3 id="development">Development</h3>
+
+<p>If you would like to make changes to the SearchUI, you will need to deal with
+<a href="https://github.com/alexforks/jekyll-theme-yat">https://github.com/alexforks/jekyll-theme-yat</a>.
+All you need is <code class="language-plaintext highlighter-rouge">npm</code>, get it ready. And run in your site root, to get your own <code class="language-plaintext highlighter-rouge">search.js</code>.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span>
+<span class="nv">$ </span>webpack
+</code></pre></div></div>
+
+<p>Related environment:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ruby <span class="nt">--version</span>
+ruby 2.7.3p183 <span class="o">(</span>2021-04-05 revision 6847ee089d<span class="o">)</span> <span class="o">[</span>x86_64-darwin20]
+
+<span class="nv">$ </span>npm <span class="nt">--version</span>
+7.10.0
+</code></pre></div></div>
+
+<h3 id="links-1">Links</h3>
+
+<ul>
+  <li><a href="https://github.com/alexforks/jekyll-theme-yat">https://github.com/alexforks/jekyll-theme-yat</a></li>
+  <li><a href="https://blog.omc.io/elasticsearch-for-jekyll-part-1-ab456ac7c093">https://blog.omc.io/elasticsearch-for-jekyll-part-1-ab456ac7c093</a></li>
+  <li><a href="https://github.com/searchkit/searchkit">https://github.com/searchkit/searchkit</a></li>
+  <li><a href="https://github.com/omc/searchyll">https://github.com/omc/searchyll</a></li>
+  <li><a href="https://app.bonsai.io/">https://app.bonsai.io/</a></li>
+</ul>
+
+<h2 id="plugins-with-github-pages">Plugins with Github Pages</h2>
+
+<p>There are a lot of <a href="https://github.com/topics/jekyll-plugin">Jekyll plugins</a>
+out there giving you the features that Jekyll and your theme don’t have.
+But the truth is most of them won’t work with Github Pages.</p>
+
+<p>Github Pages has <a href="https://pages.github.com/versions/">this dependency list</a>.
+The unlisted Jekyll plugins will work only if you run <code class="language-plaintext highlighter-rouge">jekyll build</code> locally.
+Github Pages is ignoring them on remote as they are don’t exist.</p>
+
+<p>But this is not all the picture.</p>
+
+<p>If you are using the <code class="language-plaintext highlighter-rouge">yourusername.github.io</code> repo,
+the only thing you want to be pushed to the configured branch is the generated <code class="language-plaintext highlighter-rouge">_site</code>, nothing else.
+If the Jekyll source is pushed to this branch, the remote Jekyll build is overriding your pushed local build.
+To what end? you end up with a solution without the remote build capability!</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>To get the unlisted Jekyll plugins functional on Github Pages, you need a CI,
+such as Travis and Github Workflow, to gain control of the remote build.</p>
+
+<p>Here it is, <a href="https://github.com/jeffreytse/jekyll-deploy-action">jekyll-deploy-action</a>,
+a Github Action, will help to simplify the process with Github Workflow.</p>
+
+<p>Just follow the usage document, after that, your plugins will work both LOCALLY AND REMOTELY, like a charm!</p>
+
+<h3 id="links-2">Links</h3>
+
+<ul>
+  <li><a href="https://github.com/jeffreytse/jekyll-deploy-action">https://github.com/jeffreytse/jekyll-deploy-action</a></li>
+</ul>
+
+<h2 id="responsive-images">Responsive Images</h2>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">Responsive Images</a> is good,
+to the readers. But it’s hard, to the publishers.
+It costs me days to come out with a satisfied solution.
+All difficulties are related to Github Pages.</p>
+
+<h3 id="solution-1">Solution</h3>
+
+<blockquote>
+  <p>⚠️ WARNING：The <a href="https://en.wikipedia.org/wiki/Zero-width_space">Zero-Width Space (ZWSP)</a> is used in below code
+           to <a href="https://ozzieliu.com/2016/04/26/writing-liquid-template-in-markdown-with-jekyll/">workaround the liquid tags rendering issue</a>.
+           So, don’t simply copy &amp; paste the code, the ZWSP must be removed.</p>
+</blockquote>
+
+<p>I tried two well used responsive images plugins:</p>
+
+<ol>
+  <li><a href="https://github.com/rbuchberger/jekyll_picture_tag">jekyll_picture_tag</a></li>
+  <li><a href="https://github.com/wildlyinaccurate/jekyll-responsive-image">jekyll-responsive-image</a></li>
+</ol>
+
+<p>I take <code class="language-plaintext highlighter-rouge">jekyll_picture_tag</code> for now. I like its <code class="language-plaintext highlighter-rouge">presets</code> idea and the way of handling output directory structure.
+Both plugins don’t support markdown image tags. This is quietly surprising me. 
+I don’t like the responsive image liquid tags within my content. That is just not the way to write.</p>
+
+<p>To overcome this, I need a transformer to translate markdown image tags, like:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!​<span class="p">[</span><span class="nv">Thinkpad</span><span class="p">](</span><span class="sx">/assets/images/banners/thinkpad.png</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>to the responsive image liquid tags, like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{​% picture banners/thinkpad.png --alt Thinkpad %}
+</code></pre></div></div>
+
+<p>I wrote this universal hook plugin <a href="https://github.com/alexzhangs/jekyll-hooks">jekyll-hooks</a>, which does the job.</p>
+
+<p>Then here is <code class="language-plaintext highlighter-rouge">jekyll_picture_tag</code>. It’s rendering the liquid tag to HTML code as below:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;picture&gt;&lt;source</span> <span class="na">srcset=</span><span class="s">"/assets/images/resized/banners/thinkpad-640-237e1d.webp 640w, /assets/images/resized/banners/thinkpad-800-237e1d.webp 800w, /assets/images/resized/banners/thinkpad-1024-237e1d.webp 1024w"</span> <span class="na">type=</span><span class="s">"image/webp"</span><span class="nt">&gt;&lt;source</span> <span class="na">srcset=</span><span class="s">"/assets/images/resized/banners/thinkpad-640-237e1d.png 640w, /assets/images/resized/banners/thinkpad-800-237e1d.png 800w, /assets/images/resized/banners/thinkpad-1024-237e1d.png 1024w"</span> <span class="na">type=</span><span class="s">"image/png"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/resized/banners/thinkpad-800-237e1d.png"</span> <span class="na">alt=</span><span class="s">"Thinkpad"</span><span class="nt">&gt;&lt;/picture&gt;</span>
+
+</code></pre></div></div>
+
+<p>And your browser is rendering the HTML as below.
+Change your browser window size and reload the page, to see the different images are being downloaded.</p>
+
+<picture><source srcset="/assets/images/resized/banners/thinkpad-640-237e1d.webp 640w, /assets/images/resized/banners/thinkpad-800-237e1d.webp 800w, /assets/images/resized/banners/thinkpad-1024-237e1d.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/banners/thinkpad-640-237e1d.png 640w, /assets/images/resized/banners/thinkpad-800-237e1d.png 800w, /assets/images/resized/banners/thinkpad-1024-237e1d.png 1024w" type="image/png"></source><img src="/assets/images/resized/banners/thinkpad-800-237e1d.png" alt="Thinkpad"></picture>
+
+<p>The <code class="language-plaintext highlighter-rouge">jekyll-hooks</code> can do more, such as letting the images be previewable while writing.
+I write the markdown image like this:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!​<span class="p">[</span><span class="nv">Thinkpad</span><span class="p">](</span><span class="sx">../assets/images/banners/thinkpad.png</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This way the image is referring to a valid relative local path and is previewable while writing.
+Then one action will remove the part <code class="language-plaintext highlighter-rouge">..</code> from the path in a <code class="language-plaintext highlighter-rouge">pre_render</code> hook.
+Which makes it a valid absolute web path.</p>
+
+<h3 id="image-compress-lib">Image Compress Lib</h3>
+
+<p>Choose <a href="https://en.wikipedia.org/wiki/VIPS_(software)">vips</a>
+or <a href="https://en.wikipedia.org/wiki/ImageMagick">ImageMagick</a>?
+With Github Pages, we don’t have a choice.</p>
+
+<p>By now (Oct 2021), Github Pages’s <a href="https://github.com/github/pages-gem">pages-gem v221</a> is locking down Jekyll <code class="language-plaintext highlighter-rouge">3.9.0</code>.
+The latest jekyll_picture_tag has dropped the support of Jekyll v3 because of a
+<a href="https://github.com/rbuchberger/jekyll_picture_tag/issues/192">cache_dir issue</a>.
+We stuck at jekyll_picture_tag <code class="language-plaintext highlighter-rouge">1.10.2</code>. And this version doesn’t support <code class="language-plaintext highlighter-rouge">vips</code>, it supports <code class="language-plaintext highlighter-rouge">ImageMagick</code> only.</p>
+
+<h3 id="sample-config">Sample Config</h3>
+
+<p>jekyll-hooks is not in the official gem yet, for now, use the git URL.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Gemfile</span>
+
+<span class="s">group :jekyll_plugins do</span>
+  <span class="s">...</span>
+  <span class="s">gem "jekyll-hooks", git</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://github.com/alexzhangs/jekyll-hooks"</span>
+  <span class="s">gem "jekyll_picture_tag", "~&gt; 1.10.2"</span>
+<span class="s">end</span>
+</code></pre></div></div>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _config.yml</span>
+
+<span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-hooks</span>
+  <span class="pi">-</span> <span class="s">jekyll_picture_tag</span>
+
+<span class="c1"># jekyll_picture_tag</span>
+<span class="na">picture</span><span class="pi">:</span>
+  <span class="na">source</span><span class="pi">:</span> <span class="s">assets/images</span>
+  <span class="na">output</span><span class="pi">:</span> <span class="s">assets/images/resized</span>
+
+<span class="c1"># jekyll-hooks</span>
+<span class="na">hooks</span><span class="pi">:</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
+      <span class="na">exts</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">markdown</span><span class="pi">,</span><span class="nv">mkdown</span><span class="pi">,</span><span class="nv">mkdn</span><span class="pi">,</span><span class="nv">mkd</span><span class="pi">,</span><span class="nv">md</span><span class="pi">]</span>
+      <span class="na">find</span><span class="pi">:</span> <span class="pi">&gt;</span>
+        <span class="s">(!\[[^\]]*\]\()/assets/images/(.+)</span>
+      <span class="na">replace</span><span class="pi">:</span> <span class="pi">&gt;</span>
+        <span class="s">\1\2</span>
+      <span class="na">disabled</span><span class="pi">:</span> <span class="no">false</span>
+    <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
+      <span class="na">exts</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">markdown</span><span class="pi">,</span><span class="nv">mkdown</span><span class="pi">,</span><span class="nv">mkdn</span><span class="pi">,</span><span class="nv">mkd</span><span class="pi">,</span><span class="nv">md</span><span class="pi">]</span>
+      <span class="c1"># !​[alt](/path/to/image "title"){:.class}</span>
+      <span class="na">find</span><span class="pi">:</span> <span class="pi">&gt;</span>
+        <span class="s">!\[([^\]]*)\]\(((?!http[s]?://)[^"'\n]+)(?:\s['"]([^'"]*)['"])?\)(?:\{:\.([^{]+)\})?</span>
+      <span class="c1"># both present and non-present quotes matter</span>
+      <span class="na">replace</span><span class="pi">:</span> <span class="pi">&gt;</span>
+        <span class="s">{% picture \2 --alt \1 --img class="\4" title="\3" %}</span>
+      <span class="na">case-insensitive</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">disabled</span><span class="pi">:</span> <span class="no">false</span>
+  <span class="na">disabled</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<p>Of course, we need <code class="language-plaintext highlighter-rouge">jekyll-deploy-action</code>.
+The last three lines are important, to get ImageMagick and its dependency installed on the docker.
+The <code class="language-plaintext highlighter-rouge">jekyll-deploy-action</code> is running in a separate docker, so the dependencies must be installed with <code class="language-plaintext highlighter-rouge">pre_build_commands</code>.
+I’m using <a href="https://en.wikipedia.org/wiki/WebP">webp</a> format for my images.
+It has an amazing compression ratio in most situations. So it’s included in the installation list.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .github/workflows/build-jekyll.yml</span>
+      <span class="s">...</span>
+      <span class="s">- uses</span><span class="pi">:</span> <span class="s">jeffreytse/jekyll-deploy-action@v0.3.1</span>
+        <span class="s">with</span><span class="pi">:</span>
+          <span class="s">...</span>
+          <span class="s">pre_build_commands</span><span class="pi">:</span> <span class="pi">|</span>      <span class="c1"># Installing additional dependencies (Arch Linux)</span>
+            <span class="s">pacman -S --noconfirm imagemagick libwebp</span>
+            <span class="s">identify --version</span>
+</code></pre></div></div>
+
+<h3 id="links-3">Links</h3>
+
+<ul>
+  <li><a href="https://github.com/rbuchberger/jekyll_picture_tag">jekyll_picture_tag</a></li>
+  <li><a href="https://github.com/wildlyinaccurate/jekyll-responsive-image">jekyll-responsive-image</a></li>
+  <li><a href="https://github.com/alexzhangs/jekyll-hooks">jekyll-hooks</a></li>
+  <li><a href="https://robert-buchberger.com/blog/2021/responsive_images.html">Images, Correctly</a></li>
+  <li><a href="https://medium.com/hceverything/applying-srcset-choosing-the-right-sizes-for-responsive-images-at-different-breakpoints-a0433450a4a3">Applying srcset: choosing the right sizes for responsive images at different breakpoints</a></li>
+  <li><a href="https://jetholt.com/jekyll-responsive-images/">Automatic Responsive Images on Jekyll without Plugins</a></li>
+  <li><a href="https://mauricius.dev/run-and-debug-github-actions-locally/">Run and debug Github actions locally</a></li>
+  <li><a href="https://rubular.com">a Ruby regular expression editor</a></li>
+</ul>
+
+<h2 id="reference-links">Reference Links</h2>
+
+<ul>
+  <li><a href="https://github.com/jeffreytse/jekyll-spaceship">https://github.com/jeffreytse/jekyll-spaceship</a></li>
+  <li><a href="https://github.com/vfeskov/vanilla-back-to-top">https://github.com/vfeskov/vanilla-back-to-top</a></li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/rc-model/2021/09/30/FS-1-5-Gas-On-Road-RC-Model-OP.html" title="FS 飞神 1/5 Gas On-Road RC Model OP">FS 飞神 1/5 Gas On-Road RC...</a><a class="next" href="/software/2021/11/15/Standards-and-Models-of-Library-Metadata.html" title="Standards and Models of Library Metadata">Standards and Models of Library Metadata...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/electronics/2021/09/18/HP-33321-SC-SD-SG-Programmable-Step-Attenuator.html" title="Standards and Models of Library Metadata">HP 33321 SC/SD/SG 程控步进衰减器</a></li>
+<li><a class="post-link" href="/software/2021/11/15/Standards-and-Models-of-Library-Metadata.html" title="Standards and Models of Library Metadata">Standards and Models of Library Metadata</a></li>
+<li><a class="post-link" href="/electronics/2021/09/25/RS-CMU200-RF-Loop-Test-Failed-Repair.html" title="Standards and Models of Library Metadata">R&amp;S CMU200 RF Loop Test 外环自检失败故障修复</a></li>
+<li><a class="post-link" href="/software/2021/10/17/Welcome-To-Alexs-Personal-Blog.html" title="Standards and Models of Library Metadata">Welcome to Alex's Personal Blog</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div> © 2021 Alex Zhang</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+<script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+<script>addBackToTop({
+  diameter: 56,
+  backgroundColor: 'rgb(255, 82, 82)',
+  textColor: '#fff'
+})</script><div id="search"></div>
+<script>
+  const PROTECTD_ELASTICSEARCH_URL = "https://cnhtkau6q6:5mycjw3c54@0xbeta-7000378480.eu-central-1.bonsaisearch.net:443";
+</script>
+<script type="text/javascript" src="/assets/js/search.js"></script>
+<style>
+  article img {
+    border-radius: 5px;
+  }
+  figcaption {
+    padding: 5px;
+    text-align: center;
+    font-style: italic;
+    opacity: 0.718;
+  }
+</style>
+<script>
+  var nodes = document.querySelector("article");
+  if (nodes) {
+    nodes.querySelectorAll("img").forEach (
+      function (img) {
+        var text = img.title || img.alt;
+        if (text) {
+          var caption = document.createElement("figcaption");
+          caption.append("Figure: " + text);
+          img.parentNode.append(caption);
+        }
+      }
+    )
+  }
+</script>
+</body>
+</html>

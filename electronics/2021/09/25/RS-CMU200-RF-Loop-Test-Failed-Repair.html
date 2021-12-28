@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>R&amp;S CMU200 RF Loop Test 外环自检失败故障修复 | 0xBeta - Everything is Fun</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="R&amp;S CMU200 RF Loop Test 外环自检失败故障修复">
+<meta name="author" content="Alex Zhang">
+<meta property="og:locale" content="zh">
+<meta name="description" content="ROHDE &amp; SCHWARZ CMU200 是一台 2.7 GHz 的通用无线电综测仪，本文内容假定读者对 CMU200 已经具备基本了解，如果可以看到本文描述的自检错误，那么应该已了解如何操作运行这些自检程序，因此本文对这些基础内容就不再额外描述。">
+<meta property="og:description" content="ROHDE &amp; SCHWARZ CMU200 是一台 2.7 GHz 的通用无线电综测仪，本文内容假定读者对 CMU200 已经具备基本了解，如果可以看到本文描述的自检错误，那么应该已了解如何操作运行这些自检程序，因此本文对这些基础内容就不再额外描述。">
+<link rel="canonical" href="https://0xbeta.com/electronics/2021/09/25/RS-CMU200-RF-Loop-Test-Failed-Repair.html">
+<meta property="og:url" content="https://0xbeta.com/electronics/2021/09/25/RS-CMU200-RF-Loop-Test-Failed-Repair.html">
+<meta property="og:site_name" content="0xBeta - Everything is Fun">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-09-25T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="R&amp;S CMU200 RF Loop Test 外环自检失败故障修复">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Alex Zhang"},"headline":"R&amp;S CMU200 RF Loop Test 外环自检失败故障修复","dateModified":"2021-09-25T00:00:00+00:00","datePublished":"2021-09-25T00:00:00+00:00","description":"ROHDE &amp; SCHWARZ CMU200 是一台 2.7 GHz 的通用无线电综测仪，本文内容假定读者对 CMU200 已经具备基本了解，如果可以看到本文描述的自检错误，那么应该已了解如何操作运行这些自检程序，因此本文对这些基础内容就不再额外描述。","mainEntityOfPage":{"@type":"WebPage","@id":"https://0xbeta.com/electronics/2021/09/25/RS-CMU200-RF-Loop-Test-Failed-Repair.html"},"@type":"BlogPosting","url":"https://0xbeta.com/electronics/2021/09/25/RS-CMU200-RF-Loop-Test-Failed-Repair.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="/assets/images/logo/Moon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/searchkit/2.0.0/theme.css">
+    <link rel="stylesheet" href="/assets/css/search.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://0xbeta.com/feed.xml" title="0xBeta - Everything is Fun">
+<script>
+  function initGoogleAnalytics() {
+    var doNotTrack = (window.doNotTrack === "1" || navigator.doNotTrack === "1" ||
+      navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1");
+    var enableDNT = "true" == "true";
+
+    if (!enableDNT || !doNotTrack) {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-209916979-1', 'auto');
+      ga('send', 'pageview');
+    }
+  }
+  window.addEventListener("load", initGoogleAnalytics);
+</script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script defer charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="0xBeta - Everything is Fun" src="/assets/images/logo/Moon.png" onerror="this.style.display='none'">
+  0xBeta - Everything is Fun
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'zh',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" defer src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span><span id="search-loader"></span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+
+  function initTrigger () {
+    function uncheckNavTrigger() {
+      document.querySelector("#nav-trigger").checked = false;
+    }
+    document.addEventListener('click', uncheckNavTrigger);
+
+    var timer;
+    document.querySelector(".trigger").addEventListener('mouseleave', () => {
+      timer = setTimeout(uncheckNavTrigger, 1000);
+    });
+
+    document.querySelector(".trigger").addEventListener('mouseenter', () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    });
+
+    document.querySelector(".trigger").addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    document.querySelector(".site-nav").addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initTrigger);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(/assets/images/banners/icom-radio.png)"></div>
+        <img class="img-placeholder" src="/assets/images/banners/icom-radio.png">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">R&amp;S CMU200 RF Loop Test 外环自检失败故障修复</h1>
+  <h2 class="post-subtitle"></h2>
+<div class="post-meta">
+<time class="dt-published" datetime="2021-09-25T00:00:00+00:00" itemprop="datePublished">
+    <i class="fa fa-calendar"></i> Sep 25, 2021
+  </time>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 7 mins</span>
+
+  
+</div>
+<div class="post-tags">
+<a class="post-tag" href="/tags.html#CMU200">#CMU200</a><a class="post-tag" href="/tags.html#RF">#RF</a><a class="post-tag" href="/tags.html#Frontend">#Frontend</a><a class="post-tag" href="/tags.html#SBW-5089">#SBW-5089</a><a class="post-tag" href="/tags.html#MMIC">#MMIC</a><a class="post-tag" href="/tags.html#Amplifier">#Amplifier</a><a class="post-tag" href="/tags.html#BW5">#BW5</a>
+</div></header>
+</div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p>ROHDE &amp; SCHWARZ CMU200 是一台 2.7 GHz 的通用无线电综测仪，本文内容假定读者对 CMU200 已经具备基本了解，如果可以看到本文描述的自检错误，那么应该已了解如何操作运行这些自检程序，因此本文对这些基础内容就不再额外描述。</p>
+
+<p>故障现象： <code class="language-plaintext highlighter-rouge">1-&gt;4/3-&gt;2 RF Loop Test</code> 自检中，<code class="language-plaintext highlighter-rouge">1-&gt;4 Tx-Path 1 Loop Test</code> 测试通过，但 <code class="language-plaintext highlighter-rouge">3-&gt;2 Tx-Path 1 Loop Test</code> 测试失败，所有频点无法读取测试信号幅度。</p>
+
+<picture><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-failed-640-b5daf2.webp 640w, /assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-failed-800-b5daf2.webp 800w, /assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-failed-1024-b5daf2.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-failed-640-b5daf2.png 640w, /assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-failed-800-b5daf2.png 800w, /assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-failed-1024-b5daf2.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-failed-800-b5daf2.png" alt="CMU200 3-&gt;2 Tx-Path 1 Loop Test failed"></picture>
+
+<h2 id="1-investigation">1. Investigation</h2>
+
+<p>自检结果说明 <code class="language-plaintext highlighter-rouge">RF 3 输出</code> 和 <code class="language-plaintext highlighter-rouge">RF 2 输入</code> 二者至少一项存在问题。首先利用已知正常的 <code class="language-plaintext highlighter-rouge">RF 1</code> 验证 <code class="language-plaintext highlighter-rouge">RF 2</code> 和 <code class="language-plaintext highlighter-rouge">RF 3</code>，确认 <code class="language-plaintext highlighter-rouge">RF 2</code> 工作正常，而 <code class="language-plaintext highlighter-rouge">RF 3</code> 在全频段输出信号幅度均偏低约 20 dB。</p>
+
+<picture><source srcset="/assets/images/resized/posts/RS-CMU200-Block-Diagram-640-c7b318.webp 640w, /assets/images/resized/posts/RS-CMU200-Block-Diagram-800-c7b318.webp 800w, /assets/images/resized/posts/RS-CMU200-Block-Diagram-906-c7b318.webp 906w" type="image/webp"></source><source srcset="/assets/images/resized/posts/RS-CMU200-Block-Diagram-640-c7b318.png 640w, /assets/images/resized/posts/RS-CMU200-Block-Diagram-800-c7b318.png 800w, /assets/images/resized/posts/RS-CMU200-Block-Diagram-906-c7b318.png 906w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/RS-CMU200-Block-Diagram-800-c7b318.png" alt="CMU200 Block Diagram"></picture>
+
+<p>在 CMU200 Service Manual 中找到功能框图，可知 RF 1 ~ RF 4 端口位于 RF Frontend 模块，作为主要的 RF 信号接口，负责信号的 INPUT/OUTPUT 处理，根据信号路径，怀疑为 RF Frontend 模块内部故障。</p>
+
+<p>我手上有多台 CMU200，通过代换部件确认为 RF Frontend 模块故障。下一小节描述如何更换 RF Frontend 模块，如果不感兴趣可以直接跳到小节 <code class="language-plaintext highlighter-rouge">1.2. 检查 RF Frontend 模块</code>。</p>
+
+<h3 id="11-如何更换-rf-frontend-模块">1.1. 如何更换 RF Frontend 模块</h3>
+
+<picture><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-640-ac439d.webp 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-800-ac439d.webp 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-960-ac439d.webp 960w" type="image/webp"></source><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-640-ac439d.png 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-800-ac439d.png 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-960-ac439d.png 960w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/RS-CMU200-RF-Frontend-800-ac439d.png" alt="CMU200 RF Frontend"></picture>
+
+<p>更换 RF Frontend 模块，比较简单直接，拆除外壳后，再拆除 RF Frontend 模块的所有连接电缆和3颗螺丝，即可取下，具体请参考 CMU200 Service Manual 提供的步骤：</p>
+
+<picture><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Replacement-640-831de1.webp 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Replacement-800-831de1.webp 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Replacement-1024-831de1.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Replacement-640-831de1.png 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Replacement-800-831de1.png 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Replacement-1024-831de1.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Replacement-800-831de1.png" alt="Replacing CMU200 RF Frontend"></picture>
+
+<blockquote>
+  <p>⚠️ WARNING：拆解仪器时，请佩戴手套，一方面防止被仪器的锋利边缘割伤，另一方面可以防止在仪器内留下指纹，尤其是光滑的铝合金板，或者表面有镀银层的部件，留下的指纹在若干年后会变为醒目的印记，并无法恢复。本人推荐一次性医用丁腈手套，防酸碱耐油污，防滑性好，舒适贴手，用后即弃，十分方便。</p>
+</blockquote>
+
+<h3 id="12-检查-rf-frontend-模块">1.2. 检查 RF Frontend 模块</h3>
+
+<p>将 RF Frontend 模块底部盖板拆下，内部如图：</p>
+
+<picture><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-1-640-413017.webp 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-1-800-413017.webp 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-1-1024-413017.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-1-640-413017.png 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-1-800-413017.png 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-1-1024-413017.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-1-800-413017.png" alt="CMU200 RF Frontend 内部"></picture>
+
+<picture><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-2-640-576e79.webp 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-2-800-576e79.webp 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-2-1024-576e79.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-2-640-576e79.png 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-2-800-576e79.png 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-2-1024-576e79.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Opened-2-800-576e79.png" alt="CMU200 RF Frontend 内部"></picture>
+
+<p>从内部状态判断该模块没有过维修历史，模块内元件集成度很高，但功能分区和信号路径比较明显，可明确识别出 RF 3 信号路径。粗略观察整体并重点观察 RF 3 路径附近，均无外观异常元件。</p>
+
+<p>从 RF 3 端口开始，沿信号路径向上检测元件，重点是那颗 MMIC Amplifier，丝印 <code class="language-plaintext highlighter-rouge">BW5</code>，这个是 RF 3 OUT 端口的末端放大器。</p>
+
+<picture><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-RF3-Signal-Path-640-7d48ce.webp 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-RF3-Signal-Path-800-7d48ce.webp 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-RF3-Signal-Path-1024-7d48ce.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-RF3-Signal-Path-640-7d48ce.png 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-RF3-Signal-Path-800-7d48ce.png 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-RF3-Signal-Path-1024-7d48ce.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/RS-CMU200-RF-Frontend-RF3-Signal-Path-800-7d48ce.png" alt="CMU200 RF Frontend RF 3 Signal Path"></picture>
+
+<p><code class="language-plaintext highlighter-rouge">BW5</code> 的型号为 <a href="https://pdf1.alldatasheet.com/datasheet-pdf/view/256822/SIRENZA/SBW-5089Z.html">SBW-5089 MMIC Amplifier</a>，下载 Datasheet，可知其典型增益约 20 dB，<code class="language-plaintext highlighter-rouge">PIN 1</code> 为输入，<code class="language-plaintext highlighter-rouge">PIN 3</code> 为输出，<code class="language-plaintext highlighter-rouge">PIN 2 / PIN 4</code> 为 GND。</p>
+
+<picture><source srcset="/assets/images/resized/posts/SIRENZA-SBW-5089-datasheet-640-179af8.webp 640w, /assets/images/resized/posts/SIRENZA-SBW-5089-datasheet-800-179af8.webp 800w, /assets/images/resized/posts/SIRENZA-SBW-5089-datasheet-906-179af8.webp 906w" type="image/webp"></source><source srcset="/assets/images/resized/posts/SIRENZA-SBW-5089-datasheet-640-179af8.png 640w, /assets/images/resized/posts/SIRENZA-SBW-5089-datasheet-800-179af8.png 800w, /assets/images/resized/posts/SIRENZA-SBW-5089-datasheet-906-179af8.png 906w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/SIRENZA-SBW-5089-datasheet-800-179af8.png" alt="SBW-5089 MMIC Amplifier Datasheet"></picture>
+
+<p>测量板上 <code class="language-plaintext highlighter-rouge">BW5</code> 输入和输出脚之间的电阻，约为 430 Ω，比正常值约 600 Ω 略低。</p>
+
+<p>分别测量输入、输出脚与 GND 之间的电阻，分别约为 340 Ω 和 490 Ω，大幅低于正常值约 1.5 kΩ 和 850 Ω。</p>
+
+<p>附近其它阻容元件测试均正常，基本确认 <code class="language-plaintext highlighter-rouge">BW5</code> 损坏。</p>
+
+<blockquote>
+  <p>📖 ADVANCED：更精确的检查方法是将 RF Frontend 模块装回设备，并保持电路板开放，然后使用频谱仪或者功率计，通过带有 DC Blocker 的探头，在 RF 3 工作时，分别测量 <code class="language-plaintext highlighter-rouge">BW5</code> 输入、输出脚的信号幅度，来定量的判断其是否工作正常。具体可以参考 <a href="https://www.eevblog.com">eevblog</a> 的 <a href="https://www.eevblog.com/forum/repair/rohde-and-schwartz-cmu200-rxtx-module-issues/msg1025801/?PHPSESSID=h4e3su4cn3sniu6epbovvtj5a2#msg1025801">这个帖子</a>。</p>
+</blockquote>
+
+<h2 id="2-更换-bw5-sbw-5089-mmic-amplifier">2. 更换 BW5 SBW-5089 MMIC Amplifier</h2>
+
+<p>Taobao 购入 <code class="language-plaintext highlighter-rouge">SBW-5089 MMIC Amplifier</code>，该元件对静电敏感，容易被端口串入的静电击穿，购入多颗备用。
+更换前使用万用表测试新元件，确认其正常。</p>
+
+<h3 id="21-准备清单">2.1. 准备清单</h3>
+
+<picture><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Tools-640-c30cb0.webp 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Tools-800-c30cb0.webp 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Tools-1024-c30cb0.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Tools-640-c30cb0.png 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Tools-800-c30cb0.png 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Tools-1024-c30cb0.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Tools-800-c30cb0.png" alt="准备工具"></picture>
+
+<p>虽然只更换一个小元件，但想要修新如新也是需要专业精神的。</p>
+
+<ul>
+  <li>焊台：150W JBC 245 兼容焊台</li>
+  <li>烙铁头
+    <ul>
+      <li>刀头 JBC C245-765</li>
+      <li>平头 JBC C245-907 2.2x1mm</li>
+    </ul>
+  </li>
+  <li>低温焊锡 阿米特 KR-19RMA 熔点 190ºC</li>
+  <li>助焊剂 GOOT FLUX BS 10</li>
+  <li>吸锡带 GOOT 3.0mm</li>
+  <li>酒精</li>
+  <li>棉签</li>
+  <li>防静电毛刷</li>
+  <li>镊子</li>
+  <li>气吹</li>
+</ul>
+
+<h3 id="22-解焊焊接">2.2. 解焊&amp;焊接</h3>
+
+<p>RF Frontend 模块为提高散热效率，基板有大面积的金属散热层，即使焊接一个小元件，也要求<code class="language-plaintext highlighter-rouge">焊台</code>的回温性好。</p>
+
+<p>BW5 为 4脚元件，这类解焊我习惯使用<code class="language-plaintext highlighter-rouge">低温焊锡</code>，用<code class="language-plaintext highlighter-rouge">刀头</code>使低温焊锡包裹元件一端3个焊脚，另一接地端也涂满低温焊锡，两侧轮流加热，可令焊锡同时保持熔化状态，然后用<code class="language-plaintext highlighter-rouge">镊子</code>将元件取下，焊盘完好无恙。</p>
+
+<p>使用<code class="language-plaintext highlighter-rouge">助焊剂</code>和<code class="language-plaintext highlighter-rouge">吸锡带</code>清理焊盘。</p>
+
+<p>焊新元件使用<code class="language-plaintext highlighter-rouge">平头</code>，先焊一个焊点，确保元件放平、放正后再焊其它焊脚，完成后用<code class="language-plaintext highlighter-rouge">酒精</code>和<code class="language-plaintext highlighter-rouge">毛刷</code>清洗焊点周围，然后用<code class="language-plaintext highlighter-rouge">棉签</code>清理干净。</p>
+
+<picture><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Done-640-347535.webp 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Done-800-347535.webp 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Done-1024-347535.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Done-640-347535.png 640w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Done-800-347535.png 800w, /assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Done-1024-347535.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/RS-CMU200-RF-Frontend-Repair-Done-800-347535.png" alt="更换 BW5 SBW-5089 MMIC Amplifier 完成"></picture>
+
+<p>Nice and Clean！</p>
+
+<h2 id="3-组装测试">3. 组装&amp;测试</h2>
+
+<p>组装前，使用万用表测试新更换的元件，确认其正常，然后将 RF Frontend 模块组装好，安装回机箱。</p>
+
+<p>全部组装完成后，开机，重新运行 <code class="language-plaintext highlighter-rouge">1-&gt;4/3-&gt;2 RF Loop Test</code> 自检，测试全部通过，修复成功。</p>
+
+<p>而 <code class="language-plaintext highlighter-rouge">BW5</code> 损坏的原因可能是被静电部分击穿，被击穿后的作用相当于一个信号路径中的固定衰减器。</p>
+
+<picture><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-passed-640-9ef32d.webp 640w, /assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-passed-800-9ef32d.webp 800w, /assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-passed-1024-9ef32d.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-passed-640-9ef32d.png 640w, /assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-passed-800-9ef32d.png 800w, /assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-passed-1024-9ef32d.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/RS-CMU200-RF-Loop-Test-3-2-passed-800-9ef32d.png" alt="CMU200 3-&gt;2 Tx-Path 1 Loop Test passed"></picture>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/electronics/2021/09/18/HP-33321-SC-SD-SG-Programmable-Step-Attenuator.html" title="HP 33321 SC/SD/SG 程控步进衰减器">HP 33321 SC/SD/SG 程控步进衰减器</a><a class="next" href="/rc-model/2021/09/28/Gear-Basic.html" title="齿轮基础">齿轮基础</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/rc-model/2021/09/28/Gear-Basic.html" title="齿轮基础">齿轮基础</a></li>
+<li><a class="post-link" href="/electronics/2021/09/25/RS-CMU200-RF-Loop-Test-Failed-Repair.html" title="齿轮基础">R&amp;S CMU200 RF Loop Test 外环自检失败故障修复</a></li>
+<li><a class="post-link" href="/rc-model/2021/09/29/FS-1-5-Gas-On-Road-RC-Model-Spec.html" title="齿轮基础">FS 飞神 1/5 Gas On-Road RC Model Specification</a></li>
+<li><a class="post-link" href="/electronics/2021/09/18/HP-33321-SC-SD-SG-Programmable-Step-Attenuator.html" title="齿轮基础">HP 33321 SC/SD/SG 程控步进衰减器</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div> © 2021 Alex Zhang</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+<script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+<script>addBackToTop({
+  diameter: 56,
+  backgroundColor: 'rgb(255, 82, 82)',
+  textColor: '#fff'
+})</script><div id="search"></div>
+<script>
+  const PROTECTD_ELASTICSEARCH_URL = "https://cnhtkau6q6:5mycjw3c54@0xbeta-7000378480.eu-central-1.bonsaisearch.net:443";
+</script>
+<script type="text/javascript" src="/assets/js/search.js"></script>
+<style>
+  article img {
+    border-radius: 5px;
+  }
+  figcaption {
+    padding: 5px;
+    text-align: center;
+    font-style: italic;
+    opacity: 0.718;
+  }
+</style>
+<script>
+  var nodes = document.querySelector("article");
+  if (nodes) {
+    nodes.querySelectorAll("img").forEach (
+      function (img) {
+        var text = img.title || img.alt;
+        if (text) {
+          var caption = document.createElement("figcaption");
+          caption.append("Figure: " + text);
+          img.parentNode.append(caption);
+        }
+      }
+    )
+  }
+</script>
+</body>
+</html>

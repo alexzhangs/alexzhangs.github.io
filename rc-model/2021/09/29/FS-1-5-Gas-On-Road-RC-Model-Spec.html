@@ -1,0 +1,2643 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>FS 飞神 1/5 Gas On-Road RC Model Specification | 0xBeta - Everything is Fun</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="FS 飞神 1/5 Gas On-Road RC Model Specification">
+<meta name="author" content="Alex Zhang">
+<meta property="og:locale" content="zh">
+<meta name="description" content="写在前面">
+<meta property="og:description" content="写在前面">
+<link rel="canonical" href="https://0xbeta.com/rc-model/2021/09/29/FS-1-5-Gas-On-Road-RC-Model-Spec.html">
+<meta property="og:url" content="https://0xbeta.com/rc-model/2021/09/29/FS-1-5-Gas-On-Road-RC-Model-Spec.html">
+<meta property="og:site_name" content="0xBeta - Everything is Fun">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-09-29T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="FS 飞神 1/5 Gas On-Road RC Model Specification">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Alex Zhang"},"headline":"FS 飞神 1/5 Gas On-Road RC Model Specification","dateModified":"2021-09-29T00:00:00+00:00","datePublished":"2021-09-29T00:00:00+00:00","description":"写在前面","mainEntityOfPage":{"@type":"WebPage","@id":"https://0xbeta.com/rc-model/2021/09/29/FS-1-5-Gas-On-Road-RC-Model-Spec.html"},"@type":"BlogPosting","url":"https://0xbeta.com/rc-model/2021/09/29/FS-1-5-Gas-On-Road-RC-Model-Spec.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="/assets/images/logo/Moon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/searchkit/2.0.0/theme.css">
+    <link rel="stylesheet" href="/assets/css/search.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://0xbeta.com/feed.xml" title="0xBeta - Everything is Fun">
+<script>
+  function initGoogleAnalytics() {
+    var doNotTrack = (window.doNotTrack === "1" || navigator.doNotTrack === "1" ||
+      navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1");
+    var enableDNT = "true" == "true";
+
+    if (!enableDNT || !doNotTrack) {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-209916979-1', 'auto');
+      ga('send', 'pageview');
+    }
+  }
+  window.addEventListener("load", initGoogleAnalytics);
+</script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script defer charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="0xBeta - Everything is Fun" src="/assets/images/logo/Moon.png" onerror="this.style.display='none'">
+  0xBeta - Everything is Fun
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'zh',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" defer src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span><span id="search-loader"></span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+
+  function initTrigger () {
+    function uncheckNavTrigger() {
+      document.querySelector("#nav-trigger").checked = false;
+    }
+    document.addEventListener('click', uncheckNavTrigger);
+
+    var timer;
+    document.querySelector(".trigger").addEventListener('mouseleave', () => {
+      timer = setTimeout(uncheckNavTrigger, 1000);
+    });
+
+    document.querySelector(".trigger").addEventListener('mouseenter', () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    });
+
+    document.querySelector(".trigger").addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    document.querySelector(".site-nav").addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initTrigger);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(/assets/images/banners/autocad.png)"></div>
+        <img class="img-placeholder" src="/assets/images/banners/autocad.png">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">FS 飞神 1/5 Gas On-Road RC Model Specification</h1>
+  <h2 class="post-subtitle"></h2>
+<div class="post-meta">
+<time class="dt-published" datetime="2021-09-29T00:00:00+00:00" itemprop="datePublished">
+    <i class="fa fa-calendar"></i> Sep 29, 2021
+  </time>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 38 mins</span>
+
+  
+  <time class="dt-revised left-vsplit" datetime="2021-10-08T03:35:00+00:00" itemprop="dateRevised">
+    <i class="fa fa-pencil"></i> Revised on Oct 08, 2021
+  </time>
+  
+</div>
+<div class="post-tags">
+<a class="post-tag" href="/tags.html#FS">#FS</a><a class="post-tag" href="/tags.html#1/5">#1/5</a><a class="post-tag" href="/tags.html#Gas">#Gas</a><a class="post-tag" href="/tags.html#On-Road">#On-Road</a><a class="post-tag" href="/tags.html#RC">#RC</a><a class="post-tag" href="/tags.html#Model">#Model</a><a class="post-tag" href="/tags.html#Specification">#Specification</a><a class="post-tag" href="/tags.html#%E9%A3%9E%E7%A5%9E">#飞神</a><a class="post-tag" href="/tags.html#%E6%B1%BD%E6%B2%B9">#汽油</a><a class="post-tag" href="/tags.html#%E5%B9%B3%E8%B7%91">#平跑</a><a class="post-tag" href="/tags.html#%E9%81%A5%E6%8E%A7">#遥控</a><a class="post-tag" href="/tags.html#%E8%BD%A6%E6%A8%A1">#车模</a><a class="post-tag" href="/tags.html#%E8%A7%84%E6%A0%BC">#规格</a>
+</div></header>
+</div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="写在前面">写在前面</h2>
+
+<p>本页面整理的内容范围受限于个人需求，比如改装、零件代换等，因此并不完整。</p>
+
+<p>本页面提供的图片和数据，尽可能不超出原车标准配置和 官方 OP 升级件的范围。对于定制化改装，请移步 <a href="/rc-model/2021/09/30/FS-1-5-Gas-On-Road-RC-Model-OP.html#h-%E4%BC%A0%E5%8A%A8%E7%B3%BB%E7%BB%9F--transmission-system">FS 飞神 1/5 Gas On-Road RC Model OP</a>。</p>
+
+<p>如果您可以提供模型说明书的复印件或者电子版，请联系我。</p>
+
+<h2 id="概览--general">概览 | General</h2>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Poster-640-a2ec06.webp 640w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Poster-800-a2ec06.webp 800w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Poster-935-a2ec06.webp 935w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Poster-640-a2ec06.png 640w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Poster-800-a2ec06.png 800w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Poster-935-a2ec06.png 935w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Poster-800-a2ec06.png" alt="产品海报"></picture>
+
+<h3 id="整体参数">整体参数</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>Property</th>
+      <th>值</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>名称</td>
+      <td>Name</td>
+      <td>1/5 汽油平跑</td>
+      <td>1/5 Gas Touring Car</td>
+    </tr>
+    <tr>
+      <td>品牌</td>
+      <td>Brand</td>
+      <td>飞神</td>
+      <td>FS</td>
+    </tr>
+    <tr>
+      <td>型号（两驱）</td>
+      <td>Model No. (2WD)</td>
+      <td>FS10101</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>型号（四驱）</td>
+      <td>Model No. (4WD)</td>
+      <td>FS11101</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>引擎排量</td>
+      <td>Engine</td>
+      <td>30 cc</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>长</td>
+      <td>Length</td>
+      <td>900 mm</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>宽</td>
+      <td>Width</td>
+      <td>450 mm</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>高</td>
+      <td>Height</td>
+      <td>270 mm / 279 mm</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>轴距</td>
+      <td>Wheelbase</td>
+      <td>520 mm</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>轮胎直径</td>
+      <td>Tire Diameter</td>
+      <td>126 mm</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>车架</td>
+      <td>Chasis</td>
+      <td>4 mm Al 6060-T6 / 6061-T6</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>毛量</td>
+      <td>Gross Weight</td>
+      <td>14.3 kg</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>净重</td>
+      <td>Net Weight</td>
+      <td>11.8 kg</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>驱动方式</td>
+      <td>Drive System</td>
+      <td>轴式</td>
+      <td>Shaft</td>
+    </tr>
+    <tr>
+      <td>避震</td>
+      <td>Shock Absorber</td>
+      <td>铝合金油压避震</td>
+      <td>Al Oil Pressure Type</td>
+    </tr>
+    <tr>
+      <td>转向舵机</td>
+      <td>Steering Servo</td>
+      <td>22 kg-cm / 30 kg-cm</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>油门舵机</td>
+      <td>Throttle Servo</td>
+      <td>4 kg-cm / 10 kg-cm</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>车速</td>
+      <td>Speed</td>
+      <td>≥90 km/h</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>油箱容积</td>
+      <td>Fuel Capacity</td>
+      <td>700 cc</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>传动</td>
+      <td>Transmission</td>
+      <td>2WD / 4WD</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>差速器</td>
+      <td>Differential system</td>
+      <td>全机械齿轮</td>
+      <td>All machining gear</td>
+    </tr>
+    <tr>
+      <td>制动系统</td>
+      <td>Brake system</td>
+      <td>双碟式</td>
+      <td>Double Disc</td>
+    </tr>
+    <tr>
+      <td>齿比</td>
+      <td>Gear Ratio</td>
+      <td>7.68 : 1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>接收机电池</td>
+      <td>Receiver Battery</td>
+      <td>1300 mAh</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>车壳</td>
+      <td>Body Shell</td>
+      <td>ABS / PC / PC 丝印</td>
+      <td>ABS / PC / PC print</td>
+    </tr>
+    <tr>
+      <td>卡斯特角</td>
+      <td>Caster Angle</td>
+      <td>0 º</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>束角</td>
+      <td>Toe Angle</td>
+      <td>+6 º</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="零件编号">零件编号</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>编号</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>齿轮罩</td>
+      <td>112018</td>
+    </tr>
+    <tr>
+      <td>伞头十字机牙螺丝</td>
+      <td>183014</td>
+    </tr>
+    <tr>
+      <td>伞头十字自攻螺丝</td>
+      <td>183015</td>
+    </tr>
+    <tr>
+      <td>E挡片（大）</td>
+      <td>181001</td>
+    </tr>
+    <tr>
+      <td>E挡片（小）</td>
+      <td>581003</td>
+    </tr>
+    <tr>
+      <td>前万向传动轴组 CVD</td>
+      <td>112287</td>
+    </tr>
+    <tr>
+      <td>转向舵机拉杆</td>
+      <td>112132</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="op-升级选件">OP 升级选件</h3>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Option-592-fef795.webp 592w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Option-592-fef795.png 592w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Option-592-fef795.png" alt="升级选件 - 全车"></picture>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-Gas-RC-Model-Option-Gear-640-eb31b9.webp 640w, /assets/images/resized/posts/FS-1-5-Gas-RC-Model-Option-Gear-658-eb31b9.webp 658w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-Gas-RC-Model-Option-Gear-640-eb31b9.png 640w, /assets/images/resized/posts/FS-1-5-Gas-RC-Model-Option-Gear-658-eb31b9.png 658w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-Gas-RC-Model-Option-Gear-658-eb31b9.png" alt="升级选件 - 齿轮"></picture>
+
+<h2 id="车身系统--body-system">车身系统 | Body System</h2>
+
+<h3 id="底盘--chasis">底盘 | Chasis</h3>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Floor-640-cc0cdd.webp 640w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Floor-800-cc0cdd.webp 800w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Floor-1024-cc0cdd.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Floor-640-cc0cdd.png 640w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Floor-800-cc0cdd.png 800w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Floor-1024-cc0cdd.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Floor-800-cc0cdd.png" alt="车底板"></picture>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>车底板</td>
+      <td>长（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>宽（mm）</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>厚（mm）</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>重量（kg）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>材质</td>
+      <td>铝合金 6060-T6</td>
+    </tr>
+    <tr>
+      <td>引擎座</td>
+      <td>引擎体位</td>
+      <td>立式</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>固定点（个）</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>安装孔距（mm）</td>
+      <td>65.5</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="二楼板--2nd-floor">二楼板 | 2nd Floor</h3>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-2nd-Floor-640-a15517.webp 640w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-2nd-Floor-800-a15517.webp 800w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-2nd-Floor-960-a15517.webp 960w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-2nd-Floor-640-a15517.png 640w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-2nd-Floor-800-a15517.png 800w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-2nd-Floor-960-a15517.png 960w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-2nd-Floor-800-a15517.png" alt="二楼板"></picture>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>二楼板</td>
+      <td>长（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>宽（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>高（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>安装孔径（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>重量（kg）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>材质</td>
+      <td>尼龙</td>
+    </tr>
+    <tr>
+      <td>转向舵机安装孔</td>
+      <td>孔距 - 长（mm）</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>孔距 - 宽（mm）</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>孔径（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>转向舵机开口</td>
+      <td>长（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>宽（mm）</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="防滚架">防滚架</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>防滚架</td>
+      <td>避震塔圆柱接口 - 内径（mm）</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>避震塔圆柱接口 - 长（mm）</td>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="车壳">车壳</h3>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Shell-640-952470.webp 640w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Shell-800-952470.webp 800w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Shell-1024-952470.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Shell-640-952470.png 640w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Shell-800-952470.png 800w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Shell-1024-952470.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Shell-800-952470.png" alt="车壳"></picture>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>车壳</td>
+      <td>车裙宽（mm）</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>车门处宽（mm）</td>
+      <td>38</td>
+    </tr>
+  </tbody>
+</table>
+
+<picture><source srcset="/assets/images/resized/posts/NISSAN_XANAVI_NISMO_Z_SUPER_GT_06-640-b17bbd.webp 640w, /assets/images/resized/posts/NISSAN_XANAVI_NISMO_Z_SUPER_GT_06-800-b17bbd.webp 800w, /assets/images/resized/posts/NISSAN_XANAVI_NISMO_Z_SUPER_GT_06-1024-b17bbd.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/NISSAN_XANAVI_NISMO_Z_SUPER_GT_06-640-b17bbd.png 640w, /assets/images/resized/posts/NISSAN_XANAVI_NISMO_Z_SUPER_GT_06-800-b17bbd.png 800w, /assets/images/resized/posts/NISSAN_XANAVI_NISMO_Z_SUPER_GT_06-1024-b17bbd.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/NISSAN_XANAVI_NISMO_Z_SUPER_GT_06-800-b17bbd.png" alt="原型车 Nissan XANAVI NISMO Z (SUPER GT) 2006 TEST CAR"></picture>
+
+<p>原型车静态模型：<a href="https://www.amazon.com/Nissan-SuperGT-Xanavi-Scale-Diecast/dp/B000FZ278I">Nissan 350Z SuperGT 500 2006 Test Car Xanavi #23 1/43 Scale Diecast Model - EBBRO 43792</a></p>
+
+<h4 id="车壳侧支撑">车壳侧支撑</h4>
+
+<ul>
+  <li>
+    <p>车底板外缘距离车门内缘宽度：70mm</p>
+  </li>
+  <li>
+    <p>车底板外缘距离车裙外缘宽度：80mm</p>
+  </li>
+  <li>车底板底部平面距离车门和车裙拐角平面高度：10mm</li>
+  <li>轮轴中心距离轮廓上缘高度
+    <ul>
+      <li>前：9mm</li>
+      <li>后：9.5mm</li>
+    </ul>
+  </li>
+  <li>
+    <p>车底板安装孔距：14.5mm</p>
+  </li>
+  <li>车底板斜面角度：15度</li>
+</ul>
+
+<h3 id="螺丝">螺丝</h3>
+
+<p>以下螺丝未特殊说明的，均为黑色国标细纹螺丝。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>规格</th>
+      <th>数量</th>
+      <th>位置</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>M4x12 沉头内六角 带自锁螺母</td>
+      <td>3</td>
+      <td>车底板-前防撞板</td>
+    </tr>
+    <tr>
+      <td>M4x12 沉头内六角 快牙</td>
+      <td>10</td>
+      <td>车底板-二楼板和电池盒</td>
+    </tr>
+    <tr>
+      <td>M4x12 沉头内六角 快牙</td>
+      <td>4</td>
+      <td>车底板-中央分动器座</td>
+    </tr>
+    <tr>
+      <td>M4x12 沉头内六角 快牙</td>
+      <td>7</td>
+      <td>前桥避震板-前差速器外壳</td>
+    </tr>
+    <tr>
+      <td>M4x12 沉头内六角 快牙</td>
+      <td>7</td>
+      <td>后桥避震板-后差速器外壳</td>
+    </tr>
+    <tr>
+      <td>M4x16 伞头十字</td>
+      <td>2</td>
+      <td>上顶板-转向缓冲座轴</td>
+    </tr>
+    <tr>
+      <td>M4x16 伞头十字 快牙</td>
+      <td>3</td>
+      <td>上顶板-二楼板</td>
+    </tr>
+    <tr>
+      <td>M4x16 伞头十字 快牙</td>
+      <td>5</td>
+      <td>电池盒盖-电池盒</td>
+    </tr>
+    <tr>
+      <td>M4x16 伞头十字 快牙</td>
+      <td>3</td>
+      <td>二楼板和电池盒</td>
+    </tr>
+    <tr>
+      <td>M4x16 伞头十字 快牙</td>
+      <td>5</td>
+      <td>刹车上顶板-底座</td>
+    </tr>
+    <tr>
+      <td>M4x20 杯头内六角 带自锁螺母</td>
+      <td>2</td>
+      <td>前车壳架-前桥避震板</td>
+    </tr>
+    <tr>
+      <td>M4x20 杯头内六角 带自锁螺母</td>
+      <td>2</td>
+      <td>后车壳架-后桥避震板</td>
+    </tr>
+    <tr>
+      <td>M4x25 杯头内六角 带2个平垫（银） 带自锁螺母</td>
+      <td>2</td>
+      <td>转向缓冲杆-转向缓冲座（下）</td>
+    </tr>
+    <tr>
+      <td>M4x25 杯头内六角 带自锁螺母</td>
+      <td>2</td>
+      <td>转向拉杆-转向缓冲座（下）</td>
+    </tr>
+    <tr>
+      <td>M4x28 杯头内六角 半牙 带自锁螺母</td>
+      <td>2</td>
+      <td>前下A臂球头-前避震下叉</td>
+    </tr>
+    <tr>
+      <td>M4x28 杯头内六角 半牙 带自锁螺母</td>
+      <td>2</td>
+      <td>后下A臂球头-后避震下叉</td>
+    </tr>
+    <tr>
+      <td>M4x28 杯头内六角 半牙 带自锁螺母</td>
+      <td>2</td>
+      <td>后桥前稳定杆球头-轮轴座</td>
+    </tr>
+    <tr>
+      <td>M4x28 杯头内六角 半牙 带自锁螺母</td>
+      <td>2</td>
+      <td>前轮轴座-转向拉杆</td>
+    </tr>
+    <tr>
+      <td>M4x40 沉头内六角 快牙</td>
+      <td>5</td>
+      <td>车底板-前差速器外壳（下）</td>
+    </tr>
+    <tr>
+      <td>M4x40 沉头内六角 快牙</td>
+      <td>5</td>
+      <td>车底板-后差速器外壳（下）</td>
+    </tr>
+    <tr>
+      <td>M4x50 杯头内六角 半牙</td>
+      <td>2</td>
+      <td>转向舵机拉杆-转向缓冲座（上）</td>
+    </tr>
+    <tr>
+      <td>M4x57 沉头内六角 半牙 带自锁螺母</td>
+      <td>2</td>
+      <td>车底板-前差速器外壳（贯通）</td>
+    </tr>
+    <tr>
+      <td>M4x57 沉头内六角 半牙 带自锁螺母</td>
+      <td>2</td>
+      <td>车底板-后差速器外壳（贯通）</td>
+    </tr>
+    <tr>
+      <td>M4x77 杯头内六角 半牙 带自锁螺母</td>
+      <td>2</td>
+      <td>前桥避震板-前避震上球头</td>
+    </tr>
+    <tr>
+      <td>M4x77 杯头内六角 半牙 带自锁螺母</td>
+      <td>2</td>
+      <td>后桥避震板-后避震上球头</td>
+    </tr>
+    <tr>
+      <td>M5x20 沉头内六角 带自锁螺母（银色）</td>
+      <td>2</td>
+      <td>车底板-前下A臂球头</td>
+    </tr>
+    <tr>
+      <td>M5x20 沉头内六角 带自锁螺母（银色）</td>
+      <td>2</td>
+      <td>车底板-后下A臂球头</td>
+    </tr>
+    <tr>
+      <td>M5x20 沉头内六角 带平垫（银）、螺丝胶</td>
+      <td>2</td>
+      <td>前上A臂球头-前轮轴座</td>
+    </tr>
+    <tr>
+      <td>M5x20 沉头内六角 带平垫（银）、螺丝胶</td>
+      <td>2</td>
+      <td>前下A臂球头-前轮轴座</td>
+    </tr>
+    <tr>
+      <td>M5x20 沉头内六角 带平垫（银）、螺丝胶</td>
+      <td>2</td>
+      <td>后上A臂球头-后轮轴座</td>
+    </tr>
+    <tr>
+      <td>M4x40 杯头内六角 带自锁螺母？？</td>
+      <td>2</td>
+      <td>后下A臂球头-后轮轴座？？</td>
+    </tr>
+    <tr>
+      <td>M5x35 沉头内六角 带自锁螺母（银）</td>
+      <td>2</td>
+      <td>车底板-后桥前稳定杆球头</td>
+    </tr>
+    <tr>
+      <td>M5x55 杯头内六角 半牙 带弹垫和平垫（银色）</td>
+      <td>2</td>
+      <td>空滤-化油器</td>
+    </tr>
+    <tr>
+      <td>M6 法兰自锁螺母 镀镍</td>
+      <td>4</td>
+      <td>轮胎-轮轴</td>
+    </tr>
+    <tr>
+      <td>M6x35 杯头内六角 带弹垫和平垫（银色）</td>
+      <td>3</td>
+      <td>大齿轮座-引擎</td>
+    </tr>
+    <tr>
+      <td>M3</td>
+      <td>2</td>
+      <td>转向舵机拉杆-舵机</td>
+    </tr>
+    <tr>
+      <td>M3</td>
+      <td>1</td>
+      <td>油门舵机拉杆-油门拉杆</td>
+    </tr>
+    <tr>
+      <td>M3</td>
+      <td>1</td>
+      <td>油门舵机拉杆-刹车拉杆</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="悬挂系统--suspension-system">悬挂系统 | Suspension System</h2>
+
+<h3 id="上下-a-臂--arm">上下 A 臂 | Arm</h3>
+
+<h3 id="避震器--shock-absorber">避震器 | Shock Absorber</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>避震器</td>
+      <td>上下球头孔间距 - 最长（mm）</td>
+      <td>112</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>上下球头孔间距 - 最短（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>避震行程（mm）</td>
+      <td>12 ~ 13</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>避震活塞杆直径（mm）</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="转向系统--steering-system">转向系统 | Steering System</h2>
+
+<h3 id="转向舵机拉杆">转向舵机拉杆</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>转向舵机拉杆</td>
+      <td>丝杆 - 直径（mm）</td>
+      <td>M6</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>丝杆 - 长度（mm）</td>
+      <td>68</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="动力系统--power-system">动力系统 | Power System</h2>
+
+<h3 id="进气系统--air-intake">进气系统 | Air Intake</h3>
+
+<h3 id="化油器--carburetor">化油器 | Carburetor</h3>
+
+<h3 id="引擎--engine">引擎 ｜ Engine</h3>
+
+<p>标配 23 / 26 / 30 CC 两冲程单缸汽油引擎。</p>
+
+<h3 id="排气管--exhaust">排气管 | Exhaust</h3>
+
+<h2 id="传动系统--transmission">传动系统 | Transmission</h2>
+
+<h3 id="离合器">离合器</h3>
+
+<h3 id="齿轮组">齿轮组</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>Model No.</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>全车最终齿比</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>112146</td>
+      <td>30</td>
+      <td>33</td>
+      <td>25</td>
+      <td>24</td>
+      <td>7.68</td>
+      <td>标准配置</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>118030</td>
+      <td>24</td>
+      <td>39</td>
+      <td>25</td>
+      <td>24</td>
+      <td>11.35</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>119020</td>
+      <td>27</td>
+      <td>36</td>
+      <td>25</td>
+      <td>24</td>
+      <td>9.31</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="112146-齿比-768">112146 齿比 7.68</h4>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-112146-7.68-640-ad6907.webp 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-112146-7.68-800-ad6907.webp 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-112146-7.68-1024-ad6907.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-112146-7.68-640-ad6907.png 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-112146-7.68-800-ad6907.png 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-112146-7.68-1024-ad6907.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-112146-7.68-800-ad6907.png" alt="齿轮组 112146 齿比 7.68"></picture>
+
+<h4 id="118030-齿比-1135">118030 齿比 11.35</h4>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-118030-11.35-640-5dcda4.webp 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-118030-11.35-800-5dcda4.webp 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-118030-11.35-1024-5dcda4.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-118030-11.35-640-5dcda4.png 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-118030-11.35-800-5dcda4.png 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-118030-11.35-1024-5dcda4.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-RC-Model-Gear-Group-118030-11.35-800-5dcda4.png" alt="齿轮组 118030 齿比 11.35"></picture>
+
+<p>下表是该齿轮组的测量数据，<code class="language-plaintext highlighter-rouge">齿数</code> 和 <code class="language-plaintext highlighter-rouge">齿顶圆直径</code> 由测量得出， <code class="language-plaintext highlighter-rouge">模数</code> 和 <code class="language-plaintext highlighter-rouge">齿距</code> 通过公式计算得出，因为测量的误差，计算结果稍有波动。但 <code class="language-plaintext highlighter-rouge">1.5</code> 是一个标准模数，由此可以推测，该模型齿轮组的模数为 <code class="language-plaintext highlighter-rouge">1.5</code>，齿距为 <code class="language-plaintext highlighter-rouge">4.71mm</code>。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>位置</th>
+      <th>代码</th>
+      <th>齿数 Z（个）</th>
+      <th>齿顶圆直径 Da（mm）</th>
+      <th>模数 M</th>
+      <th>齿距 P（mm）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>齿轮座</td>
+      <td>A</td>
+      <td>24</td>
+      <td>38.7</td>
+      <td>1.4885</td>
+      <td>4.68</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>B</td>
+      <td>39</td>
+      <td>61.6</td>
+      <td>1.5024</td>
+      <td>4.72</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>C</td>
+      <td>25</td>
+      <td>40.5</td>
+      <td>1.5</td>
+      <td>4.71</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>D</td>
+      <td>24</td>
+      <td>38.5</td>
+      <td>1.4808</td>
+      <td>4.65</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>如果对以上计算使用的公式感兴趣，可以参考 <a href="/rc-model/2021/09/28/Gear-Basic.html">齿轮基础</a>。</p>
+
+<h4 id="119020-齿比-931">119020 齿比 9.31</h4>
+
+<h4 id="齿轮罩">齿轮罩</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>齿轮罩</td>
+      <td>左圆内径（mm）</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>中圆内径（mm）</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>材质</td>
+      <td>塑料</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>使用任何一组官方 OP 齿轮组，不会影响齿轮罩的安装。</p>
+
+<p>如果自定义齿轮组安装，可能会因齿轮直径过大，影响齿轮罩的安装。</p>
+
+<h3 id="分动器">分动器</h3>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Transfercase-640-f6b777.webp 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Transfercase-800-f6b777.webp 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Transfercase-1024-f6b777.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Transfercase-640-f6b777.png 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Transfercase-800-f6b777.png 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Transfercase-1024-f6b777.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-RC-Model-Transfercase-800-f6b777.png" alt="分动器"></picture>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>主动小伞齿</td>
+      <td>直径（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>被动大伞齿</td>
+      <td>直径（mm）</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>齿座直径（mm）</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>轴长（mm）</td>
+      <td>70.5</td>
+    </tr>
+    <tr>
+      <td>分动器座 A / B</td>
+      <td>间距 - 内沿（mm）</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>间距 - 外沿（mm）</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>材质</td>
+      <td>尼龙</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>上表数据可用于评估改装中央差速器。</p>
+
+<h4 id="分动器传动轴">分动器传动轴</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>分动器前桥传动轴</td>
+      <td>狗骨长（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>分动器后桥传动轴</td>
+      <td>狗骨长（mm）</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="前后桥">前后桥</h3>
+
+<h4 id="差速器">差速器</h4>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Differential-Disassembled-640-5b2db1.webp 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Differential-Disassembled-800-5b2db1.webp 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Differential-Disassembled-1024-5b2db1.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Differential-Disassembled-640-5b2db1.png 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Differential-Disassembled-800-5b2db1.png 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Differential-Disassembled-1024-5b2db1.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-RC-Model-Differential-Disassembled-800-5b2db1.png" alt="差速器 - 拆解"></picture>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>差速器</td>
+      <td>被动大环齿直径（mm）</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>大环齿齿数（旧款）</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>大环齿齿数（新款）</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>大环齿和差速杯接口直径（mm）</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>两个半轴端距（mm）</td>
+      <td>68.5</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="前万向传动轴组-cvd">前万向传动轴组 CVD</h4>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-640-1f2224.webp 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-800-1f2224.webp 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-1024-1f2224.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-640-1f2224.png 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-800-1f2224.png 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-1024-1f2224.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-800-1f2224.png" alt="前万向传动轴组 CVD"></picture>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>前万向传动轴组 CVD</td>
+      <td>总长（mm）</td>
+      <td>175</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>短轴长（mm）</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>内侧轴承结合段长（mm）</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>该 CVD 的内侧轴承结合段，比后桥半轴相同位置短约6mm，如果使用此 CVD 升级后桥狗骨结构传动轴，轮胎结合器会无法锁紧轮轴。</p>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-Compare-640-0a9e40.webp 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-Compare-800-0a9e40.webp 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-Compare-1024-0a9e40.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-Compare-640-0a9e40.png 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-Compare-800-0a9e40.png 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-Compare-1024-0a9e40.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-RC-Model-Front-CVD-Compare-800-0a9e40.png" alt="前后半轴内侧轴承结合段长度比较"></picture>
+
+<h4 id="后狗骨传动轴组">后狗骨传动轴组</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>后狗骨传动轴组</td>
+      <td>狗骨长（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>半轴长（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>内侧轴承结合段长（mm）</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="车轮">车轮</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>车轮</td>
+      <td>直径（mm）</td>
+      <td>125</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>宽（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>结合器 - 形状</td>
+      <td>正方形（圆角）</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>结合器 - 边长（mm）</td>
+      <td>17.8</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>结合器加强金属套 - 内径（mm）</td>
+      <td>25.7</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>结合器加强金属套 - 宽（mm）</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="全车齿比">全车齿比</h3>
+
+<p>全车齿轮分为三大部分，分别位于齿轮座 、分动器、前后桥。</p>
+
+<p>其中，齿轮座上的 A / B / C / D 四个齿轮，可以更换进行升级。</p>
+
+<p>为方便引用齿轮，齿轮代码为自定义。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>位置</th>
+      <th>代码</th>
+      <th>名称</th>
+      <th>名称（英文）</th>
+      <th>数量（个）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>齿轮座</td>
+      <td>A</td>
+      <td>引擎主动小齿 A</td>
+      <td>-</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>B</td>
+      <td>传动齿 B</td>
+      <td>-</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>C</td>
+      <td>传动齿 C</td>
+      <td>-</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>D</td>
+      <td>传动齿 D</td>
+      <td>-</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>分动器</td>
+      <td>MA</td>
+      <td>中分动主动小伞齿</td>
+      <td>-</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>MP</td>
+      <td>中分动被动大伞齿</td>
+      <td>-</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>前后桥</td>
+      <td>DRP</td>
+      <td>前后桥主动小伞齿</td>
+      <td>Drive Pinion Gear</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>差速器</td>
+      <td>DIR</td>
+      <td>差速器被动大环齿</td>
+      <td>Differential Ring Gear</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DIP</td>
+      <td>差速器小行星齿</td>
+      <td>Differential Pinion Gear</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DIS</td>
+      <td>差速器半轴输出齿</td>
+      <td>Differential Side Gear</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>前后桥中的齿轮数量以单个桥为单位进行计算。</p>
+
+<p>前后桥包含 <code class="language-plaintext highlighter-rouge">主动小伞齿 DRP</code> 和 <code class="language-plaintext highlighter-rouge">差速器</code> 两个部分，差速器包含 <code class="language-plaintext highlighter-rouge">DIR</code>、<code class="language-plaintext highlighter-rouge">DIP</code>、<code class="language-plaintext highlighter-rouge">DIS</code> 三组齿轮。</p>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Differential-640-ea9978.webp 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Differential-800-ea9978.webp 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Differential-1024-ea9978.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-RC-Model-Differential-640-ea9978.png 640w, /assets/images/resized/posts/FS-1-5-RC-Model-Differential-800-ea9978.png 800w, /assets/images/resized/posts/FS-1-5-RC-Model-Differential-1024-ea9978.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-RC-Model-Differential-800-ea9978.png" alt="前后桥 和 差速器"></picture>
+
+<h4 id="传动关系">传动关系</h4>
+
+<p>齿轮按顺序由上至下传递动力，两个齿轮之间分为 <code class="language-plaintext highlighter-rouge">啮合连接关系 ⚙︎</code> 和 <code class="language-plaintext highlighter-rouge">同轴连接关系 ⧦</code>，分别用不同的图标表示。</p>
+
+<p>在标准配置下，传动系统的最终齿比为：<code class="language-plaintext highlighter-rouge">7.68</code>。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>位置</th>
+      <th>代码</th>
+      <th>齿数 Z（个）</th>
+      <th>相邻关系</th>
+      <th>相邻齿比</th>
+      <th>累计齿比</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>齿轮座</td>
+      <td>A</td>
+      <td>30</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>B</td>
+      <td>33</td>
+      <td>⚙︎</td>
+      <td>1.1</td>
+      <td>1.1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>C</td>
+      <td>25</td>
+      <td>⧦</td>
+      <td>1</td>
+      <td>1.1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>D</td>
+      <td>24</td>
+      <td>⚙︎</td>
+      <td>0.96</td>
+      <td>1.056</td>
+    </tr>
+    <tr>
+      <td>分动器</td>
+      <td>MA</td>
+      <td>11</td>
+      <td>⧦</td>
+      <td>1</td>
+      <td>1.056</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>MP</td>
+      <td>25</td>
+      <td>⚙︎</td>
+      <td>2.273</td>
+      <td>2.400</td>
+    </tr>
+    <tr>
+      <td>差速桥</td>
+      <td>DRP</td>
+      <td>10</td>
+      <td>⧦</td>
+      <td>1</td>
+      <td>2.400</td>
+    </tr>
+    <tr>
+      <td>差速器</td>
+      <td>DIR</td>
+      <td>32</td>
+      <td>⚙︎</td>
+      <td>3.2</td>
+      <td>7.68</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DIP</td>
+      <td>7</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DIS</td>
+      <td>10</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>如果对齿比的计算公式感兴趣，可以参考 <a href="/rc-model/2021/09/28/Gear-Basic.html">齿轮基础</a>。</p>
+
+<h2 id="制动系统--brake-system">制动系统 | Brake System</h2>
+
+<h2 id="油路系统--fuel-system">油路系统 | Fuel System</h2>
+
+<h3 id="油箱--tank">油箱 | Tank</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>油箱</td>
+      <td>容量（cc）</td>
+      <td>700</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>油箱口外径（mm）</td>
+      <td>31.5</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>油箱口螺距（mm）</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>油箱盖外径（mm）</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>油箱盖内径（mm）</td>
+      <td>29.5</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>油箱盖通气孔内径（mm）</td>
+      <td>6.5</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>重量（kg）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>材质</td>
+      <td>塑料</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="油管--tube">油管 | Tube</h3>
+
+<h2 id="电气系统--electronics-system">电气系统 | Electronics System</h2>
+
+<h3 id="设备仓--equipment-box">设备仓 | Equipment Box</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>电子设备盒</td>
+      <td>安装孔径（mm）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>重量（kg）</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>材质</td>
+      <td>尼龙</td>
+    </tr>
+    <tr>
+      <td>内部空间尺寸（不计上盖）</td>
+      <td>长（mm）</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>宽（mm）</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>高（mm）</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="电源--power">电源 | Power</h3>
+
+<p>接收机电池组，标称电压 6 V，充满电压 7.2 V，接口规格为 JST 母头或 2.54 mm 杜邦母头。</p>
+
+<p>电池组内部使用 5 节 1.2 V 镍氢充电电池串联。</p>
+
+<h3 id="遥控设备--remote-control">遥控设备 | Remote Control</h3>
+
+<h3 id="伺服设备--servo">伺服设备 | Servo</h3>
+
+<h4 id="油门--刹车舵机--throttle--brake-servo">油门 / 刹车舵机 | Throttle / Brake Servo</h4>
+
+<h4 id="转向舵机--steering-servo">转向舵机 | Steering Servo</h4>
+
+<picture><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Turn-Serve-640-1a889a.webp 640w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Turn-Serve-743-1a889a.webp 743w" type="image/webp"></source><source srcset="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Turn-Serve-640-1a889a.png 640w, /assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Turn-Serve-743-1a889a.png 743w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/FS-1-5-Gas-On-Road-RC-Model-Turn-Serve-743-1a889a.png" alt="转向舵机"></picture>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>转向舵机</td>
+      <td>型号</td>
+      <td>6030-04-S</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>类型</td>
+      <td>数字舵机</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>扭矩（kg）</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>舵机臂齿轮 - 齿数</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>舵机臂齿轮 - 直径（mm）</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="全车球头--ball-joint">全车球头 | Ball Joint</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>数量（个）</th>
+      <th>球头孔径（mm）</th>
+      <th>球头外径（mm）</th>
+      <th>螺纹直径（mm）</th>
+      <th>螺紧方向</th>
+      <th>螺距</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>上A臂球头</td>
+      <td>4</td>
+      <td>5</td>
+      <td>10</td>
+      <td>M8</td>
+      <td>反牙</td>
+      <td>粗牙 1.3 mm</td>
+    </tr>
+    <tr>
+      <td>下A臂 - 车底板球头</td>
+      <td>8</td>
+      <td>5</td>
+      <td>10</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>下A臂 - 轮轴座球头</td>
+      <td>4</td>
+      <td>4</td>
+      <td>10</td>
+      <td>M8</td>
+      <td>正牙</td>
+      <td>国标细牙</td>
+    </tr>
+    <tr>
+      <td>转向拉杆球头</td>
+      <td>4</td>
+      <td>4</td>
+      <td>10</td>
+      <td>M6</td>
+      <td>正、反牙</td>
+      <td>国标细牙</td>
+    </tr>
+    <tr>
+      <td>转向缓冲杆球头</td>
+      <td>4</td>
+      <td>4</td>
+      <td>10</td>
+      <td>M6</td>
+      <td>正、反牙</td>
+      <td>国标细牙</td>
+    </tr>
+    <tr>
+      <td>后桥前稳定杆球头</td>
+      <td>4</td>
+      <td>4 / 5</td>
+      <td>10</td>
+      <td>M6</td>
+      <td>正、反牙</td>
+      <td>国标细牙</td>
+    </tr>
+    <tr>
+      <td>转向舵机拉杆球头</td>
+      <td>2 或 4</td>
+      <td>3</td>
+      <td> </td>
+      <td> </td>
+      <td>正、反牙</td>
+      <td>国标细牙</td>
+    </tr>
+    <tr>
+      <td>油门、刹车舵机拉杆球头</td>
+      <td>2</td>
+      <td>3</td>
+      <td> </td>
+      <td> </td>
+      <td>正、反牙</td>
+      <td>国标细牙</td>
+    </tr>
+    <tr>
+      <td>避震上球头</td>
+      <td>4</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/software/2021/09/28/How-To-Reuse-Bash-Code.html" title="如何重用你的 BASH 代码">如何重用你的 BASH 代码</a><a class="next" href="/rc-model/2021/09/30/FS-1-5-Gas-On-Road-RC-Model-OP.html" title="FS 飞神 1/5 Gas On-Road RC Model OP">FS 飞神 1/5 Gas On-Road RC...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/electronics/2021/09/18/HP-33321-SC-SD-SG-Programmable-Step-Attenuator.html" title="FS 飞神 1/5 Gas On-Road RC Model OP">HP 33321 SC/SD/SG 程控步进衰减器</a></li>
+<li><a class="post-link" href="/rc-model/2021/09/29/FS-1-5-Gas-On-Road-RC-Model-Spec.html" title="FS 飞神 1/5 Gas On-Road RC Model OP">FS 飞神 1/5 Gas On-Road RC Model Specification</a></li>
+<li><a class="post-link" href="/electronics/2021/09/25/RS-CMU200-RF-Loop-Test-Failed-Repair.html" title="FS 飞神 1/5 Gas On-Road RC Model OP">R&amp;S CMU200 RF Loop Test 外环自检失败故障修复</a></li>
+<li><a class="post-link" href="/software/2021/11/15/Standards-and-Models-of-Library-Metadata.html" title="FS 飞神 1/5 Gas On-Road RC Model OP">Standards and Models of Library Metadata</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div> © 2021 Alex Zhang</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+<script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+<script>addBackToTop({
+  diameter: 56,
+  backgroundColor: 'rgb(255, 82, 82)',
+  textColor: '#fff'
+})</script><div id="search"></div>
+<script>
+  const PROTECTD_ELASTICSEARCH_URL = "https://cnhtkau6q6:5mycjw3c54@0xbeta-7000378480.eu-central-1.bonsaisearch.net:443";
+</script>
+<script type="text/javascript" src="/assets/js/search.js"></script>
+<style>
+  article img {
+    border-radius: 5px;
+  }
+  figcaption {
+    padding: 5px;
+    text-align: center;
+    font-style: italic;
+    opacity: 0.718;
+  }
+</style>
+<script>
+  var nodes = document.querySelector("article");
+  if (nodes) {
+    nodes.querySelectorAll("img").forEach (
+      function (img) {
+        var text = img.title || img.alt;
+        if (text) {
+          var caption = document.createElement("figcaption");
+          caption.append("Figure: " + text);
+          img.parentNode.append(caption);
+        }
+      }
+    )
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>HP 33321 SC/SD/SG 程控步进衰减器 | 0xBeta - Everything is Fun</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="HP 33321 SC/SD/SG 程控步进衰减器">
+<meta name="author" content="Alex Zhang">
+<meta property="og:locale" content="zh">
+<meta name="description" content="Topics may be found at 0xBeta: Software, Electronics, Amateur Radio, RC Models, Vintage Cameras, and Everything is Fun.">
+<meta property="og:description" content="Topics may be found at 0xBeta: Software, Electronics, Amateur Radio, RC Models, Vintage Cameras, and Everything is Fun.">
+<link rel="canonical" href="https://0xbeta.com/electronics/2021/09/18/HP-33321-SC-SD-SG-Programmable-Step-Attenuator.html">
+<meta property="og:url" content="https://0xbeta.com/electronics/2021/09/18/HP-33321-SC-SD-SG-Programmable-Step-Attenuator.html">
+<meta property="og:site_name" content="0xBeta - Everything is Fun">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-09-18T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="HP 33321 SC/SD/SG 程控步进衰减器">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Alex Zhang"},"headline":"HP 33321 SC/SD/SG 程控步进衰减器","dateModified":"2021-09-18T00:00:00+00:00","datePublished":"2021-09-18T00:00:00+00:00","description":"Topics may be found at 0xBeta: Software, Electronics, Amateur Radio, RC Models, Vintage Cameras, and Everything is Fun.","mainEntityOfPage":{"@type":"WebPage","@id":"https://0xbeta.com/electronics/2021/09/18/HP-33321-SC-SD-SG-Programmable-Step-Attenuator.html"},"@type":"BlogPosting","url":"https://0xbeta.com/electronics/2021/09/18/HP-33321-SC-SD-SG-Programmable-Step-Attenuator.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="/assets/images/logo/Moon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/searchkit/2.0.0/theme.css">
+    <link rel="stylesheet" href="/assets/css/search.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://0xbeta.com/feed.xml" title="0xBeta - Everything is Fun">
+<script>
+  function initGoogleAnalytics() {
+    var doNotTrack = (window.doNotTrack === "1" || navigator.doNotTrack === "1" ||
+      navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1");
+    var enableDNT = "true" == "true";
+
+    if (!enableDNT || !doNotTrack) {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-209916979-1', 'auto');
+      ga('send', 'pageview');
+    }
+  }
+  window.addEventListener("load", initGoogleAnalytics);
+</script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script defer charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="0xBeta - Everything is Fun" src="/assets/images/logo/Moon.png" onerror="this.style.display='none'">
+  0xBeta - Everything is Fun
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'zh',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" defer src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span><span id="search-loader"></span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+
+  function initTrigger () {
+    function uncheckNavTrigger() {
+      document.querySelector("#nav-trigger").checked = false;
+    }
+    document.addEventListener('click', uncheckNavTrigger);
+
+    var timer;
+    document.querySelector(".trigger").addEventListener('mouseleave', () => {
+      timer = setTimeout(uncheckNavTrigger, 1000);
+    });
+
+    document.querySelector(".trigger").addEventListener('mouseenter', () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    });
+
+    document.querySelector(".trigger").addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    document.querySelector(".site-nav").addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initTrigger);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(/assets/images/banners/thinkpad.png)"></div>
+        <img class="img-placeholder" src="/assets/images/banners/thinkpad.png">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">HP 33321 SC/SD/SG 程控步进衰减器</h1>
+  <h2 class="post-subtitle"></h2>
+<div class="post-meta">
+<time class="dt-published" datetime="2021-09-18T00:00:00+00:00" itemprop="datePublished">
+    <i class="fa fa-calendar"></i> Sep 18, 2021
+  </time>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 11 mins</span>
+
+  
+</div>
+<div class="post-tags">
+<a class="post-tag" href="/tags.html#HP">#HP</a><a class="post-tag" href="/tags.html#33321">#33321</a><a class="post-tag" href="/tags.html#%E8%A1%B0%E5%87%8F%E5%99%A8">#衰减器</a><a class="post-tag" href="/tags.html#Attenuator">#Attenuator</a>
+</div></header>
+</div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <picture><source srcset="/assets/images/resized/posts/HP-33321-SC-and-SD-1-640-064ede.webp 640w, /assets/images/resized/posts/HP-33321-SC-and-SD-1-800-064ede.webp 800w, /assets/images/resized/posts/HP-33321-SC-and-SD-1-1024-064ede.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/HP-33321-SC-and-SD-1-640-064ede.png 640w, /assets/images/resized/posts/HP-33321-SC-and-SD-1-800-064ede.png 800w, /assets/images/resized/posts/HP-33321-SC-and-SD-1-1024-064ede.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/HP-33321-SC-and-SD-1-800-064ede.png" alt="HP 33321SC and HP 33321SD"></picture>
+
+<p>市面上可以购买到一些拆机的程控步进衰减器模块，品牌为HP，是Agilent的前
+身。我手上的3个模块为33321系列，后缀分别为：SC/SD/SG，网上能找到的
+<a href="http://literature.cdn.keysight.com/litweb/pdf/5959-7857.pdf">HP 33321系列官方文档</a>
+不包含这三个后缀型号，电气接口也不同，因此只能略作参考。在
+<a href="https://www.abex.co.uk/">Abex UK</a> 能找到这几个型号的性能测试数据，可以参考其频率特性。</p>
+
+<p>综合以上整理出如下数据。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>型号</th>
+      <th>衰减范围（dB）</th>
+      <th>步进（dB）</th>
+      <th>衰减开关值（dB）</th>
+      <th>最大输入功率（W）</th>
+      <th>控制电压（VDC）</th>
+      <th>频率范围</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HP 33321SC</td>
+      <td>0 ~ 70</td>
+      <td>10</td>
+      <td>10/20/40</td>
+      <td>1</td>
+      <td>15</td>
+      <td>DC ~ 18 GHz</td>
+    </tr>
+    <tr>
+      <td>HP 33321SD</td>
+      <td>0 ~ 75</td>
+      <td>5</td>
+      <td>5/30/40</td>
+      <td>1</td>
+      <td>15</td>
+      <td>DC ~ 18 GHz</td>
+    </tr>
+    <tr>
+      <td>HP 33321SG</td>
+      <td>0 ~ 35</td>
+      <td>5</td>
+      <td>5/10/20</td>
+      <td>1</td>
+      <td>15</td>
+      <td>DC ~ 16 GHz</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>33321SC 与 33321SD 组合起来可以得到 0 ~ 145 dB，步进为 5 dB 的衰减器。</p>
+
+<h2 id="工作原理">工作原理</h2>
+
+<picture><source srcset="/assets/images/resized/posts/HP-33321-principle-626-2bf2ec.webp 626w" type="image/webp"></source><source srcset="/assets/images/resized/posts/HP-33321-principle-626-2bf2ec.png 626w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/HP-33321-principle-626-2bf2ec.png" alt="HP 33321 原理图 - 单个衰减单元"></picture>
+
+<p>上图是衰减器的内部原理图，显示了其中的一个衰减单元。</p>
+
+<p>其原理类似于继电器，但是触点没有弹性复位，线圈回路分为 A、D 两部分，A 回路用于
+激活衰减，D 回路用于取消衰减，两个联动的开关 $K_A$ 和 $K_D$，分别位于 A 回路和 D 
+回路。</p>
+
+<p>举例：给 A 线圈施加工作电压，将会断开直连触点，并闭合衰减触点，衰减器生效，同时切换联动开关，令 $K_A$ 断开，即使继续维持外部工作电压，A 线圈也不再工作，同时令 $K_D$ 闭合，为 D 线圈工作提供可能。</p>
+
+<h2 id="引脚定义">引脚定义</h2>
+
+<picture><source srcset="/assets/images/resized/posts/HP-33321-SC-and-SD-2-640-b9ddd9.webp 640w, /assets/images/resized/posts/HP-33321-SC-and-SD-2-800-b9ddd9.webp 800w, /assets/images/resized/posts/HP-33321-SC-and-SD-2-1024-b9ddd9.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/HP-33321-SC-and-SD-2-640-b9ddd9.png 640w, /assets/images/resized/posts/HP-33321-SC-and-SD-2-800-b9ddd9.png 800w, /assets/images/resized/posts/HP-33321-SC-and-SD-2-1024-b9ddd9.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/HP-33321-SC-and-SD-2-800-b9ddd9.png" alt="HP 33321SC and HP 33321SD"></picture>
+
+<p>三个型号的引脚定义并没有参考文档，需要测试获得。</p>
+
+<p>在PIN 1 提供 +15 V，然后通过控制其它各脚接地可以操作各个衰减开关。</p>
+
+<p>将衰减器的两个SMA端口连接入测试设备（两个端口无差别），一端连接信号发生器，作为输入端，另一端连接功率表，作为输出端。</p>
+
+<p>使信号发生器输出固定频率固定幅度的信号，例如 10MHz / -13dBm，然后在功率表上读取输出的信号幅度。</p>
+
+<p>为各个线圈施加工作电压，并记录输出幅度的变化，即 <code class="language-plaintext highlighter-rouge">输入幅度 - 输出幅度</code>。</p>
+
+<p>通过逐个测试，整理出各个引脚的功能，如下。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pin</th>
+      <th>颜色</th>
+      <th>颜色（德语）</th>
+      <th>功能</th>
+      <th>HP 33321SC</th>
+      <th>HP 33321SD</th>
+      <th>HP 33321SG</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Brown</td>
+      <td>braun</td>
+      <td>Power</td>
+      <td>+15VDC</td>
+      <td>+15VDC</td>
+      <td>+15VDC</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Red</td>
+      <td>rot</td>
+      <td>Activate</td>
+      <td>10dB</td>
+      <td>5dB</td>
+      <td>10dB</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Orange</td>
+      <td>orange</td>
+      <td>Deactivate</td>
+      <td>10dB</td>
+      <td>5dB</td>
+      <td>10dB</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Yellow</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Green</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Blue</td>
+      <td>blau</td>
+      <td>Activate</td>
+      <td>40dB</td>
+      <td>40dB</td>
+      <td>5dB</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Purple</td>
+      <td>violett</td>
+      <td>Deactivate</td>
+      <td>40dB</td>
+      <td>40dB</td>
+      <td>5dB</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Gray</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>White</td>
+      <td>weiß</td>
+      <td>Activate</td>
+      <td>20dB</td>
+      <td>30dB</td>
+      <td>20dB</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Black</td>
+      <td>schwarz</td>
+      <td>Deactivate</td>
+      <td>20dB</td>
+      <td>30dB</td>
+      <td>20dB</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>实测 +12 V 电压即可操作成功，但是否可令衰减开关触点符合性能要求有待测试。</p>
+
+<h2 id="diy-控制电路">DIY 控制电路</h2>
+
+<p>掌握了模块的规格后，就可以通过添加外围控制电路，DIY一个实用的可调步进衰减器。</p>
+
+<p>以 33321SC 与 33321SD 为例，组合起来可以得到 0 ~ 145 dB，步进为 5 dB 的衰减器。</p>
+
+<p>控制电路有两种选择：</p>
+
+<ol>
+  <li>第一种只需要电源和开关，优点是简单，操控上也完全可以满足业余使用需求。</li>
+  <li>第二种是采用官方指导电路，利用TTL电平控制衰减器和LED指示灯，如需要显示衰减数值，需要连接带单片机的数码管，并编写程序。</li>
+</ol>
+
+<h3 id="1-简单控制电路">1. 简单控制电路</h3>
+
+<p>所需零件如下表：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>数量</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>15 VDC 电源模块</td>
+      <td>1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>单刀双掷钮子开关（3脚）</td>
+      <td>6</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>将6个开关中位接地，开关的其余12个引脚分别与2个衰减器的PIN 2 / 3 / 6 / 7 / 9 / 10 连接即可。</p>
+
+<p>为每个开关标注衰减数值，根据开关的投掷方向判断衰减状态。</p>
+
+<h3 id="2-ttl-电平控制电路">2. TTL 电平控制电路</h3>
+
+<picture><source srcset="/assets/images/resized/posts/HP-33321-control-circuit-640-6db0d2.webp 640w, /assets/images/resized/posts/HP-33321-control-circuit-800-6db0d2.webp 800w, /assets/images/resized/posts/HP-33321-control-circuit-1024-6db0d2.webp 1024w" type="image/webp"></source><source srcset="/assets/images/resized/posts/HP-33321-control-circuit-640-6db0d2.png 640w, /assets/images/resized/posts/HP-33321-control-circuit-800-6db0d2.png 800w, /assets/images/resized/posts/HP-33321-control-circuit-1024-6db0d2.png 1024w" type="image/png"></source><img class="" title="" src="/assets/images/resized/posts/HP-33321-control-circuit-800-6db0d2.png" alt="HP 33321 控制电路 - 单个衰减单元"></picture>
+
+<p>上图为官方指导控制电路图，仅描述了一个衰减单元，实际使用中按实际需要的衰减单元数量扩展。</p>
+
+<p>所需主要零件如下表：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>数量</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>15 VDC 电源模块</td>
+      <td>1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>5 VDC 电源模块</td>
+      <td>1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>IC <a href="https://pdf1.alldatasheet.com/datasheet-pdf/view/8468/NSC/DS75451N.html">DM75451N</a>
+</td>
+      <td>6</td>
+      <td>开关驱动器</td>
+    </tr>
+    <tr>
+      <td>IC <a href="https://pdf1.alldatasheet.com/datasheet-pdf/view/50891/FAIRCHILD/DM7406N.html">DM7404N</a>
+</td>
+      <td>1</td>
+      <td>TTL输入/输出，数码管驱动器</td>
+    </tr>
+    <tr>
+      <td>IC <a href="">DM7406N</a>
+</td>
+      <td>1</td>
+      <td>LED驱动器</td>
+    </tr>
+    <tr>
+      <td>LED 指示灯</td>
+      <td>6</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>单片机驱动数码管</td>
+      <td>1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>电阻 0.62 kΩ  1/4W</td>
+      <td>12</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>电阻 2.5 kΩ  1/4W</td>
+      <td>12</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>电阻 0.13 Ω 1/4W</td>
+      <td>6</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>二极管 <a href="https://datasheetspdf.com/pdf/1126123/FairchildSemiconductor/1N3064/1">1N3064</a>
+</td>
+      <td>24</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>按钮开关</td>
+      <td>6</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>因指导电路模块的电压（24 V）与本示例模块的电压（15 V）不一致，指导电路中的 4.22 kΩ 电阻阻值需要改为 2.5 kΩ ，才能保证DM7404N / DM7406N 获得约 3 V 的高电平。</p>
+
+<h2 id="组装">组装</h2>
+
+<p>所需零件如下表：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>数量</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>外壳</td>
+      <td>1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>电源插座</td>
+      <td>1</td>
+      <td>可选择插座、开关、滤波器、保险座一体模块</td>
+    </tr>
+    <tr>
+      <td>前面板电源开关</td>
+      <td>1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>洞洞板</td>
+      <td>1</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>两个拆机衰减器模块，外加一些廉价的零件，总体成本在数百元以内，但DIY出来的成品，无论在操作还是性能上，都可以媲美数千元的商业产品。</p>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ul>
+  <li><a href="http://literature.cdn.keysight.com/litweb/pdf/5959-7857.pdf">Technical Data Sheet of Agilent Step Attenuators 33320 33321 33322 33323</a></li>
+  <li><a href="https://www.abex.co.uk/esales/microwave/hp/attenuator-step/33321sc/2831a03760_s02466/index.php">Test Data of HP 33321SC</a></li>
+  <li><a href="https://www.abex.co.uk/esales/microwave/hp/attenuator-step/33321sd/3248a00445/index.php">Test Data of HP 33321SD</a></li>
+  <li><a href="https://www.abex.co.uk/esales/microwave/hp/attenuator-step/33321sg/3228a00101/index.php">Test Data of HP 33321SG</a></li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<span></span><a class="next" href="/electronics/2021/09/25/RS-CMU200-RF-Loop-Test-Failed-Repair.html" title="R&amp;S CMU200 RF Loop Test 外环自检失败故障修复">R&amp;S CMU200 RF Loop Test 外环自检失败故障修复...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/electronics/2021/09/25/RS-CMU200-RF-Loop-Test-Failed-Repair.html" title="R&amp;S CMU200 RF Loop Test 外环自检失败故障修复">R&amp;S CMU200 RF Loop Test 外环自检失败故障修复</a></li>
+<li><a class="post-link" href="/rc-model/2021/09/29/FS-1-5-Gas-On-Road-RC-Model-Spec.html" title="R&amp;S CMU200 RF Loop Test 外环自检失败故障修复">FS 飞神 1/5 Gas On-Road RC Model Specification</a></li>
+<li><a class="post-link" href="/software/2021/09/28/How-To-Reuse-Bash-Code.html" title="R&amp;S CMU200 RF Loop Test 外环自检失败故障修复">如何重用你的 BASH 代码</a></li>
+<li><a class="post-link" href="/software/2021/11/15/Standards-and-Models-of-Library-Metadata.html" title="R&amp;S CMU200 RF Loop Test 外环自检失败故障修复">Standards and Models of Library Metadata</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div> © 2021 Alex Zhang</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+<script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+<script>addBackToTop({
+  diameter: 56,
+  backgroundColor: 'rgb(255, 82, 82)',
+  textColor: '#fff'
+})</script><div id="search"></div>
+<script>
+  const PROTECTD_ELASTICSEARCH_URL = "https://cnhtkau6q6:5mycjw3c54@0xbeta-7000378480.eu-central-1.bonsaisearch.net:443";
+</script>
+<script type="text/javascript" src="/assets/js/search.js"></script>
+<style>
+  article img {
+    border-radius: 5px;
+  }
+  figcaption {
+    padding: 5px;
+    text-align: center;
+    font-style: italic;
+    opacity: 0.718;
+  }
+</style>
+<script>
+  var nodes = document.querySelector("article");
+  if (nodes) {
+    nodes.querySelectorAll("img").forEach (
+      function (img) {
+        var text = img.title || img.alt;
+        if (text) {
+          var caption = document.createElement("figcaption");
+          caption.append("Figure: " + text);
+          img.parentNode.append(caption);
+        }
+      }
+    )
+  }
+</script>
+</body>
+</html>
